@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Introduction to Computer Science with JavaScript</title>
+		<!-- <base href="http://127.0.0.1:5500/csfoundations/" /> -->
+		<link rel="stylesheet" href="css/csfoundations.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc" crossorigin="anonymous" />
+		
+	</head>
+
+	<body>
+		<header>
+			<h1>Computer Science Fundamentals</h1>
+		</header>
+
+		<main>
+		<!-- Computer Architecture -->
+			<article id="computer_architecture" class="grid" data-colcade="columns: .grid-col, items: .grid-item">
+				<div class="grid-col grid-col--1"></div>
+				<div class="grid-col grid-col--2"></div>
+				<div class="grid-col grid-col--3"></div>
+				<div class="grid-col grid-col--4"></div>
+				<!-- Chapter 1: Preface -->
+
+				<section class="grid-item">
+					<h2>How Does a Computer Work?</h2>
+				</section>
+
+				<section id="computer_architure_preface" class="grid-item">
+					<h3>Preface</h3>
+					<p>Most foundational computer science courses will not delve too deeply into computer architecture. However, it is arguably a good idea to at the very least introduce some key concepts in computer architecture early on. While there is some potential for confusion and overcomplicating what should be preliminary matters, brief overviews can prevent burning and lingering questions down the line (many of which go unaddressed until the helpless programmer encounters a bug too close to hardware for comfort). For these reasons, we explore some of the ways computers work in the materials that follow.</p>
+				</section>
+				<!-- Chapter 2: Computer Outline -->
+				<section id="computer_outline" class="grid-item">
+					<h3>The Outline of a Computer</h3>
+					<p>
+						A computer can be thought of as consisting of three core components: the ROM ("Read-only Memory"), CPU ("Central Processing Unit"), and RAM ("Random Access Memory"). With these components, we can connect
+						<span class="italicsText">exteral devices</span>&mdash;a keyboard, a mouse, a monitor, speakers, etc. These devices allow us to input data, as well as perceive output from the computer in return. With the ability to input data, we can write programs to be compiled by the computer.
+					</p>
+					<p>In the materials that follow, we will start at the lowest level, the core components. From there, we gradually work our way up, passing through higher levels of abstraction one at a time, until we reach the very highest&mdash;programs written in programming languages.</p>
+				</section>
+				<!-- Chapter 3: Elementary Logic Gates -->
+				<section id="elementary_logic_gates" class="grid-item">
+					<h3>Elementary Logic Gates</h3>
+					<p>We begin with an introduction to Boolean logic. Computers can only handle two values: 0s and 1s (setting aside developments in quantum computing). This is because having only two values is the simplest way to perform computations&mdash;yes or no, open or close, true or false, etc. With just 0s and 1s, we can use basic logical operators.</p>
+				</section>
+
+				<section id="and_operator" class="grid-item">
+					<h4>The AND Operator</h4>
+					<p>
+						One such operator is the
+						<span class="monoText boldText">AND</span> operation in logic:
+					</p>
+					<figure>
+						<table class="truth_table">
+							<thead>
+								<th>x</th>
+								<th>y</th>
+								<th>AND</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+								</tr>
+							</tbody>
+						</table>
+					</figure>
+					<p>The <span class="monoText">AND</span> operator takes two input signals, and outputs one input signal. It returns an input signal of <span class="monoText">1</span> if, and only if, both input signals are <span class="monoText">1</span>. Otherwise, it outputs the input signal <span class="monoText">0</span>.</p>
+				</section>
+
+				<section id="or_operator" class="grid-item">
+					<h4>The OR Operator</h4>
+					<p>
+						Another basic operator is the
+						<span class="monoText boldText">OR</span> operator:
+					</p>
+					<figure>
+						<table class="truth_table">
+							<thead>
+								<th>x</th>
+								<th>y</th>
+								<th>OR</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td>0</td>
+									<td>1</td>
+									<td>1</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+								</tr>
+							</tbody>
+						</table>
+					</figure>
+					<p>Like the <span class="monoText">AND</span> operator, the <span class="monoText">OR</span> operator takes two inputs signals, and outputs one input signal. Unlike the <span class="monoText">AND</span> operator, however, it returns an output signal of <span class="monoText">1</span> if just one of the input signals is <span class="monoText">1</span>. In other words, the only time the <span class="monoText">OR</span> operator returns an output signal of <span class="monoText">0</span> is when both input signals are <span class="monoText">0</span>.</p>
+				</section>
+
+				<section id="not_operator" class="grid-item">
+					<h4>The NOT Operator</h4>
+					<p>
+						The third basic operator is the
+						<span class="monoText boldText">NOT</span> operator. The <span class="monoText">NOT</span> operator is a <span class="italicsText">unary operator</span> (it takes only one input signal), as opposed to the <span class="monoText">AND</span> and <span class="monoText">OR</span> operators, which are <span class="italicsText">binary operators</span> (they take two input signals).
+					</p>
+					<figure>
+						<table class="truth_table">
+							<thead>
+								<th>x</th>
+								<th>NOT</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>0</td>
+									<td>1</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>0</td>
+								</tr>
+							</tbody>
+						</table>
+					</figure>
+					<p>The <span class="monoText">NOT</span> operator takes one input signal, and returns its opposite. Thus, if the input signal is <span class="monoText">1</span>, the <span class="monoText">NOT</span> operator will return <span class="monoText">0</span>, and if the input signal is <span class="monoText">0</span>, the <span class="monoText">NOT</span> operator returns <span class="monoText">1</span>.</p>
+				</section>
+
+				<section id="boolean_expressions" class="grid-item">
+					<h4>Boolean Expressions</h4>
+					<p>
+						With the ability to use the three basic operators &mdash;
+						<span class="monoText">AND</span>, <span class="monoText">OR</span>, and <span class="monoText">NOT</span>&mdash;we can combine them to form <span class="boldItalics">Boolean expressions</span>, which are expressions similar to those we see in mathematics. Boolean expressions are what allow us to create more complex operators and to perform increasingly elaborate operations.
+					</p>
+					<p>
+						For example, consider the Boolean expression:
+						<span class="monoText">NOT(0 OR (1 AND 1))</span>. What might this expression evaluate to? To evaluate the expression, we work from the innermost expression towards the outermost expression. The innermost expression is <span class="monoText">1 AND 1</span>. This evaluates to <span class="monoText">1</span>, since both input signals are <span class="monoText">1</span>. These leads to the next expression, <span class="monoText">0 or 1</span>, which evaluates to <span class="monoText">1</span>, since at least one input signal is <span class="monoText">1</span>. Finally, the <span class="monoText">NOT</span> operator kicks in, and reverses our result (<span class="monoText">1</span>), returning the output signal <span class="monoText">0</span>. Thus, the Boolean expression <span class="monoText">NOT(0 OR (1 AND 1))</span> returns the output signal <span class="monoText">0</span>.
+					</p>
+				</section>
+
+				<section id="boolean_functions" class="grid-item">
+					<h4>Boolean Functions</h4>
+					<p>
+						With the ability to write Boolean expressions, we can then write
+						<span class="boldItalics">Boolean functions</span>&mdash;general Boolean "rules" that we construct ourselves that will output results based on inputs.
+					</p>
+					<p>
+						For example, a Boolean function might look like:
+						<span class="monoText">f(x, y, z) = (x AND y) OR (NOT(x) AND z)</span>. We can list all of the possible values for this function:
+					</p>
+					<figure>
+						<table class="truth_table">
+							<thead>
+								<th>x</th>
+								<th>y</th>
+								<th>z</th>
+								<th>(x AND y)</th>
+								<th>(NOT(x))</th>
+								<th>(NOT(x) AND z)</th>
+								<th>(x AND y) OR (NOT(x) AND z)</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td>0</td>
+									<td>1</td>
+									<td>1</td>
+									<td>0</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>1</td>
+								</tr>
+							</tbody>
+						</table>
+					</figure>
+				</section>
+
+				<section id="boolean_identities" class="grid-item">
+					<h4>Boolean Identities</h4>
+					<p>
+						If we can write Boolean functions, then we can draw what are called
+						<span class="boldItalics">Boolean identities</span>&mdash;laws that will always hold true, regardless of what inputs a function takes. These identities include
+					</p>
+					<p>the <span class="boldItalics">commutative laws</span>:</p>
+					<ol>
+						<li><span class="monoText">(x AND y) = (y AND x)</span></li>
+						<li><span class="monoText">(x OR y) = (y OR x)</span></li>
+					</ol>
+					<p>the <span class="boldItalics">associative laws</span>:</p>
+					<ol>
+						<li>
+							<span class="monoText">(x AND (y AND z)) = ((x AND y) AND z)</span>
+						</li>
+						<li>
+							<span class="monoText">(x OR (y OR z)) = ((x OR y) OR z)</span>
+						</li>
+					</ol>
+					<p>the <span class="boldItalics">distributive laws:</span></p>
+					<ol>
+						<li>
+							<span class="monoText">(x AND (y OR z)) = ((x AND y) OR (x AND z))</span>
+						</li>
+						<li>
+							<span class="monoText">(x OR (y AND Z)) = ((x OR y) AND (x OR z))</span>
+						</li>
+					</ol>
+					<p><span class="boldItalics">deMorgan's laws</span>:</p>
+					<ol>
+						<li>
+							<span class="monoText">NOT(x AND y) = NOT(x) OR NOT(y)</span>
+						</li>
+						<li>
+							<span class="monoText">NOT(x OR y) = NOT(x) AND NOT(y)</span>
+						</li>
+					</ol>
+					<p>the <span class="boldItalics">indempotence law</span>:</p>
+					<ol>
+						<li><span class="monoText">x AND x = x</span></li>
+						<li>
+							<span class="monoText">(NOT(x)) AND (NOT(x)) = NOT(x)</span>
+						</li>
+					</ol>
+					<p>and the <span class="boldItalics">double negation law</span>:</p>
+					<ol>
+						<li><span class="monoText">NOT(NOT(x)) = x</span></li>
+					</ol>
+					<p>
+						The Boolean identities allow us to simply complex Boolean expressions into simpler forms. For example, suppose the Boolean expression
+						<span class="monoText">NOT(NOT(x) AND NOT(x OR y))</span>. The term <span class="monoText">NOT(x OR y)</span> can be reduced to <span class="monoText">(NOT(x) AND NOT(y))</span> by deMorgan's law. Thus, the expression now looks like: <span class="monoText">NOT(NOT(x) AND (NOT(x) AND NOT(y)))</span>. Then, we can use the associative law to change the order of evaluating the <span class="monoText">AND</span> operations: <span class="monoText">NOT((NOT(x) AND NOT(x)) AND NOT(y))</span>. Next, with the idempotence law, we can remove one of the <span class="monoText">NOT(x)</span>s: <span class="monoText">NOT(NOT(x) AND NOT(y))</span>. Then we can use deMorgan's law again: <span class="monoText">NOT(NOT(x)) OR NOT(NOT(y))</span>. Finally, using the double negation law: <span class="monoText">x OR y</span>.
+					</p>
+				</section>
+				<!-- Chapter 4: Arithmetic Logic -->
+				<section id="arithmetic_logic" class="grid-item">
+					<h3>Arithmetic with Logic</h3>
+					<p>
+						Bits are not a very useful unit of measurement, since they can very rapidly grow into large numbers (the characters H, i, and ! took up 24 bits alone&mdash;imagine how many bits a paragraph or a Wikipedia article takes). Because of this problem, we measure bits in
+						<span class="boldItalics">bytes</span>. A <span class="italicsText">byte</span> is simply 8 bits.
+					</p>
+				</section>
+				<!-- Chapter 5: Registers and Memory -->
+				<section id="registers_and_memory" class="grid-item">
+					<h3>Registers and Memory</h3>
+					<p>Not only are numbers assigned to characters, they can also be assigned to represent colors. There are a variety of different systems of assigning numbers to colors.</p>
+
+					<p>
+						In the <span class="boldItalics">RGB color model</span>, colors are represented in the form <span class="monoText">rgb(value, value, value)</span>, where each channel (indicated by "value") represents the color's red, green, and blue values respectively. This system works because every color can be made by mixing the colors red, green, and blue. The values in each of the channels essentially indicates the amount of each color to be "mixed." The values themselves are most commonly expressed as numbers. In an <span class="italicsText">8-bit per channel</span> system, for example, each of the channels can take a value ranging from 0 (no value) to 255 (highest value). For example, the color <span class="monoText">rgb(0, 0, 0)</span> represents the color white (the absence of color), while
+						<span class="monoText">rgb(255, 255, 255)</span>
+						represents black (all of the channels at maximum value).
+					</p>
+
+					<p>
+						Once we tell the computer what color we want, the computer takes that value, and displays the color on a
+						<span class="italicsText">pixel</span> of the screen. Each pixel uses approximately 24 bits (8 bits per channel, since it takes 8 bits to represent numbers up to 255), or 3 bytes. This should give us a hunch for why high resolution images are generally large files on a computer.
+					</p>
+				</section>
+				<!-- Chapter 6: Memory and CPU -->
+				<section id="memory_cpu_computer" class="grid-item">
+					<h3>The Core: Memory &amp; CPU</h3>
+					<p>On a computer, videos are really just images changing rapidly, which, by implication, are just colors changing rapidly. By changing a pixel's color once per unit of time, when all of the changes (to hundreds of thousands of pixels) are viewed all at once, we, as the viewer, see changes in shapes and swaths of colors, which in turn is perceived as motion.</p>
+				</section>
+				<!-- Chapter 7: Low Level Programs -->
+				<section id="writing_low_level_programs" class="grid-item">
+					<h3>Low-level Programs</h3>
+					<p>
+						In terms of physics, what we perceive as sound is actually an
+						<span class="italicsText">acoustic wave</span> propagating through space, reaching our eardrums and perceived by the brain. The greater a sound wave's <span class="italicsText">amplitude</span> is, the louder the perceived sound is, and the larger its <span class="italicsText">frequency</span>, the higher its pitch. Moreover, the longer a sound wave's <span class="italicsText">duration</span> is, the longer we perceive the sound. These scalars (amplitude, <span class="italicsText">frequency</span>, and <span class="italicsText">duration</span>), are present in all "notes," and are readily measurable.
+					</p>
+
+					<p>Unsurprisingly, sound can be represented by assigning numbers to these values.</p>
+				</section>
+				<!-- Chapter 8: Assembler -->
+				<section id="developing_an_assembler" class="grid-item">
+					<h3>Making an Assembler</h3>
+					<p>
+						Anyone who has worked with computers can easily note that there are hordes of different file extensions: .zip, .pdf, .jpeg, .mp4, .txt, .doc, .ppt, .html, .rtf, .py, .js, .java,
+						<span class="italicsText">ad nauseam</span>. These file extensions indicate a <span class="italicsText">file format</span>, which is a set of rules that humans have come to agree with as to how information should be represented and organized.
+					</p>
+				</section>
+			</article>
+		</main>
+		<!-- Scripts -->
+			<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js" integrity="sha384-YNHdsYkH6gMx9y3mRkmcJ2mFUjTd0qNQQvY9VYZgQd7DcN7env35GzlmFaZ23JGp" crossorigin="anonymous"></script>
+			<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js " integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+			<script>
+				document.addEventListener("DOMContentLoaded", function () {
+					renderMathInElement(document.body, {
+						// customised options
+						// • auto-render specific keys, e.g.:
+						delimiters: [
+							{ left: "$$", right: "$$", display: true },
+							{ left: "$", right: "$", display: false },
+							{ left: "\\(", right: "\\)", display: false },
+							{ left: "\\[", right: "\\]", display: true },
+						],
+						// • rendering keys, e.g.:
+						throwOnError: false,
+					});
+				});
+			</script>
+			<!-- <script src="https://unpkg.com/function-plot@1.22.2/dist/function-plot.js"></script> -->
+			<script src="js/csfoundations.js"></script>
+			<script src="js/prism.js"></script>
+	</body>
+</html>
