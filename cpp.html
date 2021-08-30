@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>csf_data_structs</title>
+		<!-- <base href="http://127.0.0.1:5500/csfoundations/" /> -->
+		<link rel="stylesheet" href="css/csfoundations.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc" crossorigin="anonymous" />
+		
+	</head>
+
+	<body>
+		<header>
+			<h1>Computer Science Fundamentals</h1>
+		</header>
+
+		<main>
+		<!-- Foreword -->
+			<article id="foreword" class="grid" data-colcade="columns: .grid-col, items: .grid-item">
+				<!-- Grid columns -->
+				<div class="grid-col grid-col--1"></div>
+				<div class="grid-col grid-col--2"></div>
+				<div class="grid-col grid-col--3"></div>
+				<div class="grid-col grid-col--4"></div>
+
+				<section class="grid-item">
+					<h2>Data Structures with C++</h2>
+					<p></p>
+				</section>
+
+			</article>
+		</main>
+		<!-- Scripts -->
+			<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js" integrity="sha384-YNHdsYkH6gMx9y3mRkmcJ2mFUjTd0qNQQvY9VYZgQd7DcN7env35GzlmFaZ23JGp" crossorigin="anonymous"></script>
+			<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js " integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+			<script>
+				document.addEventListener("DOMContentLoaded", function () {
+					renderMathInElement(document.body, {
+						// customised options
+						// • auto-render specific keys, e.g.:
+						delimiters: [
+							{ left: "$$", right: "$$", display: true },
+							{ left: "$", right: "$", display: false },
+							{ left: "\\(", right: "\\)", display: false },
+							{ left: "\\[", right: "\\]", display: true },
+						],
+						// • rendering keys, e.g.:
+						throwOnError: false,
+					});
+				});
+			</script>
+			<!-- <script src="https://unpkg.com/function-plot@1.22.2/dist/function-plot.js"></script> -->
+			<script src="js/csfoundations.js"></script>
+			<script src="js/prism.js"></script>
+	</body>
+</html>
