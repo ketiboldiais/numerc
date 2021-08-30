@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Introduction to Computer Science with JavaScript</title>
+		<!-- <base href="http://127.0.0.1:5500/csfoundations/" /> -->
+		<link rel="stylesheet" href="css/csfoundations.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc" crossorigin="anonymous" />
+		
+	</head>
+	<body>
+		<header>
+			<h1>Computer Science Fundamentals</h1>
+		</header>
+		<main>
+		<!-- Swift Programming -->
+			<article id="swift_introduction" class="grid" data-colcade="columns: .grid-col, items: .grid-item" >
+				<!-- Grid columns -->
+					<div class="grid-col grid-col--1"></div>
+					<div class="grid-col grid-col--2"></div>
+					<div class="grid-col grid-col--3"></div>
+					<div class="grid-col grid-col--4"></div>
+				<section></section>
+			</article>
+		</main>
+		<!-- Scripts -->
+			<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js" integrity="sha384-YNHdsYkH6gMx9y3mRkmcJ2mFUjTd0qNQQvY9VYZgQd7DcN7env35GzlmFaZ23JGp" crossorigin="anonymous"></script>
+			<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js " integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+			<script>
+				document.addEventListener("DOMContentLoaded", function () {
+					renderMathInElement(document.body, {
+						// customised options
+						// • auto-render specific keys, e.g.:
+						delimiters: [
+							{ left: "$$", right: "$$", display: true },
+							{ left: "$", right: "$", display: false },
+							{ left: "\\(", right: "\\)", display: false },
+							{ left: "\\[", right: "\\]", display: true },
+						],
+						// • rendering keys, e.g.:
+						throwOnError: false,
+					});
+				});
+			</script>
+			<!-- <script src="https://unpkg.com/function-plot@1.22.2/dist/function-plot.js"></script> -->
+			<script src="js/csfoundations.js"></script>
+			<script src="js/prism.js"></script>
+	</body>
+</html>
+
+
+
+<!-- <section class="grid-item">
+	<h2>Programming for Mobile: Swift</h2>
+	</section>
+
+	<section id="swift_preface" class="grid-item">
+	<h3>The Software Production Process</h3>
+	<p>The first step in mobile software production is deciding whether the software should be produced in the first place. If we're just looking to display information, have simple user interaction, and collect small amounts of user inputs, then a mobile website would suffice. If, however, we want complex user interaction, large quantities of user inputs, push notifications, or other more involved and complicated processes, then a mobile application, an <span class="italicsText">app</span>, is needed.</p>
+	<p>The second step is to assess whether our idea for an app is a good one. If we want the app to be used by a large number of users, we need to speak to, and study, users. What do people want? Are there other apps already doing what we're trying to do? If there are, is our app any different? Would the Apple app store allow this app? We must assess our idea early on&mdash;apps are labor intensive and time consuming to build. We should not waste our time on a purported solution when a solution already exists.</p>
+	<p>The third step is designing the app. This is the stage where we sketch what our app might look like and how it would operate. We can think of this stage as akin to outlining arguments. This where we think of the big ideas and key points, not the minutiae.</p>
+	<p>Once we have a design down, we proceed to development. This is the brunt of the production process. Most of the materials that follow will focus on this stage.</p>
+	<p>After development, we enter testing. This is where we put the app through a crucible. We perform automated and manual tests, looking for bugs&mdash;scenarios we did not plan for.</p>
+	<p>Assuming the app passes all our tests, we are ready for publication. This is where we publish the app to the Apple app store, to be downloaded by users. This step is relatively straightforward, as long as we follow Apple's rules. This stage rarely raises problems&mdash;Apple's rules are fairly straightforward and we were aware of them at the very first step.</p>
+	<p>The next step is, arguably, an optional one, marketing. A well-designed and in-demand app, however, should not need heavy marketing. If we've made something many people want, word will eventually get around. Great marketing, however, should not be understated. There are hundreds of workout apps, but less than ten of them (give or take) are used daily by the majority of users.</p>
+	<p>The final stage is one that never ends: updating. iOS changes over time, and so do people. We need to accommodate for these changes by staying on top of Apple's changes, as well as user feedback.</p>
+	</section>
+
+	<section id="software_production" class="grid-item">
+	<h3>How Does a Mobile App Work?</h3>
+	<p>Setting aside extrinsic differences like form factors and input devices, a mobile phone is no different from a desktop computer. It has a processor, ROM, RAM, compiler, assembler, operating system, and programs. An app is just one of those programs. And like all other programs, it tells the operating system what to do when certain conditions are met. For example, consider an app that displays an interactive button on screen. The user doesn't actually "tap" a physical button. They are tapping a screen lined with a myriad of electronic sensors. The user's tap is an input to those sensors, and those sensors send a message to the operating system. In the materials that follow, that operating system is iOS.</p>
+	<p>iOS then examines the data it receives from the sensor&mdash;how long the tap was held on the screen, how much pressure was applied, the location of the tap, etc. iOS then sends a message to the program, telling the program that a particular button was tapped, and asking it, "What should I do?" The code that we write answers iOS's question.</p>
+	<p>Developing iOS apps is, at its core, playing out the scenarios of user interaction. If the user does this, do this. If the user does that, do this. In sum, every iOS program has three components:</p>
+	<ol>
+		<li>The Screen</li>
+		<li>The Code</li>
+		<li>The Data</li>
+	</ol>
+	<p>Needlesss to say, the screen is the area where the user interacts with our program. The code is where our instructions are for what iOS should do when the user interacts with the program. The data component refers to the way our program handles data output from our program executing.</p>
+	<p>A crucial difference between desktop or laptop computers and mobile phones is that mobile phones are used wirelessly during most of their usage. This means that, in contrast to developing desktop programs, mobile programs need to be more cognizant of power consumption. Thus, for mobile programming, there is a heightened need for code efficiency. The more processes our programs need to run, the more resource intensive they are, and the most likely it is that we drain a device's available power.  </p>
+	<p> Even if a user has plenty of power available, mobile computers have less processing power than their desktop counterparts. The more process intensive our programs are, the more processing power they need, and, given that users often have numerous programs running in the background, the more likely it is for our own programs to run slowly.</p>
+	<p>Because resources are limited on mobile phones, the operating system also bears the duty of resource management. iOS, as a resource manager, dictates what we can and cannot do. If it finds that we are draining power too quickly, it will shut our program down.</p>
+	<p>Because of these limitations, when we write iOS programs, we cannot just simply think about scenarios involving the user's direct interaction. We also need to think about what happens when the user gets notifications, as well as the overall amount of power our program needs. For example, let's say our program requires the user to fill out a form. Midway through the form, the user gets a phone call. She answers the phone and comes back to the form. In our program, we need to make sure that when the user returns, the form hasn't been completely cleared out.</p>
+	<p>The vast majority of our personal frustrations with mobile apps are with <span class="boldItalics">bugs</span>, and bugs are the result of failing to plan out possible scenarios.</p>
+	</section>
+
+	<section id="getting_to_know_swift" class="grid-item">
+	<h3>Getting to Know Swift</h3>
+	<p>When we first load Xcode, we're greeted by a splash screen, divided into two panels. On the left panel, there are three options listed:</p>
+	<ol>
+		<li><span class="monoText">Create a new Xcode project</span></li>
+		<li><span class="monoText">Clone an existing project</span></li>
+		<li><span class="monoText">Open a project or file</span></li>
+	</ol>
+	<p>On the right panel is a list of <span class="monoText">Recent Projects</span>. All of our recent app projects will appear in this panel for quick access.</p>
+	<p>On the left panel, clicking the first option will create a new app project. The second option will clone an existing project from a Git repo. The third option allows us to locate and open a project or file in our file system (if, for some reason, it isn't listed in the right panel). Let's click the first option.</p>
+	<p>On clicking, we see another splash screen, asking us what kind of project we want to create. Several options with icons are listed. There are are also several subheadings:</p>
+	<ul>
+		<li><span class="monoText">Multiplatform</span></li>
+		<li><span class="monoText">iOS</span></li>
+		<li><span class="monoText">macOS</span></li>
+		<li><span class="monoText">watchOS</span></li>
+		<li><span class="monoText">tvOS</span></li>
+		<li><span class="monoText">Other</span></li>
+	</ul>
+	<p>These options are provided because Xcode is dedicated to building apps for the Apple ecosystem, which is not limited to iOS. Here, we focus on iOS, and later on multiplatform (apps that work on both iOS and macOS).</p>
+	<p>Under the <span class="monoText">Application</span> heading, we have:</p>
+	<ol>
+		<li><span class="monoText">App</span></li>
+		<li><span class="monoText">Document App</span></li>
+		<li><span class="monoText">Game</span></li>
+		<li><span class="monoText">Augmented Reality App</span></li>
+		<li><span class="monoText">Sticker Pack App</span></li>
+		<li><span class="monoText">iMessage App</span></li>
+	</ol>
+	<p>Under the <span class="monoText">Framework and Library</span> heading, we have:</p>
+	<ol>
+		<li><span class="monoText">Framework</span></li>
+		<li><span class="monoText">Static Library</span></li>
+		<li><span class="monoText">Metal Library</span></li>
+	</ol>
+	<p>Let's click on the <span class="monoText">App</span> option under <span class="monoText">iOS</span>. On click, we're greeted with another another splash screen, again listing several options:</p>
+	<ol>
+		<li><span class="monoText">Product Name:</span> (a text field)</li>
+		<li><span class="monoText">Team:</span> (another text field)</li>
+		<li><span class="monoText">Organization Identifier:</span> (text field)</li>
+		<li><span class="monoText">Bundle Identifier:</span> (no input)</li>
+		<li><span class="monoText">Interface:</span> (dropdown, default <span class="monoText">SwiftUI</span>)</li>
+		<li><span class="monoText">Life Cycle:</span> (dropdown, default <span class="monoText">SwiftUI App</span>)</li>
+		<li><span class="monoText">Language:</span> (dropdown, default <span class="monoText">Swift</span>)</li>
+		<li><span class="monoText">Use Core Data:</span> (checkbox)</li>
+		<li><span class="monoText">Host in CloudKit</span>(checkbox, default greyed out)</li>
+		<li><span class="monoText">Include Tests</span>(checkbox)</li>
+	</ol>
+	<p>The <span class="monoText">Product Name:</span> field is where we put in our app's name. The <span class="monoText">Team:</span> field is where we put in the name of the team working on the app. If we're working solo, we simply in our name. Next we have the <span class="monoText">Organization Identifer:</span> field. As a solo developer, the organization is simply your name. However, it is recommended to input your email address in reverse DNS notation:</p>
+	<pre class="language-swift"><code>
+		com.gmail.address.name.appName
+	</code></pre>
+	<p>The key point is just to make sure you input something that no one else will pick. After putting in our identifier, Xcode will create automatically create a unique identifier for our app, the <span class="monoText">Bundle Identifier</span>. The <span class="monoText">Bundle Identifier</span> is akin to web address. It is what will be used by the app store to identify your app. The last three options allow us to choose between the old way of developing apps for iOS and the new way. Before Swift, iOS apps were built with Objective-C. With Swift, we use <span class="monoText">SwiftUI</span> to develop iOS apps, and with Objective-C, we use <span class="monoText">Storyboard</span>. SwiftUI, by far, is what iOS developers should use, as it drastically improves on what <span class="monoText">Storyboard</span> lacked. For these reasons, we're going to leave these options set to default (although, on occassion, we will briefly discuss Objective-C, as it remains useful for some things that Swift cannot yet do).</p>
+	<p>The remaining checkboxes should be left alone, but we will briefly return to these options later. Once everything is filled, we click <span class="monoText">Next</span>. This will prompt us to select a place in our file system to store our projects. It is strongly recommended to place the projects in a directory called <span class="monoText">Developer</span> in our home directory, as that is both descriptive and specifically made for software development. At the very bottom is the checkbox following the option <span class="monoText">Source Control</span>. Checking this will automatically create a Git repository for our project. We will leave this blank for now, but will return to it later on.</p>
+	<p>Once we click <span class="monoText">Create</span>, we see the Xcode IDE. The first thing we should look at are the breadcrumbs are the very top. By default, it's set to <span class="monoText">iPod Touch (7th Generation)</span>. These options allow us to choose where we want to run our app. We can run it on devices connected to our Mac, or we can run it on a device simulator.</p>
+	<p>Pressing the play button will run our app in the device or simulator we selected. When we're done running our app, we simply click the stop button.</p>
+	<p>In Xcode, there's a light blue panel on the very left. This is called the <span class="italicsText">navigator</span>. In it, we see a file tree listing several names:</p>
+	<ul>
+		<li><span class="monoText">ourAppName</span></li>
+		<ul>
+			<li><span class="monoText">ourAppName</span> folder</li>
+			<ul>
+				<li><span class="monoText">ourAppName.swift</span> file</li>
+				<li><span class="monoText">ContentView.swift</span> file</li>
+				<li><span class="monoText">Assets.xcassets</span> folder</li>
+				<li><span class="monoText">info.plist</span> file</li>
+				<li><span class="monoText">Preview Content</span> folder</li>
+			</ul>
+			<li><span class="monoText">Products</span> folder</li>
+		</ul>
+	</ul>
+	<p>The files <span class="monoText">ourAppName.swift</span>, <span class="monoText">ContentView.swift</span>, <span class="monoText">Assets.xcassets</span>, <span class="monoText">info.plist</span> are automatically created by Swift to get us started.</p>
+	<p>The very center is the main editing panel. The panel at left, in grey stripes, is the <span class="italicsText">Previewer</span>. This panel will preview our UI as we code, without having to run our program on the simulator.</p>
+	</section>
+
+	<section id="the_first_files" class="grid-item">
+	<h4>Our First Files</h4>
+	<p>Let's take a look at the files created by Xcode by default. The first file (a folder) we look at is the folder <span class="monoText">Assets.xcassets</span>. Inside that folder, we see two names:</p>
+	<ul>
+		<li><span class="monoText">AccentColor</span></li>
+		<li><span class="monoText">AppIcon</span></li>
+	</ul>
+	<p>The <span class="monoText">Assets.xcassets</span> folder is where we put in images, sounds, videos, and other files to be used by our app. To include assets, we simply drag the assets from their locations, and drop them into the white panel for the folder, and give them names. Some assets, however, are more complicated than others, so Xcode provides their own separate options.</p>
+	<p>The <span class="monoText">Appicon</span> asset, for example, lists numerous icon sizes that must be filled for whatever device our app will run on.</p>
+	<p>If we click on the project icon itself (the very top icon in the file tree) we see a plethora of settings for our app. All of the changes we make here will change the contents of <span class="monoText">info.plist</span>. We will take a closer look at <span class="monoText">info.plist</span> later on. Most of the time (in fact, very rarely) do we need to make any changes to <span class="monoText">info.plist</span>.</p>
+	<p>This leaves us with two Swift language files: <span class="monoText">ourAppName.swift</span> and <span class="monoText">ContentView.swift</span>. If we click on <span class="monoText">ourAppName.swift</span>, we see the following code:</p>
+	<pre class="language-swift"><code>
+		import SwiftUI
+
+		@main
+		struct ourAppNameApp: App {
+			var body: some Scene {
+				WindowGroup {
+					ContentView()
+				}
+			}
+		}
+	</code></pre>
+	<p>We won't go too deep into this file at the moment, but a key statement to note is <span class="monoText">ContentView()</span>. That statement tells Swift that the file <span class="monoText">ContentView.swift</span> is what describes what our app looks like.</p>
+	<p>The <span class="monoText">ContentView.swift</span> file contains the following code:</p>
+	<pre class="language-swift"><code>
+		import SwiftUI
+
+		struct ContentView: View {
+			var body: some View {
+				Text("Hello, world!")
+					.padding()
+			}
+		}
+
+		struct ContentView_Previews:
+			PreviewProvider {
+				static var previews: some View {
+					ContentView()
+				}
+			}
+	</code></pre>
+	<p>The <span class="monoText">ContentView.swift</span> file contains all of the code that creates our app's UI. More specifically, the lines contained in <span class="monoText">struct ContentView: View {}</span> are what dictate how our app looks like. The lines contained in <span class="monoText">struct ContentView_Previews:</span>, however, are not part of our app's UI. Those lines are what connect the previewer to our content. For this reason, it's a good idea to move these lines far down from the rest of the lines above, as we do not want to touch or make any changes to those lines. Thus, the code that dictates how our app looks like is really just these lines:</p>
+	<pre class="language-swift"><code>
+		import SwiftUI
+
+		struct ContentView: View {
+			var body: some View {
+				Text("Hello, world!")
+					.padding()
+			}
+		}
+	</code></pre>
+	</section>
+
+	<section id="the_content_view_file" class="grid-item">
+	<h3>The <span class="monoText">ContentView.swift</span> File</h3>
+	<p>The first line, <span class="monoText">import SwiftUI</span>, simply tells Swift to use the package <span class="monoText">SwiftUI</span>. This is similar to <span class="monoText">#include</span> in C. This line is included in <span class="monoText">ContentView.swift</span> because we're specifically writing code that generates UI. Not every file in our program, however, concerns UI. For example, in writing an app, there's going to be logic behind how the app behaves and what the app does when certain conditions are met. The code implementing this logic will be kept in separate files, and they won't include <span class="monoText">import SwiftUI</span>, because they do not generate UI.</p>
+	<p>Thus, the code that actually generates the app's UI:</p>
+
+	<pre class="language-swift"><code>
+		struct ContentView: View {
+			var body: some View {
+				Text("Hello, world!")
+					.padding()
+			}
+		}
+	</code></pre>
+
+	<p>With the keyword <span class="monoText">struct</span>, Swift creates a data structure &mdash; a collection of variables. For example, <span class="monoText">var body</span> is a variable. Swift data structures, however, are not limited to variables. They can also included functions. For example, we can write inside the data structure:</p>
+
+	<pre class="language-swift"><code>
+		struct ContentView: View {
+			var body: some View {
+				Text("Hello, world!")
+					.padding()
+			}
+
+			func foo() {
+
+			}
+		}
+	</code></pre>
+
+	<p>For those coming from a JavaScript background or a similar language, this feels very much like object-oriented programming. Indeed, Swift supports object-oriented programming. But, there are some nuances to Swift that we should be aware of. <span class="monoText">struct</span>s are <span class="underlineText">not</span> object-oriented things, even if they can contain functions. They aren't classes, and there is no inheritance. Moreover, <span class="monoText">struct</span>s can contain other entities other than functions, making Swift appear more like a functional programming language. Swift supports both functional programming and object-oriented programming. We use the functional programming model when building our apps' UI, and the object-oriented model when we link UI to logic.</p>
+	</section>
+
+	<section id="the_view_built-in" class="grid-item">
+	<h4><span class="monoText">View</span></h4>
+	<p>The word <span class="monoText">ContentView</span> is just the name of our data structure. Normally, we would rename this variable to something more descriptive, such as <span class="monoText">ourAppNameView</span>.</p>
+
+	<p>Something that is very special is the highlighted portion: <span class="monoText">ContentView<mark>: View</mark></span>. The highlighted portion of the code tells Swift that the <span class="monoText">struct</span> we created, <span class="monoText">ContentView</span>, behaves like a <span class="monoText">View</span>. As we've seen previously, in functional programming, how things <span class="italicsText">behave</span> is critical. Most of the time, how something behaves (in this case the data structure) is defined by a function. But, functional programming says nothing about how data is actually stored. It might describe what data there is and what data should be in our data structure, but it <span class="underlineText">does not</span> state how it should be stored &mdash; whether its stored in memory, calculated, etc. This is just one of the differences between functional programming and object-oriented programming.</p>
+
+	<p>Telling Swift that a data structure behaves like a built-in entity (in this case <span class="monoText">View</span>) is a double-edged sword. On one side, we get all of the built-in functionality that comes with <span class="monoText">View</span>. On the other side, there are responsibilities imposed on us for using the entity. For <span class="monoText">View</span>, that responsibility is to include the variable <span class="monoText">var body: some View</span>.</p>
+
+	<p>The statement <span class="monoText">var body: some View</span> is a good point to talk about variables in Swift. <span class="monoText">var</span> is simply a keyword in Swift declaring a variable. <span class="monoText">body</span> is the name of the variable. The rest of the statement, <span class="monoText">: some View</span>, indicates the <span class="italicsText">type</span> of that variable. Normally, declaring variables in Swift is fairly straightforward:</p>
+
+	<pre class="language-swift"><code>
+		var i: Int
+		var s: String
+	</code></pre>
+
+	<p>However, this variable declaration has the words <span class="monoText">some</span> and the word <span class="monoText">View</span>. What does this mean? It means exactly how it reads: The variable <span class="monoText">body</span> has a type of <span class="italicsText">some[thing]</span> that behaves like a <span class="monoText">View</span>.</p>
+
+	<p>But what is a <span class="monoText">View</span>? A <span class="monoText">View</span> is just a rectangular area on the device's screen. It has the ability to display things inside that rectangular area. It can also receive inputs from the user &mdash; taps, swipes, pinches, long presses, etc. Note that we said <span class="italicsText">a</span> rectangular area. Everything on the screen that receives users inputs is a <span class="monoText">View</span>. What this means is you can have <span class="monoText">View</span>s inside of <span class="monoText">View</span>s. A <span class="monoText">View</span> is like a Lego block. They are what we use to gradually build our UI.</p>
+
+	<p>Now, there are different <span class="italicsText">kinds</span> of views. In our sample code above, we can see one kind: <span class="monoText">Text()</span>. Text is just one kind of view (it's one kind of Lego brick). There are many different kinds of views &mdash; some views are rectangles, others circles &mdash; <span class="monoText">some view</span>. The most powerful views are (1) the <span class="italicsText">combiners</span> and (2) the <span class="italicsText">collections</span> of views. <span class="italicsText">Combiners</span> views that take other views, and combine them on screen. <span class="italicsText">Collections</span> are groups of views. For example, when we buy a large Lego set with thousands of pieces, the pieces are shipped in neatly organized bags. View collections are the same way. They are a collection of various views, many of which are combined views.</p>
+
+	<p><span class="topic">Functions.</span> Observe the highlighted portion of the code below:</p>
+	<pre class="language-swift"><code>
+		struct ContentView: View {
+			var body: some View <mark>{
+				Text("Hello, world!")
+			}</mark>
+		}
+	</code></pre>
+	<p>The highlighted portion is a function. Again, Swift is a functional programming language &mdash; programs are organized by functions. There is actually a <span class="monoText">return</span> statement in the code above:</p>
+	<pre class="language-swift"><code>
+		struct ContentView: View {
+			var body: some View {
+				return Text("Hello, world!")
+			}
+		}
+	</code></pre>
+	<p>Swift, however, hides it for conciseness. Question: Why is that function inside a variable? The variable <span class="monoText">body</span> is not actually a variable stored in memory. Rather, it is a variable that is calculated by executing <span class="monoText">Text("Hello, world!")</span>. Everytime a function evaluates <span class="monoText">body</span>, it will execute the function <span class="monoText">Text("Hello, world!")</span>. What is <span class="monoText">Text()</span>? It is another <span class="monoText">struct</span> that behaves like a <span class="monoText">view</span>. Inside <span class="monoText">SwiftUI</span>, there is code that looks something like the following:</p>
+	<pre class="language-swift"><code>
+		struct Text:View {
+			var body: some View {...}
+		}
+	</code></pre>
+	<p>This evidences what <span class="monoText">some</span> might mean. The symbol <span class="monoText">some</span> is essentially a hint to the compiler that the variable is of type <span class="monoText">View</span>. In this case, the <span class="monoText">some</span> serves as a hint to the compiler that it will see <span class="monoText">Text</span>. Which is what the compiler will replace <span class="monoText">some View</span> with:</p>
+	<pre class="language-swift"><code>
+		struct ContentView: View {
+			var body: Text {
+				return Text("Hello, world!")
+			}
+		}
+	</code></pre>
+	<p>Why bother with <span class="monoText">some View</span> then? Because our UI is more than likely a combination of views, not just <span class="monoText">Text</span>. By using <span class="monoText">some View</span>, we ensure that we can use many different <span class="monoText">view</span>s. Swift provides <span class="monoText">some view</span> because we likely do not want to have to figure out what the final <span class="monoText">view</span> is, particularly with complex UIs.</p>
+	<p>Now, if we turned on padding for the text in our program by way of the navigation panel, we see the following code appear:</p>
+	<pre class="language-swift"><code>
+		struct ContentView: View {
+			var body: Text {
+				return Text("Hello, world!")
+					.padding(.all)
+			}
+		}
+	</code></pre>
+	<p>The code probably looks somewhat more understandable if we wrote the following:</p>
+	<pre class="language-swift"><code>
+		struct ContentView: View {
+			var body: Text {
+				return Text("Hello, world!").padding(.all)
+			}
+		}
+	</code></pre>
+	<p>In the code above, <span class="monoText">.padding()</span> is just a function that exists in all <span class="monoText">struct</span>s that behave like a <span class="monoText">view</span>. Any <span class="monoText">view</span> <span class="monoText">struct</span> has a function called <span class="monoText">.padding()</span>.</p>
+	<p>Furthermore, the above is how we call a function in Swift. We define the <span class="monoText">struct</span> we want to call the function on, and use dot notation. This is the same exact way it is done in Java and other object-oriented languages.</p>
+	<p>In the above, we passed the argument <span class="monoText">.all</span> into the <span class="monoText">.padding</span> function. That just means &#8220;all&#8221; of the <span class="monoText">view</span>'s sides. If we do not pass an argument into the function, then Swift uses default padding.</p>
+	<p>An important point: The <span class="monoText">.padding()</span> function returns <span class="italicsText">something that behaves like a <span class="monoText">view</span></span>. Once we include <span class="monoText">.padding()</span>, we no longer are using a simple <span class="monoText">Text</span>. It is now some modified <span class="monoText">View</span>. These are called <span class="italicsText">view modifiers</span>. This is why use <span class="monoText">some View</span>.</p>
+</section> -->
