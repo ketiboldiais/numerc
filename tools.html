@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>cs_tools</title>
+		<!-- <base href="http://127.0.0.1:5500/csfoundations/" /> -->
+		<link rel="stylesheet" href="css/csfoundations.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc" crossorigin="anonymous" />
+	</head>
+
+	<body>
+		<header>
+			<h1>Computer Science Fundamentals</h1>
+		</header>
+		<main>
+		<!-- CS Tools -->
+			<article id="cs_tools" class="grid" data-colcade="columns: .grid-col, items: .grid-item">
+				<div class="grid-col grid-col--1"></div>
+				<div class="grid-col grid-col--2"></div>
+				<div class="grid-col grid-col--3"></div>
+				<div class="grid-col grid-col--4"></div>
+
+				<section class="grid-item">
+					<h2>Programming Tools</h2>
+				</section>
+
+				<section id="introduction" class="grid-item">
+					<h3>Preface</h3>
+					<p>A typical computer science usually focuses on <span class="italicsText">theory</span>, rather than the tools that <span class="italicsText">apply</span> such theory. This is understandable, given that theory seldom changes, but applications change by the second. Great computer science courses will strive to balance both by providing a "lab" module or project assignments to accompany the course, but even there, the assumption is that students learn the tools on their own. The material that follows provides an overview of the most common tools used in the field, but beware: there is a strong possibility that what appears here may be outdated.</p>
+				</section>
+
+				<section id="operating_systems" class="grid-item">
+					<h3>Basic Terminology</h3>
+
+					<p><span class="topic">Operating System.s</span> Before we proceed to the substantive material, we need to have basic terms down. This will allow us to quickly understand the material, as well as provide the ability to research for further material.</p>
+					<p>An <span class="boldItalics">operating system</span> is a bundle of software that manages computer hardware, software resources, and common services for programs. Generally, most modern operating systems fall into two <span class="italicsText">families</span> of operating systems:</p>
+
+					<ul>
+						<li>Microsoft Windows</li>
+						<ul>
+							<li>Windows, Xbox OS, Windows Mobile</li>
+						</ul>
+						<li>Unix</li>
+						<ul>
+							<li>macOS, Linux, iOS, Android, Chrome OS, Blackberry OS</li>
+						</ul>
+					</ul>
+
+					<p>Of course, there are other families of operating systems (and as such, operating systems in those families), but these systems have generally fallen out of use, limited to specialist fields, or limited to certain devices. E.g., Wii system (the operating system for Nintendo Wiis), XTS-400 (an operating system by BAE systems, aimed at securing and classifying information for entities like the NSA and DoD), classic Mac OS (the non-Unix ancestor of Apple's macOS), MINIX (an operating system made purely for research). But, for the most part, we are only concerned with the two families above, particularly the Unix system.</p>
+					<p>This is why we might hear words like "true Unix" and "Unix-like." Either or, many of the Unix descendants will share the same features, and the distinction is generally unimportant. We mention it here to prevent any further confusion.</p>
+				</section>
+
+				<section id="unix_system" class="grid-item">
+					<p><span class="topic">The Unix System.</span> Originally, Unix was an operating system that was developed at Bell labs (now AT&T) in the mid-1960s. Many of the shell command names we have today are directly from Unix.</p>
+					<p>Today, the term Unix is a trademark owned by the global consortium The Open Group. This consortium decides whether an operating system can use the trademark Unix by setting the guidelines for eligibility&mdash;what core commands the operating system provide, what features it must have, what interfaces it must display, what utilities must be enabled, etc.</p>
+					<p>Companies pay to have their operating systems tested and continue to pay for their continued licenses. Because of the costs and difficulty of obtaining a trademark license, many operating systems never get the license, but are very much <span class="italicsText">Unix-like</span>. These operating systems act like Unix, but are not considered <span class="italicsText">true Unix</span> because they have not been licensed by The Open Group. Nevertheless, because many operating systems are descended from Unix, many of the commands below will work across the Unix descended operating systems.</p>
+				</section>
+
+				<section id="linux" class="grid-item">
+					<p><span class="topic">The Linux Distributions.</span> A <span class="italicsText">Linux distribution</span> is an operating system based on the <span class="italicsText">Linux kernel</span>. A <span class="boldItalics">kernel</span> is the computer program that connects a computer's operating system to the computer's hardware (e.g., the computer's CPU, memory, and devices).</p>
+					<p>The Linux kernel was born in the 1980s, conceived by concerns that computers and their respective operating systems were too restrictive (at the time, computers and their accompanying software were entirely proprietary). The moment of conception was in 1984, when the computer scientist Richard Stallman began the GNU Project, an enterprise aimed at creating an operating system identical to a Unix system, but free. Linus Torvalds, another computer scientist, took the programs developed by the GNU Project, and wrote a kernel. The result was the Linux kernel, which gave way to a Linux operating system. Note: This is a very controversial topic, as the term "Linux" has led many to forget about the contributions by the GNU Project.</p>
+					<p>There are many Linux distributions: Linux Mint, Ubuntu, MX Linux, Arch Linux, Debian, Fedora, Red Hat Enterprise, Gentoo, Slackware Linux, openSUSE, CentOS, FreeBSD, the list goes on.</p>
+				</section>
+
+				<section id="introduction_shell_tools_intro" class="grid-item">
+					<h3>The Shell</h3>
+					<p>Most people use and interact with computers through a <span class="boldItalics">GUI ("Graphical User Interface")</span>. While most computer tasks can be completed through a GUI alone, GUIs are restrictive&mdash;we can only perform tasks based on what the GUI provides: buttons, a window, options to choose from, etc. There are often situations where we run into a problem and the GUI simply does not provide us with a way to solve issues.</p>
+					<p>A <span class="boldItalics">shell</span> provides an alternative method of interacting with a computer. Unlike a GUI where we interact with a computer by using the mouse and a cursor in response to graphical cues, with a shell, we interact with the computer through text. This gives us much more control over a computer, as there are many things we do not have control over with GUI. Even better, it is much much faster than using a GUI&mdash;typing is faster than moving a mouse, and we can easily automate many tasks that we usually do.</p>
+					<p>To interact with a computer with a shell, we use the relevant operating system's provided shell. On Windows, its the <span class="boldItalics">power shell</span> (but there are other shells). On Linux and Mac, its the <span class="boldItalics">bash shell</span> ("Bourne-Again SHell", a punny name referencing Stephen Bourne, the creator of bash's ancestor, sh). Note: For Mac users with an operating system after OS X Jaguar (released in 2007), OS X includes the bash shell, but has not updated it since 2007; Apple has instead come to use a shell called <span class="boldItalics">Zsh</span>.</p>
+					<p>To see and interact with the shell, we use an application called the <span class="boldItalics">terminal</span>. The name "terminal" comes from the fact that the shells for early computers were handled with a separate physical device called a terminal. The terminal application is software specifically made to execute shell commands.</p>
+					<p>A computer, as a whole, is a system of various parts. The rules and methods that dictate how those parts function together, are organized, and implemented, is called the computer's <span class="boldItalics">architecture</span>.</p>
+					<p>Most modern computer architectures organize the system into layers. The outer most layer consists of all the programs and files we use daily&mdash;Finder, Microsoft Word, Chrome, etc. Under that layer, supporting it all, is the operating system. The operating system itself is then composed of layers: an outer most layer, the <span class="italicsText">shell</span>, and its core, the <span class="italicsText">kernel</span>.</p>
+					<p>The shell is the operating system's computer interface. It allows us to visually see and interact with the operating system's services. The name "shell" comes from the fact that it is the outer most layer of the operating system. The shell basically takes our commands, translates them into code that the operating system understands, and sends it to the operating system to execute.</p>
+				</section>
+
+				<section id="the_terminal" class="grid-item">
+					<h3>The Terminal</h3>
+					<p><span class="topic">Arrow Keys in Terminal.</span> The arrow keys have specific functions in terminal.</p>
+					<ul>
+						<li>The left and right arrows allow us to move the cursor left or right on a line.</li>
+						<li>The up arrow will cycle to the most recent command we ran, over and over.</li>
+						<li>If we go too far up the previous commands, we can go back down with the down arrow.</li>
+					</ul>
+					<p>The arrow keys are particularly useful when we need to write very long commands. When you open the terminal, you might be greeted by something that looks like this:</p>
+
+					<pre class="language-bash" data-user="root" data-host="localhost"><code>
+						lorem ipsum
+					</code></pre>
+
+					<p>The line to the left, before the dollar sign, <span class="monoText">[root@localhost] | $</span> is called the <span class="boldItalics">shell prompt</span> (the "lorem ipsum" is placed in the example above just to render the code). The <span class="italicsText">shell prompt</span> is where you tell the shell what you want to do (i.e., executing a command). For example, if we execute the <span class="monoText">date</span> command:</p>
+
+					<pre class="language-bash"><code>
+						date
+						Mon May 17 14:02:36 CDT 2021
+					</code></pre>
+
+					<p>Or, if we enter the <span class="monoText">ncal</span> command ("new calendar"), we get a calendar output. If we run the <span class="monoText">cal</span> command, we get another calendar output, but with a different formatting. Another command is the <span class="monoText">echo</span> command, which prints out the arguments we pass after it:</p>
+
+					<pre class="language-bash"><code>
+						echo hello!
+						hello!
+					</code></pre>
+
+					<p>To provide an argument in the terminal, we enter a command, followed by a space, then an argument. What if the argument itself contains spaces? For our example, we can use quotes to indicate a string.</p>
+
+					<pre class="language-bash"><code>
+						echo "hello, world"
+						hello, world
+					</code></pre>
+
+					<p>Alternatively, we can use the escape key <span class="monoText">\</span> to tell the computer that we're using a white space not as part of the command, but as part of the argument:</p>
+
+					<pre class="language-bash"><code>
+						echo hello,\ world
+						hello, world
+					</code></pre>
+
+					<p>The terminal is able execute shell commands because the commands trigger programs built in to the computer. These programs are stored in the computer's file system, and come with the computer (just as Safari comes with Mac OS or Notepad comes with Windows). The shell (particularly the bash shell), is in actuality a programming language, and it has the ability to find where a particular program is located, through an <span class="boldItalics">environment variable</span>. With the prompt that appears in the terminal, we can do things like while loops, for loops, conditional expressions, function declaration, etc. When we use the prompt this way, we are <span class="boldItalics">shell scripting</span>.</p>
+
+					<p>As we work in the shell, the terminal can quickly become cluttered. To clear the terminal, type <span class="monoText">clear</span> and press enter.</p>
+				</section>
+
+				<section id="the_syntax_of_a_command" class="grid-item">
+					<p>Commands follow a general structure:</p>
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							⟨command⟩ -⟨options⟩ ⟨arguments⟩
+						</code></pre>
+					</figure>
+					<p>The <span class="term">command</span> is the name of the program we run. <span class="term">Options</span> are characters or words we include that modify how the shell executes the command. We can include multiple options by simply writing them one after another:</p>
+
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							⟨command⟩ -⟨option⟩ -⟨option⟩ ⟨arguments⟩
+						</code></pre>
+					</figure>
+
+					<p>Alternatively, we can write multiple options into a single dash:</p>
+					
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							⟨command⟩ -⟨optionOptionOption⟩ 
+						</code></pre>
+					</figure>
+					
+					<p>Some options have <span class="boldItalics">long form names</span>. Only some options support this, and they must be indicated with two dashes <span class="monoText">--</span>. For example, the option <span class="monoText">-u</span> has the long form name <span class="monoText">--universal</span>.</p>
+
+					<p>Some options require us to include values. For example, the <span class="monoText">-A</span> option for the command <span class="monoText">ncal</span> prints the calendar for a month $n$ months <span class="italicsText">after</span> a specific date. Thus, for the <span class="monoText">-A</span> option to work, we need to include that date.</p>
+
+					<p>The command above prints the calendar for the month 1 month after the current month. The <span class="monoText">1</span> is an argument passed to the <span class="monoText">-A</span> option. Note that, if we have multiple options and some of the options have parameters, we need to list the options separately rater than using the single dash syntax.</p>
+
+					<p>The <span class="term">arguments</span> are the values that we pass through to the program behind the command. These are also called <span class="term">parameters</span>.</p>
+					<p>For example, if we run the <span class="monoText">cal</span> command followed by a particular year (e.g., <span class="monoText">cal 1961</span>), we get the entire calendar for that year. Or, if we include a month (e.g., <span class="monoText">cal june 1943</span>), we get the calendar for June of 1943. The year and the month we passed are the arguments. If we have more than 1 argument, we separate the arguments with spaces. Note, however, that the above is a <span class="italicsText">general</span> structure. The commands we write can take on a different ordering of the above components.</p>
+
+					<p>An <span class="boldItalics">environment variable</span> is a variable initialized whenever we start the shell. These are basically "built-in" variables&mdash;variables that we do not have to set ourselves. An environment variable might store, for example, the path to your home directory, your username, or, as seen above, the current date.</p>
+
+					<p>For example, the <span class="monoText">$PATH</span> variable will display all of the paths on the computer that the shell will use to search for programs. A <span class="boldItalics">path</span> is where bash will look for the file or program with the name that matches the command that we entered. For example, when we enter the command <span class="monoText">date</span>, bash goes through all of the paths above, and looks for a program with the name DATE, and once it finds that program, it runs it.</p>
+
+					<p>If we want to know the actual name of the program that's actually run, we can use the <span class="monoText">which</span> command:</p>
+
+					<pre class="language-bash"><code>
+						which date
+						/bin/date
+					</code></pre>
+
+					<p>The above tells us that the program executed is called "date" (the last name in the list). <span class="topic">Where do programs run?</span> By default, programs run in the <span class="term">current working directory</span>.</p>
+
+					<p>A <span class="boldItalics">path</span> is simply a way to name files in a computer. Thus, the actual output from running the command above, <span class="monoText">/bin/date</span>, means the program "date" is found in a <span class="boldItalics">directory</span> called "bin". On Linux and Mac OS, there is only one path, and it is indicated by forward slashes. For example, <span class="monoText">usr/bin</span>. On Windows, each <span class="boldItalics">partition</span>, or <span class="boldItalics">drive</span>, has its own path, and they are indicated by the partition's name, followed by backslashes. For example: <span class="monoText">C:usr\bin\date</span>.</p>
+					
+					<p>There are different types of paths. The paths above are called <span class="boldItalics">absolute paths</span>. When we run <span class="monoText">which echo</span>, we get <span class="monoText">bin/echo</span>. That path is the full path to that file. But, there are also <span class="boldItalics">relative paths</span>. A <span class="boldItalics">relative path</span> is a path that is relative to where we currently are.</p>
+
+					<p>All relative paths are relative to the <span class="boldItalics">current working directory</span>, which is the directory displayed from running the <span class="monoText">pwd</span> command. To change the current working directory, we use the <span class="monoText">cd</span> command.</p>
+
+					<p>Bearing this in mind, we can find out where we currently are in the computer with the <span class="monoText">pwd</span> command ("print working directory").</p>
+					
+					<pre class="language-bash"><code>
+						pwd
+						/Users/mathlab
+					</code></pre>
+					
+					<pre class="language-bash"><code>
+						cd /content
+						/Users/mathlab/content
+					</code></pre>
+
+					<p>In the file system, there is a directory named <span class="monoText">content</span>, in the directory named <span class="monoText">mathlab</span>. We changed our current working directory from <span class="monoText">mathlab</span>, to a directory inside it, <span class="monoText">content</span>.</p>
+
+					<h6>Special Directories</h6>
+					<p>There are special directories: <span class="monoText">.</span> (dot), <span class="monoText">..</span> (dot dot), and <span class="monoText">~</span> (tilde).</p>
+					<ul>
+						<li>The directory <span class="monoText">.</span> means <span class="italicsText">the current directory</span>.</li>
+						<li>The directory <span class="monoText">..</span> means <span class="italicsText">the parent directory</span>.</li>
+						<li>
+							The directory <span class="monoText">~</span> means
+							<span class="italicsText">the home directory</span>
+						</li>
+					</ul>
+					<p>These special directories allow us to easily navigate around the system. For example:</p>
+
+					<pre class="language-bash"><code>
+						pwd
+						/Users/mathlab/content
+						cd ..
+						pwd
+						/Users/mathlab
+					</code></pre>
+
+					<p>In the example above, we started by determining our current working directory. There, it was <span class="monoText">/Users/mathlab/content</span>. Then we changed the directory to the parent directory with <span class="monoText">cd ..</span>; we moved up one directory, to <span class="monoText">/Users/mathlab</span>. When we execute the <span class="monoText">pwd</span> command, we see our current working directory: <span class="monoText">/Users/mathlab</span>. We can also use relative paths to go <span class="italicsText">down</span> a directory:</p>
+
+					<pre class="language-bash"><code>
+						pwd
+						/Users/mathlab
+						cd ./content
+						pwd
+						/Users/mathlab/content
+					</code></pre>
+
+					<p>We can also <span class="monoText">cd</span> all the way back to where we were. So, we're in the directory <span class="monoText">mathlab</span>. In the directory <span class="monoText">mathlab</span>, there's a directory <span class="monoText">content</span>, and inside that directory, there's a directory <span class="monoText">cs_tools</span>. We can go into <span class="monoText">cs_tools</span> with:</p>
+
+					<pre class="language-bash"><code>
+						cd content/cs_tools
+					</code></pre>
+
+					<p>To go back to the <span class="monoText">mathlab</span> directory:</p>
+
+					<pre class="language-bash"><code>
+						cd ../..
+					</code></pre>
+
+					<p>Finally, to go very quickly to the home directory:</p>
+
+					<pre class="language-bash"><code>
+						cd ~
+					</code></pre>
+
+					<p>The <span class="monoText">~</span> directory is very useful for quickly navigating to other folders. Say we're in a directory called in <span class="monoText">calculus</span> inside the directory <span class="monoText">content</span>. We want to go into a directory called <span class="monoText">archived_calculus</span>, inside the directory archives, which is inside the home directory, <span class="monoText">mathlab</span>:</p>
+
+					<pre class="language-bash"><code>
+						pwd
+						/Users/mathlab/content/calculus
+						cd ~/mathlab/archives/archived_calculus
+						pwd
+						Users/mathlab/archives/archived_calculus
+					</code></pre>
+
+					<p>Another extremely useful bash command is <span class="monoText">cd -</span> ("cd dash"). This will change your current working directory to the directory you were previously in.</p>
+					
+					<p><span class="topic">Prompt Disappears.</span> Lack of a prompt indicates we likely ommitted part of a command (the most common culprint being double or single quotes). This is happening because we failed to close the string, which the shell interprets as an incomplete command. Thus, to solve the problem, we need to complete the command. In this case, closing the quotation:</p>
+					<p>Doing so will allow the shell to execute (in the example above, we get the output "command not found"). Furthermore, a prompt might not be displayed because the previous command is still running. In those situations, wait for the command to finish (or simply close the terminal window if the command is stuck in a loop).</p>
+				</section>
+
+				<section id="finding_whats_in_the_cwd" class="grid-item">
+					<p><span class="topic">Content Viewing.</span> If we want to see a list of the files in the <span class="italicsText">current working directory</span>, we use the <span class="monoText">ls</span> (short for "list") command. So, suppose we're in the <span class="monoText">mathlab</span> directory:</p>
+
+					<pre class="language-bash"><code>
+						pwd
+						/Users/mathlab
+						ls
+						content  notes  todos  archives
+					</code></pre>
+
+					<p>It looks like there are four directories inside the <span class="monoText">mathlab</span> directory: <span class="monoText">content</span>, <span class="monoText">notes</span>, <span class="monoText">todos</span>, and <span class="monoText">archives</span>.</p>
+					<p>We can also use the <span class="italicsText">special directory</span> notation to list the files in a parent directory. Suppose we're inside the <span class="monoText">content</span> directory:</p>
+
+					<pre class="language-bash"><code>
+						cd content
+						pwd
+						/Users/mathlab/content
+					</code></pre>
+
+					<p>Then we want to list the files in the parent directory, <span class="monoText">mathlab</span>:</p>
+
+					<pre class="language-bash"><code>
+						ls ..
+						content  notes  todos  archives readme.md
+					</code></pre>
+
+					<p><span class="topic">Content Detailed Viewing.</span> When we run the <span class="monoText">ls</span> command, we only get the names of the files or directories in the current working directory.</p>
+					<p>If we want more detailed information about the files or directories, we need to use the <span class="monoText">ls -l</span> command:</p>
+					<p>Suppose we're in the mathlab directory:</p>
+
+					<pre class="language-bash"><code>
+						cd ls -l
+						total 350
+						drwxr-xr-x  25 mathlab staff    399  Feb. 19 09:25 content
+						drwx------  10 mathlab staff     25  Jan. 14 18:29 notes
+						drwx------@ 11 mathlab staff     24  Feb. 15 19:32 todos
+						drwx------+ 12 mathlab staff     44  Feb.  9 20:01 backups
+						drwxr-xr-x+ 12 mathlab staff     44  Feb.  9 20:01 archives
+						-rw-r--r--   1 mathlab staff     22  Feb.  3 13:03 readme.md
+					</code></pre>
+
+					<p>What does the data mean? Looking at the left most column:</p>
+					<ul>
+						<li>If the first character is a <span class="monoText">-</span>, that indicates a <span class="italicsText">file</span>.</li>
+						<li>If the first character is a <span class="monoText">d</span>, that indicates a <span class="italicsText">directory</span>.</li>
+						<li>If the first character is an <span class="monoText">l</span>, that indicates a <span class="italicsText">link</span>.</li>
+						<li>
+							The next characters indicate the permissions the
+							<span class="italicsText">root user</span> has for a file or directory:
+						</li>
+						<ul>
+							<li><span class="monoText">rw-</span> means the owner has read and write permissions over the file.</li>
+							<li><span class="monoText">rwx-</span> means the owner has read, write, and execute permissions over the file.</li>
+						</ul>
+						<li>
+							After those characters, you have the permissions (if any) that a
+							<span class="italicsText">group</span> has over the file:
+						</li>
+						<ul>
+							<li><span class="monoText">r--</span> means the group only has the permission to read.</li>
+							<li><span class="monoText">rw-</span> means the group has the permissions to read and write.</li>
+							<li><span class="monoText">rx-</span> means the group has the permissions to read and execute.</li>
+						</ul>
+						<li>After those characters, you have the permissions (if any) that everyone other than a group or the root user has over the file. The same rules above apply.</li>
+						<li>Note: Permissions work differently for files and directories. If you have a read permission for a file, then you can open the file (i.e., "read its contents"). If you have a write permission for a file, then you can open the file, read, write (i.e., make changes), save the file, or replace it entirely. If you have an execute permission, you can execute the file (i.e., run the program contained in the file).</li>
+						<li>
+							For directories, however, the permissions are different. A read permission for a directory means you are allowed to see the files inside that directory (i.e., you can
+							<span class="monoText">ls</span> the directory). A write permission for a directory means you can create, rename, and remove files within that directory. This means that while you may have write permissions for a file, if that file is inside a directory that you do not have write permissions to, then you can make changes to the file, but you cannot delete or rename that file. An execute permission for a directory means that you are allowed to enter the directory (i.e., you can <span class="monoText">cd</span> into the directory).
+						</li>
+						<li>The second column (a number) indicates the number of links or directories inside a directory (if a single file, 1).</li>
+						<li>The third column (a word) indicates the user that owns the file or directory.</li>
+						<li>The fourth column (another word) indicates the group that the file or directory belongs to (any user in that group will have the group permissions indicated above).</li>
+						<li>The fifth column (a number) indicates the size of the file or directory in bytes.</li>
+						<li>The sixth column (a date and a time) indicates the date the file or directory was last modified.</li>
+						<li>The final column (a word or a number) indicates the name of the file or directory.</li>
+					</ul>
+				</section>
+
+				<section id="help_tool" class="grid-item">
+					<p><span class="topic">What does this command do?</span> If we do not know what a particular command does, we can use the <span class="monoText">man</span> command, followed by the command:</p>
+
+					<pre class="language-bash"><code>
+						man ls
+					</code></pre>
+
+					<p>Running the above code will display in the terminal the <span class="italicsText">manual</span> for that command. To end the program, enter <span class="monoText">q</span> to quit. When you run the <span class="monoText">man</span> command, there's a part of the outputted manual labeled synopsis. It generally looks like:</p>
+
+					<pre class="language-bash"><code>
+						SYNOPSIS
+						command [-options parameters] [file ...]
+					</code></pre>
+
+					<p>The synopsis shows us the general syntax for the command. Everything inside the square brackets, <span class="monoText">[]</span> is optional (we are free to decide whether to include it). Everything not in square brackets is required; the command will not execute unless the described statements are written.</p>
+					<p>The ellipses, <span class="monoText">...</span> indicate that multiple arguments can be passed. And, if the option's parameter requires a particular argument, it will be indicated by the value's type (e.g., <span class="monoText">number</span> or <span class="monoText">string</span>).</p>
+					<p>The manual itself has 8 sections:</p>
+					<ul>
+						<li>User Commands</li>
+						<li>System Calls</li>
+						<li>C Library Functions</li>
+						<li>Special Files</li>
+						<li>File Forms</li>
+						<li>Games</li>
+						<li>Miscellaneous</li>
+						<li>System Admin Commands</li>
+					</ul>
+				</section>
+
+				<section id="type_and_which_command" class="grid-item">
+					<p><span class="topic">The <span class="monoText">type</span> Command.</span> In bash, there are four types of commands:</p>
+					<ol>
+						<li>An executable program;</li>
+						<li>A built-in shell command;</li>
+						<li>A shell function</li>
+						<li>An alias</li>
+					</ol>
+					<p><span class="term">Executable program commands</span> are programs that can be executed. These are usually stored in the <span class="term">bin</span> directory. These programs are compiled binary files (hence the directory name <span class="monoText">bin</span>). <span class="monoText">Built-in shell commands</span> are commands that are part of the shell, rather than separate programs.</p>
+
+					<p>To determine what <span class="italicsText">type</span> a command is, we use the <span class="monoText">type</span> command. The syntax is the following:</p>
+
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							type ⟨command⟩
+						</code></pre>
+					</figure>
+					
+					<p>For example:</p>
+
+					<pre class="language-bash"><code>
+						type ls
+						ls is hashed (/bin/ls)
+					</code></pre>
+
+					<p>Using the <span class="monoText">type</span> command on <span class="monoText">ls</span> shows us that <span class="monoText">ls</span> is an <span class="italicsText">executable program</span> type command, located in the <span class="monoText">/bin</span> directory.</p>
+				</section>
+
+				<section id="which_command" class="grid-item">
+					<p><span class="topic">The <span class="monoText">which</span> Command.</span> If we need to know the exact location of an executable program, we use the <span class="monoText">which</span> command. This only works for executable programs; it will not work for built-in shell commands or aliases. The syntax:</p>
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							which ⟨command⟩
+						</code></pre>
+					</figure>
+				</section>
+
+				<section id="opening_a_file" class="grid-item">
+					<h3>Opening a File</h3>
+					<p>To open a file, we simply use the <span class="monoText">open</span> command:</p>
+					
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							open ⟨file_name.extension⟩
+						</code></pre>
+					</figure>
+				</section>
+
+				<section id="unix_file_system" class="grid-item">
+					<p><span class="topic">The Unix File System</span> The Unix file system is generally (there are variations across the Unix and Unix-like operating systems) organized as a tree.</p>
+
+					<p><span class="topic">The <span class="monoText">root</span> Directory.</span> Every single directory and file in the computer is located in the folder <span class="monoText">/</span>. This is often referred to as the <span class="boldItalics">root directory</span>, but in some operating systems there is a separate directory called <span class="monoText">root</span>, located inside the <span class="monoText">/</span> directory. These are not the same directories. Most of the time, however, when we say "root directory" we refer to the <span class="monoText">/</span> directory.</p>
+
+					<p>The <span class="monoText">root</span> directory has a shorthand, the forward slash (<span class="monoText">/</span>). We can quickly go to the <span class="monoText">root</span> directory by entering:</p>
+
+					<pre class="language-bash"><code>
+						cd /
+					</code></pre>
+
+					<h4></h4>
+					<p><span class="topic">The Home Directory <span class="monoText">~</span></span> The <span class="monoText">home</span> directory contains the directories for each of the users in the system. So, if a system has the users Tarski, Peirce, and Russell, the <span class="monoText">home</span> directory will contain the directories <span class="monoText">/tarski</span>, <span class="monoText">/peirce</span>, and <span class="monoText">/russell</span>. Inside these directories are all of those users' files, data, user-created directories, directories like <span class="monoText">/Downloads</span>, <span class="monoText">/Desktop</span>, etc.</p>
+
+					<p>Like the <span class="monoText">root</span> directory, the <span class="monoText">home</span> directory has its own shorthand, the tilde (<span class="monoText">~</span>). To quickly move to the home directory, you can enter just <span class="monoText">cd</span> or <span class="monoText">cd ~</span>.</p>
+
+					<pre class="language-bash"><code>
+						cd
+					</code></pre>
+				</section>
+
+				<section id="renaming_files" class="grid-item">
+					<p><span class="topic">Renaming and Moving Files</span> We can rename a file with the <span class="monoText">mv</span> command. The <span class="monoText">mv</span> command takes two arguments:</p>
+
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							mv ⟨original_file_path⟩ ⟨new_file_path⟩
+						</code></pre>
+					</figure>
+
+					<p>Or, if we're just renaming a file in the same directory:</p>
+
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							mv ⟨file_name.extension⟩ ⟨new_file_name.extension⟩
+						</code></pre>
+					</figure>
+
+					<p>The argument <span class="italicsText">original-file-path</span> is the path of the file we want to move (or, if the file is in our current working directory, just the file name). The argument <span class="italicsText">new-file-path</span> is the path to the directory we want to move the file to (or, if we just want to rename the file, the new file name).</p>
+
+					<p>For example, suppose we're inside the <span class="monoText">mathlab</span> directory, and there is a file <span class="monoText">readme.md</span>. Let's change that file's name to <span class="monoText">read.md</span>:</p>
+
+					<pre class="language-bash"><code>
+						mv readme.md read.md
+					</code></pre>
+
+					<p>The above file's name has now been changed to <span class="monoText">read.md</span>.</p>
+				</section>
+
+				<section id="copying_files" class="grid-item">
+					<p><span class="topic">Copying a File.</span> We can copy a file with the <span class="monoText">cp</span> command. The <span class="monoText">cp</span> command works much like the <span class="monoText">mv</span> command, and takes two arguments:</p>
+
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							cp ⟨original_file_path⟩ ⟨new_file_path⟩
+						</code></pre>
+					</figure>
+
+					<p>Of, if we're just making a copy of the file in the same directory:</p>
+
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							cp ⟨file_name.extension⟩ ⟨new_file_name.extension⟩ 
+							
+						</code></pre>
+					</figure>
+
+					<p>For example, let's copy the file <span class="monoText">read.md</span> into the directory <span class="monoText">notes</span>:</p>
+
+					<pre class="language-bash"><code>
+						cp read.md notes
+					</code></pre>
+
+					<p>The file <span class="monoText">read.md</span> is now in the directory <span class="monoText">notes</span>. While we're inside the directory <span class="monoText">notes</span>, suppose there's a file named <span class="monoText">writeme.txt</span>. I want to make a copy of that file in the directory <span class="monoText">archives</span>, which is inside the <span class="monoText">mathlab</span> directory:</p>
+
+					<pre class="language-bash"><code>
+						cp writeme.txt ../archives
+					</code></pre>
+				</section>
+
+				<section id="deleting_files" class="grid-item">
+					<p><span class="topic">Deleting a File.</span> We can delete a file with the <span class="monoText">rm</span> command. Suppose that inside the <span class="monoText">mathlab</span> directory, there's a directory named <span class="monoText">todelete</span>. Inside that directory, there's a file named <span class="monoText">removeme.txt</span>. While we are inside the directory <span class="monoText">todelete</span>, we can <span class="italicsText">remove</span>, or <span class="italicsText">delete</span>, the file <span class="monoText">removeme.txt</span> with the <span class="monoText">rm</span> command:</p>
+
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							rm ⟨file_name.extension⟩
+						</code></pre>
+					</figure>
+
+					<p><span class="topic">Deleting a Directory.</span> Doing the above will delete the removeme.txt file <span class="redText underlineText">permanently</span>. Note: the <span class="monoText">rm</span> command is not recursive; as such, it cannot delete directories. We can remove a directory with the <span class="monoText">rmdir</span> command, but only if the directory is empty:</p>
+
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							rmdir ⟨directory_name⟩
+						</code></pre>
+					</figure>
+				</section>
+
+				<section id="creating_directory" class="grid-item">
+					<p>We can create a directory with the <span class="monoText">mkdir</span> command:</p>
+					
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							mkdir ⟨new_directory_name⟩
+						</code></pre>
+					</figure>
+
+					<p>For example, while we're inside the <span class="monoText">mathlab</span> directory:</p>
+
+					<pre class="language-bash"><code>
+						mkdir experiments	
+					</code></pre>
+
+					<p>The above created a new directory named <span class="monoText">experiments</span> in the directory <span class="monoText">mathlab</span>. Remember that a white space separates arguments. If we ran the command:</p>
+
+					<pre class="language-bash"><code>
+						mkdir new experiments
+					</code></pre>
+
+					<p>We would create two directories, <span class="monoText">new</span> and <span class="monoText">experiments</span>. If we wanted to create a directory with a space in its name, we must use quotes (to indicate a string) or enter an escape key.</p>
+
+					<pre class="language-bash"><code>
+						mkdir "new experiments"
+					</code></pre>
+				</section>
+
+				<section id="naming_directories" class="grid-item">
+					<p><span class="topic">Naming Files and Directories.</span> Naming directories is a matter of personal preference and whatever style guidelines we're required to follow. Here are some practices that might make our lives easier.</p>
+					<p><span class="topic">Characters to Avoid.</span> There are characters that should never be used when naming files because they almost always have a special meanings for the operating system:</p>
+
+					<table>
+						<tr>
+							<td><span class="monoText">/</span></td>
+							<td><span class="monoText">\</span></td>
+							<td><span class="monoText">"</span></td>
+							<td><span class="monoText">'</span></td>
+							<td><span class="monoText">[]</span></td>
+							<td><span class="monoText">{}</span></td>
+							<td><span class="monoText">-</span></td>
+						</tr>
+						<tr>
+							<td><span class="monoText">*</span></td>
+							<td><span class="monoText">;</span></td>
+							<td><span class="monoText">?</span></td>
+							<td><span class="monoText">()</span></td>
+							<td><span class="monoText">~</span></td>
+							<td><span class="monoText">!</span></td>
+							<td><span class="monoText">$</span></td>
+						</tr>
+					</table>
+
+					<p><span class="topic">Indicating Spaces.</span> To indicate spaces in a file name, use the underscore character: <span class="monoText">_</span></p>
+
+					<p><span class="topic">Dates.</span> If the name includes dates, use the ISO format: <span class="monoText">YYYYMMDD</span>.</p>
+
+
+					<p><span class="topic">Numbers.</span> If the name includes numbers, use two digits: 1 is <span class="monoText">01</span>, 9 is <span class="monoText">09</span>, etc.</p>
+
+					<p>Other guidelines include:</p>
+					<ul>
+						<li>Names should be descriptive and concise.</li>
+						<li>Capital letters should delimit words, not spaces (see above).</li>
+						<li>If the file name includes a personal name, use the family name first, followed by initials.</li>
+						<li>Order the elements in a name in the way that would be most efficient to retrieving the named entity.</li>
+					</ul>
+				</section>
+
+				<section id="the_root_user" class="grid-item">
+					<p><span class="topic">The <span class="topic">root</span> User.</span> On Linux and Mac OS, the <span class="italicsText">root user</span> is equivalent to the <span class="italicsText">administrator</span> on Windows. It has a <span class="boldItalics">user id</span> of 0. The <span class="italicsText">root user</span> can be described as the head, or superuser, of a system. It can do whatever it wants or needs in the system. Even if a file or directory cannot be accessed, written, or executed by anyone, the root user can access it.</p>
+
+					<p>Most of the time, even if you own a computer, you will not be acting in a root user capacity. You will almost always be acting as a <span class="italicsText">normal user</span>. This stems from the <span class="boldItalics">principle of least privilege</span>, which states that, while in a computing environment, the user should only use the privileges necessary to accomplish legitimate purposes, since interacting with a computing environment with unlimited privileges can lead to damaging, potentially permanently, the environment.</p>
+				</section>
+
+				<section id="sudo_user" class="grid-item">
+					<p><span class="topic">The <span class="monoText">sudo</span> User.</span> But, if we want to use the terminal as the <span class="italicsText">root user</span>, we can preface our commands with the word <span class="monoText">sudo</span> ("do as superuser"). By prefacing our commands with <span class="monoText">sudo</span>, we are indicating to the computer that we are running the following commands as the root user rather than as the users we actually are.</p>
+
+					<p><span class="topic">When to use <span class="topic">sudo</span>?</span> If we enter the command <span class="monoText">cd //</span> (on Mac OS) or <span class="monoText">cd /sys</span> (on Linux), we can access the <span class="italicsText">kernel parameters</span>, which constitute the core of the computer. But, if we try to use the angle bracket syntax or the pipe syntax to change these files, we get a <span class="monoText">permission denied</span>.</p>
+
+					<p>This is because these are kernel files, and we have to be very careful about changing them. If we are sure want to change these files, we need to preface our commands with the <span class="monoText">#</span> symbol. This tells the computer, "run this as root."</p>
+
+					<p>To get around having to write the <span class="monoText">#</span> each time for commands, we can open a <span class="boldItalics">root terminal</span> with the <span class="monoText">sudo su</span> command. To exit the root terminal, we enter the <span class="monoText">exit</span> command. While opening a root terminal is relatively easy, we almost always never want to be in a root terminal. It's too dangerous. So, another way to ensure that our commands are executed as a root user is to use the pipe character:</p>
+
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							command_1 | command_2
+						</code></pre>
+					</figure>
+
+					<p>The above code says, take the output of <span class="italicsText">command_1</span>, and pipe it to <span class="italicsText">sudo command_2</span>.</p>
+				</section>
+
+				<section id="introduction_git" class="grid-item">
+					<h3><span class="monoText">Git</span></h3>
+					<p>As a new developer, the best time to learn <span class="monoText">Git</span> is yesterday. <span class="monoText">Git</span> is a time machine &mdash; it's a tool that's used everywhere in computer science and software development. What exactly is Git? Git is a <span class="boldItalics">version control system</span>&mdash;software that tracks and changes files over time. As we know, files contain programs, and programs can be modified. There are many version control systems, but it is undoubtedly the most widely used version control system.</p>
+
+					<p>But what exactly does Git do? What do we get out of using Git? Several things:</p>
+
+					<ol>
+						<li>Track changes across multiple files</li>
+						<p>Made a change to a file but do not know what change you made? Git allows you to see all of the changes you've made for you to see.</p>
+						<li>Compare versions of a project</li>
+						<p>Projects change over time. They can multiple different versions, particularly when we have multiple people working on the same project. Git allows us to compare those versions.</p>
+						<li>"Time travel" to older versions of a file or project</li>
+						<p>Project and file versions do not just vary across groups. They also vary across time. Git allows us to look at older versions.</p>
+						<li>Revert to a previous version</li>
+						<p>We've made a version of a project or file, and we've worked for a very long time on it. After looking at the route we took, we realize, this was not a very good idea in the first place. Git allows us to go back to the previous version.</p>
+						<li>Collaborate and share changes</li>
+						<p>Large projects require multiple hands. But, we need a way to make sure we're all on the same page, and to make sure that our changes don't conflict. Git ensures that everything is kept in order, while allowing us to share and collaborate.</p>
+						<li>Combine changes</li>
+						<p>We've made changes, and our other team members have made changes. We both look at what we've done, and we like them. Git makes it easy for us to take the next step&mdash;merging the changes.</p>
+					</ol>
+
+					<p>Nearly every company and research group with an engineering team use Git. Tech-adjacent roles, such as designers and writers, use Git. Even governments use Git. Washington D.C. and other United States governments collaborate on drafting with Git, even taking input from citizens.</p>
+
+					<p>An extremely useful aspect of <span class="monoText">Git</span> is <span class="italicsText">branching</span>, a topic to be discussed later. A common practice among novice programmers is to write a program, then, upon finding a bug, decide to either (a) duplicate the source code file, then experiment with changes there; (b) code alternatives then comment out other sections as needed; or (c) some combination of both. This is a painful ordeal that can lead to even more bugs and confusion. <span class="monoText">Git</span> provides a solution: We simply create branches exploring other approaches, and if it turns out they do not work, we simply go back to the original file and make another branch. And if that branch works, we can merge changes. This may seem abstract at the moment, but it will become clearer in the sections on branching and merging.</p>
+
+					<p><span class="boldItalics">Git</span> is a version control system that runs locally on our machines. I.e., it's a program that runs just like any other program that runs in our computer, be it Word or Garageband. We do not need to register an account to use Git, nor do we need an internet connection. We can use Git without ever touching Github.</p>
+
+					<p><span class="boldItalics">Github</span> is a service that hosts Git repositories ("repos") in the cloud and makes it easier to collaborate with others. To use Github, we need to register an account. In sum, Github is an online service that allows us to share our work with others and our future selves.</p>
+				</section>
+
+				<section id="installation" class="grid-item">
+					<h4>Installation</h4>
+					<p>On newer Macs, Git is preinstalled. But, to install the latest version of Git for macOS, follow the "Binary installer" in <a href="https://git-scm.com/download/mac">this link</a>, and download the later release.</p>
+
+					<p>For windows, click on the relevant Downloads portion in <a href="https://git-scm.com/downloads">this link</a>.</p>
+
+					<p>To verify that Git is installed on your computer and to check what version of Git you have installed, run:</p>
+
+					<pre class="language-bash"><code>
+						git --version
+					</code></pre>
+
+					<p>The above code should output a string that looks like:</p>
+
+					<pre class="language-bash"><code>
+						git version 2.31.0
+					</code></pre>
+				</section>
+
+				<section id="configuring" class="grid-item">
+					<h4>Configuring Git</h4>
+					<p>Once Git is installed, we need to set up two things: (1) our username and (2) our email. To set up our user name, enter in our terminal:</p>
+
+					<pre class="language-bash"><code>
+						git config --global user.name "<span class="code-annotation">My Name</span>"
+					</code></pre>
+
+					<p>To verify that we've set up a username, enter:</p>
+
+					<pre class="language-bash"><code>
+						git config user.name
+					</code></pre>
+
+					<p>Running that command should display our username. Once we've set up our username, the next thing is to set up our email. We do so by entering in our terminal:</p>
+
+					<pre class="language-bash"><code>
+						git config --global user.email <span class="code-annotation">myEmail@email.com</span>
+					</code></pre>
+
+					<p>Like our username, to verify that we've set up a Git email, we run the command:</p>
+
+					<pre class="language-bash"><code>
+						git config user.email
+					</code></pre>
+
+					<p>Doing so should display our configured email.</p>
+				</section>
+
+				<section id="the_git_repo" class="grid-item">
+					<h3>Git Terminology</h3>
+					<p>To use Git, we need to have a basic understanding of some Git terminology and concepts</p>
+					<p><span class="topic">The <span class="monoText">git</span> Repo.</span> A <span class="boldItalics">Git repository</span> ("repo" in programming parlance) is a workspace that tracks and manages files within a folder. Whenever we use Git with a file, we must create a new git repo. Every Git repo has its own history and content. Again, Git does not work with our files unless we create a git repo for that file. Thus, if we had 6 different folders containing 6 different projects, for Git to work with these folders, we need to create 6 different repos for each of these folders. Each of those Git repos are completely separate&mdash;they are not connected in any way.</p>
+				</section>
+
+				<section id="git_status_command" class="grid-item">
+					<p><span class="topic">The <span class="monoText">git status</span> Command.</span> If there is one command most often used in Git, it's <span class="monoText">git status</span>. This command gives us information on the current status of a git repo and its contents. We will see <span class="monoText">git status</span> in action in the next sections, but for now, just be aware that it's an extremely useful command that we will always be using.</p>
+				</section>
+
+				<section id="git_init_command" class="grid-item">
+					<p><span class="topic">The <span class="monoText">git init</span> Command.</span> The <span class="monoText">git init</span> command is what we run to create a new git repo. Again, before we do anything with git on a file, we have to initialize a repo first.</p>
+					<p>Because <span class="monoText">git init</span> creates a new repo for a file, we only need to do it once. The moment we run <span class="monoText">git init</span>, we have created a new git repo, and we do not need to worry about recreating it.</p>
+					<p><span class="topic">Where do we run <span class="monoText">git init</span>?</span> To ensure that our file is read by Git, we must run <span class="monoText">git init</span> in the directory our file is located. So, for example, suppose that we have a directory named <span class="monoText">git_foo</span>, and inside that directory, we have a file named <span class="monoText">bar.txt</span>. While we are inside that directory in the terminal, we run the command: </p>
+
+					<pre class="language-bash"><code>
+						git status
+
+						fatal: not a git repository (or any of the parent directories): .git
+					</code></pre>
+
+					<p>We get an error. This is because there is no git repo in the <span class="monoText">git_foo</span> directory. This tells us we need to create a git repo:</p>
+
+					<pre class="language-bash"><code>
+						git init
+
+						Initialized empty Git repository in /Users/mathlab/git_foo/.git/
+					</code></pre>
+
+					<p>The output tells us that we've initialized a new git repo. Let's check to verify:</p>
+
+					<pre class="language-bash"><code>
+						git status
+
+						On branch main
+
+						No commits yet
+
+						Untracked files:
+						(use "git add &lt;file&gt;..." to include in what will be committed)
+							bar.txt
+
+						nothing added to commit but untracked files present (use "git add" to track)
+					</code></pre>
+
+					<p>We can see that we've created a new git repo. If look inside the <span class="monoText">git_foo</span> folder in the GUI, there's nothing there other than our <span class="monoText">bar.txt</span> file. So what exactly happened? Isn't there supposed to be a folder?</p>
+
+					<p>The folder is there, but it's just hidden. We can see it in the terminal:</p>
+
+					<pre class="language-bash"><code>
+						ls -a
+						.	..	.git	bar.txt
+					</code></pre>
+
+					<p>There it is. A hidden folder (recall that hidden folders are always prefaced with a <span class="monoText">.</span>) named <span class="monoText">.git</span>. If we delete this folder, all of our git history disappears. This is why the folder is hidden&mdash;we do not want to delete that folder accidentally.</p>
+				</section>
+
+				<section id="nested_folders_and_git" class="grid-item">
+					<p>A very common mistake made by novice git users is failing to realize that git will monitor <span class="underlineText">everything</span> we do inside the initialized directory. For example, we've created a git repo in the <span class="monoText">git_foo</span> directory. If we were to create a directory inside <span class="monoText">git_foo</span> named <span class="monoText">git_bang</span>, the git repo we initialized for <span class="monoText">git_foo</span> will record that we've created a directory called <span class="monoText">git_bang</span>. Likewise, if we create another folder called <span class="monoText">git_zing</span> inside <span class="monoText">git_bang</span>, the git repo we initialized for <span class="monoText">git_foo</span> will record that change as well.</p>
+
+					<p>We can see this by running:</p>
+
+					<pre class="language-bash"><code>
+						cd git_bang
+						git status
+						On branch main
+
+						No commits yet
+
+						Untracked files:
+						(use "git add &lt;file&gt;..." to include in what will be committed)
+							../bar.txt
+
+						nothing added to commit but untracked files present (use "git add" to track)
+					</code></pre>
+
+					<p>We can see that git is monitoring the changes made in <span class="monoText">git_bang</span>. Similarly:</p>
+
+					<pre class="language-bash"><code>
+						cd git_zing
+						git status
+						On branch main
+
+						No commits yet
+
+						Untracked files:
+						(use "git add &lt;file&gt;..." to include in what will be committed)
+							../../bar.txt
+
+						nothing added to commit but untracked files present (use "git add" to track)
+					</code></pre>
+
+					<p>Git is monitoring everything nested inside the folder <span class="monoText">git_foo</span>. Because of this fact, we <span class="underlineText">do not want</span> to initialize a new repo inside of a repo. Always, always use <span class="monoText">git status</span> to check that we are not currently inside a repo. This is because it is critical that we keep repos separate. Initializing a repo inside a repo is a surefire way to encounter problems down the line. We might not notice it, but at some point, Git will get confused&mdash;we're telling it to track a git folder, which is itself tracking another folder, when Git's already tracking that folder.</p>
+				</section>
+
+				<section id="committing_changes" class="grid-item">
+					<p><span class="topic">The <span class="monoText">git commit</span> Command.</span> A <span class="boldItalics">git commit</span> is a point in time where we explicitly told Git, "Record this change." That commit is effectively a version of our file with all of the changes made up to that point in time&mdash;a snapshot of all of the work we've done up to that point. Alongside that snapshot, we add a message briefly explaining what we did. Thus, a <span class="boldItalics">git commit</span> is, at its core, a snapshot of our work thus far, with a caption to help us identify what we did.</p>
+
+					<p>Note, however, that a git commit is not the same as saving a file. Changing and saving a file is a necessary condition to making a git commit. If there are no changes or no save, there's nothing for Git to do. Git isn't necessarily concerned with whether we've saved our files. It assumes that we've done that. What Git is concerned with is taking the changes we've made and saved, grouping them together, and storing it as a <span class="italicsText">version</span> of our work. For example, suppose we're working on a website, and we have the following files <span class="monoText">site.html</span>, <span class="monoText">site.css</span>, and <span class="monoText">site.js</span>. We write some content in the <span class="monoText">site.html</span> file, make some style changes in <span class="monoText">site.css</span>, and revise code in <span class="monoText">site.js</span>. Then we save all of those changes. After doing all of that work, we <span class="italicsText">commit</span> the changes&mdash;take a snapshot of all of the work we've done.</p>
+
+					<p>Making a git commit consists of multiple steps:</p>
+
+					<ol>
+						<li>Work - make changes</li>
+						<li>Add changes - group the changes together</li>
+						<li>Commit - commit everything that we added in step 2.</li>
+					</ol>
+				</section>
+
+				<section id="group_changes" class="grid-item">
+					<h3>Grouping Changes</h3>
+					<p>Git is premised on the idea that the changes we make are connected in someway. For example, suppose that <span class="monoText">site.html</span> contains a sudoku game. We go into the file, and begin inserting the elements for the grid. Then, we go into <span class="monoText">site.css</span>, and begin styling that grid. Finally, we go into <span class="monoText">site.js</span> and begin writing the code generating that grid. All of these changes relate to one thing&mdash;"create grid." Thus, we can group those changes together. Visualizing the work flow:</p>
+
+					<pre class="language-bash"><code>
+						working directory --> git add --> staging area --> git commit --> repository
+					</code></pre>
+				</section>
+
+				<section id="the_git_add_command" class="grid-item">
+					<p><span class="topic">The <span class="monoText">git add</span> Command</span> The <span class="monoText">git add</span> command is what we execute in the terminal to <span class="italicsText">stage</span> changes for a commit.</p>
+
+					<p>Suppose that we make changes to our file, <span class="monoText">bar.txt</span>, located in our folder, <span class="monoText">git_foo</span>. Specifically, we write the following:</p>
+
+					<pre class="language-bash"><code>
+							hello world.
+							I am bar. I come in peace.
+					</code></pre>
+
+					<p>We've made a change, and Git can see it. We see this is the case by running the following in the terminal while we are in <span class="monoText">git_foo</span>:</p>
+
+					<pre class="language-bash"><code>
+						git status
+
+						On branch main
+
+						No commits yet
+
+						Untracked files:
+						(use "git add &lt;file&gt;..." to include in what will be committed)
+							bar.txt
+						nothing added to commit but untracked files present (use "git add" to track)
+					</code></pre>
+
+					<p>Git is saying, "<span class="monoText">Untracked files: ... bar.txt</span>" Let's create another file in <span class="monoText">git_foo</span> called <span class="monoText">zoom.txt</span>, and we'll add some text to that file while we're at it:</p>
+
+					<pre class="language-bash"><code>
+							touch zoom.txt
+							echo "Zoom zoom" > zoom.txt
+					</code></pre>
+
+					<p>Let's run <span class="monoText">git status</span> again:</p>
+
+					<pre class="language-bash"><code>
+						git status	
+
+						On branch main
+
+						No commits yet
+
+						Untracked files:
+						(use "git add &lt;file&gt;..." to include in what will be committed)
+						bar.txt
+						zoom.txt
+
+						nothing added to commit but untracked files present (use "git add" to track)
+					</code></pre>
+
+					<p>Now Git is saying that there are two untracked files: <span class="monoText">bar.txt</span> and <span class="monoText">zoom.txt</span>. To understanding what is going on, we need to have a clear understanding of a few terms: <span class="boldItalics">working directory</span>, <span class="boldItalics">staging area</span>, and <span class="boldItalics">repository</span>.</p>
+
+					<p>The <span class="boldItalics">working directory</span> is the directory, or place, we are working on with our project. In the example above, our working directory is <span class="monoText">git_foo</span>. Our working directory <span class="monoText">git_foo</span> contains two files, <span class="monoText">bar.txt</span> and <span class="monoText">zoom.txt</span>.</p>
+
+					<p>The <span class="boldItalics">repository</span> is the Git folder itself&mdash;what we saw as <span class="monoText">.git</span>. That repository is inside <span class="monoText">git_foo</span>. Once we make a <span class="italicsText">git commit</span>, Git will actually change the contents of the <span class="monoText">.git</span> directory inside our <span class="monoText">git_foo</span> folder. Those changes are additions of commits. Thus, whenever we make a commit, we are updating the contents of the repository.</p>
+
+					<p>The <span class="boldItalics">staging area</span> is where we add our changes before we make a commit. Recall that the Git workflow is premised on grouping changes together. The staging area is where that grouping occurs. We can think of the Git workflow as akin to running a busy restaurant. The chef prepares the dishes, one by one. Some of those dishes are the same, take similar amounts of time to make, were ordered as appetizers, or have some other shared characteristic, so they are grouped together to be served. Git employs the same process.</p>
+
+					<p>Thus, when we make changes to files, we group the changes together, then we <span class="italicsText">stage</span> them. Once they're staged, then we can make a commit.</p>
+
+					<p><span class="topic">The <span class="monoText">git add</span> Command.</span> The <span class="monoText">git add</span> command is what we use to stage changes. The syntax generally looks like:</p>
+
+					<pre class="language-bash"><code>
+						git add file1 file2
+					</code></pre>
+
+					<p>As the syntax above shows, we can stage multiple files by separating the file names with spaces. Let's apply this syntax by staging the changes we made to <span class="monoText">bar.txt</span> and <span class="monoText">zoom.txt</span>:</p>
+
+					<pre class="language-bash"><code>
+						git add bar.txt zoom.txt
+					</code></pre>
+
+					<p>No output should display from running the code above. But, we can verify that our command executed properly (the files were staged), by using <span class="monoText">git status</span>:</p>
+
+					<pre class="language-bash"><code>
+						git status
+
+						No commits yet
+
+						Changes to be committed:
+						(use "git rm --cached &lt;file&gt;..." to unstage)
+							new file:   bar.txt
+							new file:   zoom.txt
+					</code></pre>
+
+					<p>Running the above code, we can see that the two files were staged. Whenever we see <span class="monoText">Changes to be committed:</span> followed by the file names, that should be our que that there are files in the stagine area, ready to be committed.</p>
+
+					<p>All that's left to do is committing the files we've staged.</p>
+				</section>
+
+				<section id="the_git_commit_command" class="grid-item">
+					<p><span class="topic">The <span class="monoText">git commit</span> Command.</span> The <span class="monoText">git commit</span> command is the command we use to make a commit the files we've added to the staging area. Whenever we make a commit, we must include a <span class="boldItalics">commit message</span>&mdash;a brief note that summarizes and describes the changes and work decided to group together.</p>
+
+					<p>For example, for the files we committed above, we should add a commit message. The changes we made with those files are really just a creation of those files. So, for our files, a commit message might be something like, "Started zoom." (Of course, the files we made our nonsensical, so a commit message in this instance is nonsensical). If, however, we were working with, say, an HTML file, and we were working on the website's navigation menu, our commit message would be "Changed navigation menu links." The point is, our commit messages should be descriptive&mdash;ask yourself, "6 months from today, would I be able to understand what I did here?"</p>
+
+					<p>To include a message in our commit, we use the syntax:</p>
+
+					<pre class="language-bash"><code>
+						git commit -m "my message"
+					</code></pre>
+
+					<p><span class="topic">The <span class="monoText">git log</span> Command.</span> The <span class="monoText">git log</span> command shows us the most recent commits we've made in the current working directory. Running the <span class="monoText">git log</span> command, we get a large amount of information:</p>
+
+					<pre class="language-bash"><code>
+						commit a98abc11ce52ad97f4382dc46417814632eacfbc (HEAD -> main)
+						Author: Foo Bar &lt;foo@gmail.com&gt;
+						Date:   Sat Aug 21 10:45:29 2021 -0500
+
+							changes made
+					</code></pre>
+
+					<p>The large string of characters and digits is called a <span class="term">git hash code</span>. We will explore this hash code in further detail later, but for now, we can think of it as an identification code for a particular commit. We can then use that identification code to refer to a particular commit. Because this is a lot of information, we might want to simply view the commit history in single lines. To do so, we use the <span class="monoText">oneline</span> option:</p>
+
+					<pre class="language-bash"><code>
+						git log --oneline
+						a98abc1 (HEAD -> main) changes made
+					</code></pre>
+
+					<p><span class="topic">Atomic Commits.</span> Whenever possible, a git commit should pertain to a single feature, change, or fix &mdash; the commit should focus on just one particular change. The smaller (atomic) our commits are, the easier it is to see where exactly a change was made in the future. The larger and more encompassing commits are, the more difficult it is to both identify specific changes.</p>
+
+					<p><span class="topic">Commit Messages.</span> Every commit must include a commit message. When writing a message, always use the present tense. Programmers are split on this issue (rightly so, changes were made in the past, so past tense should be used), but really it makes no difference. One reason to stick with present tense is because <span class="monoText">git</span> generates its own messages, and they are in present tense. Otherwise, we should use the present tense as the documentation provides, or whatever our team or employer requires.</p>
+
+					<p><span class="topic">Amending Immediately Previous Commit.</span> If we make a commit but forgot to include a file, we can amend the commit. Note that with this method, we can only amend the <span class="underlineText">previous</span> commit. We explore another method for correcting a mistake several commits earlier.</p>
+
+					<p>To include the file we forgot, we simply <span class="monoText">git add</span> the file, then include:</p>
+
+					<pre class="language-bash"><code>
+						git commit --amend
+					</code></pre>
+
+					<p>As with all commits, this will open our text editor to edit the commit message.</p>
+
+					<p><span class="topic"><span class="monoText">git ignore</span>.</span> Working on projects, we often have files inside working directories that we <span class="underlineText">never</span> want to commit. For example: API keys, credentials, operating system files, log files, dependencies, packages, libraries &mdash; these are all things that we (a) have no intention of changing, or (b) have no intention of sharing. To ensure these files are completely ignored by <span class="monoText">git</span>, we use a <span class="monoText">.gitignore</span> file. The <span class="monoText">.gitignore</span> file is a hidden file. We will not see it on our GUI by default.</p>
+					<p>To use a <span class="monoText">.gitignore</span> file, simply create that file (e.g., via Vim) and then include whatever file or directory names should be ignored.For example, we can write inside the <span class="monoText">.gitignore</span> file the following:</p>
+					<p>First, we create a <span class="monoText">.gitignore</span> file. By convention, we want to include the <span class="monoText">.gitignore</span> file inside the root directory for our project.</p>
+					<pre class="language-bash"><code>
+						touch .gitignore
+					</code></pre>
+					<p>Inside that file, we include whatever we want Git to ignore:</p>
+					<pre class="language-bash"><code>
+						# ignore all files named .DS_Store
+
+						.DS_store
+
+						# ignore entire directory named archive
+
+						archive/
+
+						# ignore all files with .log extension
+
+						*.log
+					</code></pre>
+					<p>Once we create the <span class="monoText">.gitignore</span> file, we stage and commit the file. Now all future commits will ignore the files and directories listed in the <span class="monoText">.gitignore</span> file.</p>
+				</section>
+
+				<section id="branching" class="grid-item">
+					<h4>Branching</h4>
+					<p>Arguably, the most important Git topic is <span class="term">branching</span>. Every major project will inevitably raise branching issues, and as such, we must be familiar with it.</p>
+					<p><span class="topic">What is branching?</span> We can envision the way commits are structured with the following diagram:</p>
+					<figure><img src="images/git_commit_pointers.svg" alt="commit pointers" loading="lazy" class="sixty-p"></figure>
+					<p>This structure is linear &mdash; it only goes in one direction. The problem, however, is that projects seldom ever proceed in a linear fashion. For example, we might be implementing a new feature, where the user can use a part of the program without the other. However, this would require a significant change to some existing parts of the program. Instead of proceeding in a linear way, we <span class="italicsText">branch</span>. We assign one part of the team to take that route, going all the way and implementing the experimental feature, while allowing the other part of the team to keep working on the original plan.</p>
+					<p>In essence, branching allows us to safetly make changes to a program while destroying other parts of the program. We can establish a branch at some point ${t_0}$, leading to the destruction of other parts of the program at some point ${t_1}$. If it turns out that the destruction was a bad idea, we can simply go back to ${t_0.}$ For this reason, we can think of branching as creating alternative timelines:</p>
+					<figure><img src="images/git_branching.svg" alt="git branch" loading="lazy" class="sixty-p"></figure>
+					<p>The changes we make on one branch does not impact the changes we make on other branches, unless we <span class="italicsText">merge</span> them (more on this later.) In <span class="monoText">git</span>, we are always working on a branch. We can this is the case by simply entering <span class="monoText">git status</span>:</p>
+					<pre class="language-bash"><code>
+						On branch main
+						nothing to commit, working tree clean
+					</code></pre>
+					<p>The <span class="monoText">branch main</span> is the default branch created when we make a new <span class="monoText">git</span> repo. This is also called the <span class="term">trunk</span>. All other branches stem from <span class="monoText">branch main</span>. From <span class="monoText">git</span>'s perspective, <span class="monoText">branch main</span> is just like any other branch. So, we can create our own branch and treat it as the <span class="italicsText">master branch</span>. Many developers, however, treat <span class="monoText">branch main</span> as sort of the &#8220;final copy,&#8221; i.e., the official, finalized source code, where everything works.</p>
+					
+					<p><span class="topic"><span class="monoText">(HEAD->main)</span>.</span> Before we begin creating branches, we should discuss what the following syntax means:</p>
+
+					<pre class="language-bash"><code>
+						commit 9ec800e8cc1662b4f74f724f71d9a239c083ac5c (HEAD->main)
+					</code></pre>
+
+					<p>Particularly, what <span class="monoText">(HEAD->main)</span> means. What does <span class="monoText">HEAD</span> mean? The <span class="monoText">HEAD</span> is a pointer referring to the current location in the repository. From <span class="monoText">HEAD</span>, there is a pointer to a particular branch <span class="italicsText">reference</span>, in this case, a reference to <span class="monoText">main</span>. More specifically, <span class="monoText">HEAD</span> points to the last commit on <span class="monoText">branch main</span>. This last reference is called the <span class="term">tip</span>.</p>
+
+					<figure><img src="images/git_head_pointer.svg" alt="head pointer" loading="lazy" class="seventy-p"></figure>
+
+					<p>If we switch to another branch, say a branch named <span class="monoText">x</span>, then <span class="monoText">HEAD</span> points to the tip of <span class="monoText">x</span> &mdash; <span class="monoText">(HEAD->x).</span> If we switch to a branch named <span class="monoText">y</span>, <span class="monoText">HEAD</span> then points to the tip of <span class="monoText">y</span> &mdash; <span class="monoText">(HEAD->y)</span>. The names <span class="monoText">main</span>, <span class="monoText">x</span>, and <span class="monoText">y</span> are all references. So, to make changes in a particular branch, we simply change <span class="monoText">HEAD</span> to point to a particular reference. If we are making changes on <span class="monoText">branch main</span> but then want to make changes to <span class="monoText">branch y</span>, we make <span class="monoText">HEAD</span> point to <span class="monoText">branch y.</span> And if we want to go back to making changes to <span class="monoText">branch main</span>, we make <span class="monoText">HEAD</span> point to <span class="monoText">branch main</span>.</p>
+
+					<p><span class="monoText">git branch.</span> To view all of our existing branches, we use the <span class="monoText">git branch</span> command. So far, we haven't made any branches, so when we run <span class="monoText">git branch</span>, we get the following:</p>
+					<pre class="language-bash"><code>
+						git branch
+
+						* main
+					</code></pre>
+					<p>The <span class="term">active branch</span>&mdash;the branch we are currently on &mdash; is denoted by an asterisk <span class="monoText">*</span>.</p>
+
+					<p><span class="topic">Making a New Branch.</span> To make a new branch in <span class="monoText">git</span>, we use the following syntax:</p>
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							git branch <span class="italicsText">branch-name</span>
+						</code></pre>
+					</figure>
+					<p>The command is simply <span class="monoText">git branch</span> with an append branch name, the name we give our branch. Note that this only creates a new branch. It does not switch the active branch to the new branch (i.e., <span class="monoText">HEAD</span> continues pointing at <span class="monoText">branch main</span>). The branch name <span class="underlineText">should not</span> include spaces, and it should be descriptive and concise (we do not want to have to write whole sentences to switch between branches). So, for example:</p>
+					<pre class="language-bash"><code>
+						git branch bugfix
+						git branch
+						
+						bugfix
+						* main
+					</code></pre>
+					<p>We can see that there's a new branch. If we type <span class="monoText">git log</span>:</p>
+					<pre class="language-bash"><code>
+						git log
+						
+						commit 9b9df7c76b0ef093212a944ac2a04a07092139b8 (HEAD -> main, bugfix)
+						Author: Foo Bar &lt;foo@gmail.com>
+						Date:   Thu Aug 26 11:10:03 2021 -0500
+
+							change change
+
+						commit 9ec800e8cc1662b4f74f724f71d9a239c083ac5c
+						Author: Foo Bar &lt;foo@gmail.com>
+						Date:   Thu Aug 26 10:30:31 2021 -0500
+
+							test
+
+						commit a98abc11ce52ad97f4382dc46417814632eacfbc
+						Author: Foo Bar &lt;foo@gmail.com>
+						Date:   Sat Aug 21 10:45:29 2021 -0500
+
+							changes made
+					</code></pre>
+					<p>We can see <span class="monoText">HEAD</span> is still point to <span class="monoText">main</span>, but we have a new reference called <span class="monoText">bugfix</span>. This tells us that the two branches, <span class="monoText">main</span> and <span class="monoText">bugfix</span>, are pointing to the same commit.</p>
+
+					<p><span class="topic">Switching Branches.</span> To switch branches, we use the following syntax:</p>
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							git switch <span class="italicsText">branch-name</span>
+						</code></pre>
+					</figure>
+					<p>In this case, if we want to switch to the branch <span class="monoText">bugfix</span>, we simply write:</p>
+					<pre class="language-bash"><code>
+						git switch bugfix
+
+						Switched to branch 'bugfix'
+					</code></pre>
+					<p>Now <span class="monoText">HEAD</span> points to the reference <span class="monoText">bugfix</span>. If we run <span class="monoText">git status</span>:</p>
+					
+					<pre class="language-bash"><code>
+						git status
+
+						On branch bugfix
+						nothing to commit, working tree clean
+					</code></pre>
+
+					<p>And if we run <span class="monoText">git log</span>, we can see that <span class="monoText">HEAD</span> now points <span class="monoText">bugfix</span>:</p>
+					<pre class="language-bash"><code>
+						git log
+
+						commit 9b9df7c76b0ef093212a944ac2a04a07092139b8 (HEAD -> bugfix, main)
+						Author: Foo Bar &lt;foo@gmail.com>
+						Date:   Thu Aug 26 11:10:03 2021 -0500
+
+							change change
+
+						commit 9ec800e8cc1662b4f74f724f71d9a239c083ac5c
+						Author: Foo Bar &lt;foo@gmail.com>
+						Date:   Thu Aug 26 10:30:31 2021 -0500
+
+							test
+
+						commit a98abc11ce52ad97f4382dc46417814632eacfbc
+						Author: Foo Bar &lt;foo@gmail.com>
+						Date:   Sat Aug 21 10:45:29 2021 -0500
+
+							changes made
+					</code></pre>
+
+					<p>Now, let's make changes to the file <span class="monoText">foo.txt</span>. If we run <span class="monoText">git status</span>:</p>
+					<pre class="language-bash"><code>
+						On branch bugfix
+						Changes not staged for commit:
+						(use "git add &lt;file>..." to update what will be committed)
+						(use "git restore &lt;file>..." to discard changes in working directory)
+							modified:   foo.txt
+
+						no changes added to commit (use "git add" and/or "git commit -a")
+					</code></pre>
+					<p>We are still on the <span class="monoText">bugfix</span> branch. Let's add and commit, then run <span class="monoText">git log</span>:</p>
+					<pre class="language-bash"><code>
+						commit 672f27c44431ee1bbfabb652047984e003753460 (HEAD -> bugfix)
+						Author: Foo Bar &lt;foo@gmail.com>
+						Date:   Thu Aug 26 11:21:03 2021 -0500
+
+							more changes
+
+						commit 9b9df7c76b0ef093212a944ac2a04a07092139b8 (main)
+						Author: Foo Bar &lt;foo@gmail.com>
+						Date:   Thu Aug 26 11:10:03 2021 -0500
+
+							change change
+
+						commit 9ec800e8cc1662b4f74f724f71d9a239c083ac5c
+						Author: Foo Bar &lt;foo@gmail.com>
+						Date:   Thu Aug 26 10:30:31 2021 -0500
+
+							test
+
+						commit a98abc11ce52ad97f4382dc46417814632eacfbc
+						Author: Foo Bar &lt;foo@gmail.com>
+						Date:   Sat Aug 21 10:45:29 2021 -0500
+
+							changes made
+					</code></pre>
+					<p><span class="topic">CAUTION.</span> A very important aspect of the <span class="monoText">git branch <span class="italicsText">branch-name</span></span> command is that it creates a new branch based on the current <span class="monoText">HEAD</span>. This means if <span class="monoText">HEAD</span> is currently pointing to <span class="monoText">bugfix</span>, and we run <span class="monoText">git branch <span class="italicsText">tests</span></span>, we create a new branch called <span class="monoText">tests</span> on the branch <span class="monoText">bugfix</span>.</p>
+
+					<p><span class="topic"><span class="monoText">git switch -c ⟨branch-name⟩</span></span>. When we create a new branch, we often want to immediately begin working on that branch. We can do so by including the option <span class="monoText">-c</span>:</p>
+					<pre class="language-bash"><code>
+						git switch -c bugfix_tests
+					</code></pre>
+					<p>The command above creates a new branch called <span class="monoText">bugfix_tests</span>, and switches to that branch once created.</p>
+
+					<p><span class="topic"><span class="monoText">git checkout.</span></span> Another way to switch branches is with the <span class="monoText">git checkout <span class="italicsText">branch-name</span></span> command. This is the old way of switching branches, and has been replaced with <span class="monoText">git switch <span class="italicsText">branch-name</span></span>. <span class="monoText">git checkout <span class="italicsText">branch-name</span></span>, however, will still work. The replacement was made because <span class="monoText">git checkout</span> has numerous other uses, so a separate command for simply switching branches was made.</p>
+
+					<p><span class="topic">Switching Branches with Uncommited Changes.</span> Suppose we are on the <span class="monoText">bugfix</span> branch, make changes, but then switch to <span class="monoText">main</span> while those changes have not yet been added or committed. What happens?</p>
+					<pre class="language-bash"><code>
+						git switch main
+
+						error: Your local changes to the following files would be overwritten by checkout:
+								foo.txt
+						Please commit your changes or stash them before you switch branches.
+						Aborting	
+					</code></pre>
+					<p>We get an error message telling us that if we try and switch without adding or committing any of the work done on the <span class="monoText">bugfix</span>, then we will lose all of that work. The error message tells us to either (a) commit the changes or (b) stash the changes. We will discuss stashing in due course, but for now we must commit before making a switch (again, stashing provides an alternative).</p>
+					<p>There is, however, an exception to this rule. If we create a new branch called <span class="monoText">bugfix2</span>, and create a file on that branch called <span class="monoText">bar.txt</span>, we will not get an error message when we switch without making any commits. This is because the file <span class="monoText">bar.txt</span> exists only on the branch <span class="monoText">bugfix2</span>, so <span class="monoText">git</span> does not have to worry about any conflicts. Instead, when we make the switch to say, <span class="monoText">main</span>, that file will come with us to <span class="monoText">main</span>.</p>
+
+					<p><span class="topic">Deleting and Renaming Branches.</span> Often, we want to delete and rename branches. Maybe we accidentally created a new branch, we decided against creating a branch, or we named the branch poorly at first. The solution to the first two is to delete the branch, and the solution to the last is to rename the branch.</p>
+					<p>To delete a branch, we must ensure we are not on the branch. We cannot delete a branch while we are on the branch to be deleted. Once we are outside the branch, we use the <span class="monoText">git branch</span> command with the <span class="monoText">-d</span> option:</p>
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							git branch -d <span class="italicsText">branch-name</span>
+						</code></pre>
+					</figure>
+					<p>Note that if <span class="monoText">branch-name</span> is not actually merged, <span class="monoText">git</span> will not allow us to delete the branch as a precautionary measure. To bypass this measure, we force delete:</p>
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							git branch -D <span class="italicsText">branch-name</span>
+						</code></pre>
+					</figure>
+					<p>To rename a branch, we must first ensure we are on the branch to be renamed. Once we are on that branch, we use the following syntax to rename:</p>
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							git branch -m <span class="italicsText">branch-name</span>
+						</code></pre>
+					</figure>
+				</section>
+
+				<section id="merging_in_git" class="grid-item">
+					<h4>Merging Branches</h4>
+					<!-- Topic: Fast Forward Merge -->
+						<p><span class="topic">Fast Forwarded Merge.</span> When we make changes in a branch ${\alpha}$ and combine them with changes made a branch ${\beta}$, we <span class="term">merge</span> branches ${\alpha}$ and ${\beta.}$ There are two underlying principles for merging: (1) We do not merge commits, we merge branches. (2) We <span class="underlineText">always</span> merge to the <span class="underlineText">current</span> <span class="monoText">HEAD</span> branch. These two principles are made apparent in the following discussion. To merge branches, we use the <span class="monoText">git merge</span> command with the following syntax:</p>
+						<figure class="math-display">
+							<pre class="language-pseudo"><code>
+								git merge 
+							</code></pre>
+						</figure>
+						<p><span class="topic">Merge to Current <span class="monoText">HEAD.</span></span> If we want to merge branch <span class="monoText">x_branch</span> to <span class="monoText">y_branch</span>, we switch to <span class="monoText">y_branch</span>, and from there, merge <span class="monoText">x_branch</span>.</p>
+						<p>Suppose we have a <span class="monoText">main</span> branch, and another branch named <span class="monoText">x_branch</span>. We have done work on <span class="monoText">x_branch</span>, and we are now read to merge <span class="monoText">x_branch</span> to <span class="monoText">main</span>.</p>
+						<p>To do so, we first switch to <span class="monoText">main</span>:</p>
+						<pre class="language-bash"><code>
+							git switch main
+						</code></pre>
+						<p>Then, we use the <span class="monoText">git merge</span> command, followed by the name of the branch we want to merge. In this case, <span class="monoText">x_branch</span>:</p>
+						<pre class="language-bash"><code>
+							git switch main
+							git merge x_branch
+
+							Fast-forward
+							foobar.txt | 5 +++++
+							1 file changed, 5 insertions(+)
+						</code></pre>
+						<p>Importantly, merging does not delete  a branch. The <span class="monoText">x_branch</span> still exists, and we can still go back to that branch to make changes.</p>
+						<p>This is the simplest kind of merge, called a <span class="term">fast-forward merge</span>. We call this a fast foward merge because there was no work done on <span class="monoText">main</span>. We simply continued working on <span class="monoText">x_branch</span>, then merged it into <span class="monoText">main</span> (we fast-forwarded).</p>
+						<p>Most of the time, however, we will have work being done on <span class="monoText">main</span>, while there is work being done on <span class="monoText">x_branch</span>. We will discuss how to handle these kinds of merges later.</p>
+					<!-- Topic: Other Merge -->
+						<p><span class="topic">Merge Commit.</span> In a <span class="italicsText">fast-forward merge</span>, we have the following timeline:</p>
+
+						<figure><img src="images/git_fast_forward_merge.svg" alt="fast foward merge" loading="lazy" class="fifty-p"></figure>
+
+						<p>But, what if instead we had the following:</p>
+
+						<figure><img src="images/git_non_forward.svg" alt="non fast foward" loading="lazy" class="sixty-p"></figure>
+
+						<p>Now the timeline has changed. We have changes in branch <span class="monoText">main</span> that <span class="monoText">branchx</span> does not have, and changes in <span class="monoText">branchx</span> that <span class="monoText">main</span> does not have. The problem in this situation: there is room for conflict. Suppose there are changes made on line 10 of <span class="monoText">foo.txt</span> in branch <span class="monoText">main</span>, and there are also changes made on line 10 of <span class="monoText">foo.txt</span> in branch <span class="monoText">branchx</span>. Which change do we keep? This is a <span class="term">conflict</span>.</p>
+
+						<p>We will address conflicts in a later section, but for now, assume that there is no conflict. If there is no conflict, i.e., neither <span class="monoText">branchx</span> nor <span class="monoText">main</span> share changes, then we can merge the two branches with a <span class="term">merge commit</span>:</p>
+
+						<figure><img src="images/git_merge_commit.svg" alt="merge commit" loading="lazy" class="sixty-p"></figure>
+
+						<p>To perform a merge commit, we simply execute the same command we saw with the fast foward merge. The only difference is that we must include a commit message.</p>
+					<!-- Topic: Merge Conflicts -->
+						<p><span class="topic">Merge Conflicts.</span> Now suppose that there are conflicts. How do we merge? First, if we try to merge while there is a conflict, <span class="monoText">Git</span> may not automatically merge. Instead, it will prompt us to manually resolve the conflicts.</p>
+						<p>Suppose in the file <span class="monoText">foo.txt</span>, we wrote a new line and saved the change while on branch <span class="monoText">main</span>. Next, suppose we then switched to branch <span class="monoText">branch_y</span> and deleted that line. Let's try running <span class="monoText">git merge</span>:</p>
+						<pre class="language-bash"><code>
+							git switch main
+							git merge branch_y
+
+							Auto-merging foo.txt
+							CONFLICT (content): Merge conflict in foo.txt
+							Automatic merge failed; fix conflicts and then commit the result.
+						</code></pre>
+						<p><span class="monoText">Git</span> gives us a conflict message. The message also tells us we need to resolve the conflicts then commit the result. To do so, we complete the following steps:</p>
+						<ol>
+							<li>Open the file(s) with merge conflicts.</li>
+							<li>Edit the file(s) to remove the conflicts, deciding which branch's content to keep in each conflict, or keep the content from both.</li>
+							<li>Remove the conflict markers in the file.</li>
+							<li>Add the changes and commit.</li>
+						</ol>
+						<p>This is a very important and delicate procedure. We need to go through each of the conflicts one by one with meticulous scrutiny. If we open our <span class="monoText">foo.txt</span>, we see the following:</p>
+						<pre class="language-bash"><code>
+							x^2 + y^2 = 1
+							<<<<<<< HEAD
+							a + 0 = a
+							=======
+							(a)(b) = (ab) = (b)(a)
+							>>>>>>> branch1
+						</code></pre>
+						<p>In the output above, everything below <span class="monoText">HEAD</span> is what we had in the <span class="monoText">main</span> branch originally.After the equal sign divider, we have all of the changes from <span class="monoText">branch1</span>. Here, the changes are all unique, it just so happens that they were made on the same line. Thus, to resolve the conflict, we simply remove the markers (assuming we want to keep everything we've written).</p>
+						<pre class="language-bash"><code>
+							x^2 + y^2 = 1
+							a + 0 = a
+							(a)(b) = (ab) = (b)(a)
+						</code></pre>
+						<p>Now all we do is add and commit:</p>
+						<pre class="language-bash"><code>
+							git add foo.txt
+							git commit
+
+							[main cc2810a] Merge branch 'branch1'
+						</code></pre>
+				</section>
+
+				<section id="git_diff" class="grid-item">
+					<h4><span class="monoText">git diff</span></h4>
+					<p>The <span class="monoText">git diff</span> command allows us to view changes between commits, branches, files, the working directory, among others. Without using any options, the <span class="monoText">git diff</span> command lists all the changes in the working directory that have not yet been staged.</p>
+					<p>Suppose we have a file called <span class="monoText">bang.txt</span> with the following content:</p>
+					<pre class="language-bash"><code>
+						cat bang.txt
+
+						elephants
+						tigers
+						lions
+						hyenas
+					</code></pre>
+					<p>We add and commit then changes, then make more changes:</p>
+					<pre class="language-bash"><code>
+						elephants
+						tigers
+						lions
+						pandas
+						penguins
+						deer
+					</code></pre>
+					<p>We don't add these changes, and we run <span class="monoText">git diff</span>:</p>
+					<pre class="language-bash"><code>
+						git diff
+						
+						diff --git a/bang.txt b/bang.txt
+						index de94fdb..4405717 100644
+						--- a/bang.txt
+						+++ b/bang.txt
+						<span class="blueText">@@ -1,4 +1,6 @@</span>
+						elephants
+						tigers
+						lions
+						<span class="redText">-hyenas</span>
+						<span class="greenText">+pandas</span>
+						<span class="greenText">+penguins</span>
+						<span class="greenText">+deer</span>
+					</code></pre>
+					<p>The first line of the output, we see:</p>
+					<pre class="language-bash"><code>
+						diff --git a/bang.txt b/bang.txt
+					</code></pre>
+					<p>This tells us which files are being compared. In this case, <span class="monoText">a/bang.txt</span>, the version of the file when last committed, and <span class="monoText">b/bang.txt</span>, the current version of the file. The next line:</p>
+					<pre class="language-bash"><code>
+						index de94fdb..4405717 100644
+					</code></pre>
+					<p>This line tells us the file's metadata. For most developers, this line isn't particularly useful. The first two numbers, <span class="monoText">de94fdb..4405717</span> are the hashes for the two files being compared. In this case, <span class="monoText">de94fdb</span>, is the hash for <span class="monoText">a/bang.txt</span>, and <span class="monoText">4405717</span> is the hash for <span class="monoText">b/bang.txt</span>. The second number, <span class="monoText">100644</span>, is the <span class="italicsText">mode identifier</span>. Again, most developers do not use this information.</p>
+					<p>Next, we have <span class="italicsText">markers</span>:</p>
+					<pre class="language-bash"><code>
+						--- a/bang.txt
+						+++ b/bang.txt
+					</code></pre>
+					<p>This tells line tells us that changes to <span class="monoText">a/bang.txt</span> are indicated with a minus sign, and changes made in <span class="monoText">a/bang.txt</span> are indicated with a plus sign.</p>
+					<p>Next, we have <span class="term">chunks</span>:</p>
+					<pre class="language-bash"><code>
+						<span class="blueText">@@ -1,4 +1,6 @@</span>
+						elephants
+						tigers
+						lions
+						<span class="redText">-hyenas</span>
+						<span class="greenText">+pandas</span>
+						<span class="greenText">+penguins</span>
+						<span class="greenText">+deer</span>
+					</code></pre>
+					<p>These chunks tell us where changes were made. They are called chunks because with extremely large files, <span class="monoText">git diff</span> will only show the relevant chunk of the file where the change was made. In this case, we removed <span class="monoText">hyenas</span> from <span class="monoText">a/bang.txt</span>, so the change is colored red and prefaced with a minus sign. The changes made in <span class="monoText">b/bang.txt</span>, adding <span class="monoText">pandas</span>, <span class="monoText">penguins</span>, and <span class="monoText">deer</span>, are indicated in green and prefaced with a plus sign.</p>
+					<p>At the beginning of each chunk, we have the <span class="monoText">chunk header</span>:</p>
+					<pre class="language-bash"><code>
+						<span class="blueText">@@ -1,4 +1,6 @@</span>
+					</code></pre>
+					<p>In the chunk header, we see two pairs of numbers: <span class="monoText">-1,4</span> and <span class="monoText">+1,6</span>. The minus sign indicates a change to <span class="monoText">a/bang.txt</span>, and the plus sign indicates a change to <span class="monoText">b/bang.txt</span>. Thus, <span class="monoText">-1,4</span> pertains to <span class="monoText">a/bang.txt</span>, and <span class="monoText">+1,6</span> pertains to <span class="monoText">b/bang.txt</span>.</p>
+					<p>What do the numbers mean? The number <span class="monoText">-1,4</span> tells us that, in <span class="monoText">a/bang.txt</span>, 4 lines were extracted starting from line 1. The number <span class="monoText">+1,6</span> tells us, in <span class="monoText">b/bang.txt</span>, 6 lines were extracted starting from line 1. In other words, the numbers simply tell us how big the chunk is.</p>
+					<p>The real power in <span class="monoText">git diff</span> is with its options. The most commonly used commands:</p>
+					<figure class="table">
+						<table class="truth_table heading_center">
+							<thead>
+								<th>command</th>
+								<th>description</th>
+								<th>comment</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>git diff HEAD</td>
+									<td>list all changes in the working tree since the last commit</td>
+									<td>appending a file name, i.e., <span class="monoText boldText">git diff HEAD ⟨file-name⟩</span>, will limit the change viewing to a specific file</td>
+								</tr>
+								<tr>
+									<td><span class="monoText">git diff --staged</span></td>
+									<td>list all changes between the staging area and the last commit</td>
+									<td>appending a file name, i.e., <span class="monoText boldText">git --staged ⟨file-name⟩</span>, will limit the change viewing to a specific file; "I want to see what will be committed if I commit now"</td>
+								</tr>
+								<tr>
+									<td><span class="monoText">git diff ${b_1}$..${b_2}$</span></td>
+									<td>where ${b_1}$ and ${b_2}$ are branch names, list changes between the <span class="italicsText">tips</span> of branch1 and branch2</td>
+									<td>"I want to see the differences between these branches"</td>
+								</tr>
+								<tr>
+									<td><span class="monoText">git diff ${c_1}$..${c_2}$</span></td>
+									<td>where ${c_1}$ and ${c_2}$ are <span class="underlineText">commit hashes</span>, list the changes between commits ${c_1}$ and ${c_2}$</td>
+									<td>substitute ${c_i}$ with hashes; "I want to see the differences between these commits"</td>
+								</tr>
+							</tbody>
+						</table>
+					</figure>
+				</section>
+
+				<section id="git_stashing" class="grid-item">
+					<h4><span class="monoText">git stash</span></h4>
+					<!-- Git Stash -->
+						<p>Recall a previous scenario: Suppose we are working on the branch <span class="monoText">main</span>, making commits to <span class="monoText">foo.txt</span>. Then, we created and switched to a new branch called <span class="monoText">twig</span>. On <span class="monoText">twig</span>, we create a new file called <span class="monoText">zing.txt</span>, do some work, but have not yet committed. After working on <span class="monoText">zing</span>, we find out we need to switch back to <span class="monoText">main</span>. What happens when we switch? Earlier, we saw two outcomes: (1) The changes come with us when we switch to <span class="monoText">main</span>. (2) If there are conflicts, <span class="monoText">Git</span> won't let us switch unless we (a) commit our changes, or (b) <span class="italicsText">stash</span> them. We focus on option (b).</p>
+
+						<p>The <span class="monoText">git stash</span> command allows us to stash uncommitted changes so we can return to them later. By stashing, we avoid unnecessary commits. When we run <span class="monoText">git stash</span>, we tell <span class="monoText">Git</span>: "Hide these changes &mdash; but remember where they are &mdash; so I can go elsewhere and come back to them later."</p>
+
+						<p>With the changes stashed, we can come back to the relevant branch, and run <span class="monoText">git stash pop</span>. Running <span class="monoText">git stash pop</span>, we tell <span class="monoText">Git</span>: "Retrieve (more accurately, remove) the stashed changes and put them back in the working copy." Now, the working copy could be anywhere. This means we could stash changes in <span class="monoText">twig</span>, then put them in working copy on <span class="monoText">main</span>.</p>
+					<!-- Git Stash Apply -->
+						<p><span class="topic"><span class="monoText">git stash apply.</span></span> A potential downside to <span class="monoText">git stash pop</span> is that it removes the changes in the stash. In some situations, we might want to apply the changes in not just one working copy, but multiple copies. To do so, we use the <span class="monoText">git stash apply</span> command. Doing so, we apply the changes in the working copy, but do not clear the stash. This allows us to apply the changes to working copies in other branches.</p>
+				</section>
+
+				<section id="time_travelling" class="grid-item">
+					<h4>Time Traveling</h4>
+					<p>One of <span class="monoText">Git</span>'s most useful features is time traveling &mdash; moving backwards and forwards along the timeline. With this ability, we can undo changes, view previous changes, discard changes, restore changes, etc. We explore the most commonly used features in turn.</p>
+
+					<p><span class="topic"><span class="monoText">git checkout</span>.</span> To start, we have a file called <span class="monoText">ein.txt</span> in a directory <span class="monoText">baz</span>. We've initialized a <span class="monoText">Git</span> repo, added <span class="monoText">ein.txt</span>, and committed changes. <span class="monoText">ein.txt</span>, on first commit, contains the following line:</p>
+					<pre class="language-bash"><code>
+						1 + 1 = 2
+					</code></pre>
+					<p>Then, we make another change in <span class="monoText">ein.txt</span>:</p>
+					<pre class="language-bash"><code>
+						1 + 1 = 2
+						1 + 2 = 3
+					</code></pre>
+					<p>Again, we add and commit. Running <span class="monoText">git log</span>:</p>
+					<pre class="language-bash"><code>
+						git log --oneline
+
+						6c451c6 (HEAD -> main) added second line
+						91efaf2 add new file, add first equation						
+					</code></pre>
+					<p>Suppose I want to see what <span class="monoText">ein.txt</span> looked like on first commit. To do so, we use the syntax:</p>
+					<figure class="math-display">
+						<pre class="language-pseudo"><code>
+							git checkout <span class="italicsText">commit-hash</span>
+						</code></pre>
+					</figure>
+					<p>The <span class="monoText">commit-hash</span> is the sequence of numbers we see above (or, the entire series of numbers we see for each commit when we run just <span class="monoText">git log</span>; <span class="monoText">Git</span> only needs the first seven numbers). So, to see the first commit of <span class="monoText">ein.txt</span>, use the commit hash <span class="monoText">91efaf2</span>:</p>
+					<pre class="language-bash"><code>
+						git checkout 91efaf2
+
+						
+						Note: switching to '91efaf2'.
+
+						You are in 'detached HEAD' state. You can look around, make experimental
+						changes and commit them, and you can discard any commits you make in this
+						state without impacting any branches by switching back to a branch.
+
+						If you want to create a new branch to retain commits you create, you may
+						do so (now or later) by using -c with the switch command. Example:
+
+							git switch -c &lt;new-branch-name>
+
+						Or undo this operation with:
+
+							git switch -
+
+						Turn off this advice by setting config variable advice.detachedHead to false
+
+						HEAD is now at 91efaf2 add new file, add first equation
+					</code></pre>
+					<p><span class="monoText">Git</span> returns a message, telling us we are in a <span class="italicsText">detached head</span> state. If we run <span class="monoText">git log --oneline</span>:</p>
+					<pre class="language-bash"><code>
+						91efaf2 (HEAD) add new file, add first equation
+					</code></pre>
+					<p>We only see the first commit. This is because we have gone back in time. At this point in time, there was no second commit. If we take a look at the contents of the file:</p>
+					<pre class="language-bash"><code>
+						cat ein.txt
+
+						1 + 1 = 2
+					</code></pre>
+
+					<p>We only see the last change we made before the first commit. Very cool. Why is it called <span class="italicsText">detached head</span>? Recall the way <span class="monoText">Git</span> works. <span class="monoText">HEAD</span> always points to a reference to a branch we are currently one, and that branch reference always points to the tip of the branch. When we travel backwards in time, <span class="monoText">HEAD</span> points to a specific commit, rather than a branch reference. Because <span class="monoText">HEAD</span> normally points to a branch reference, <span class="monoText">Git</span> describes it as being &#8220;detached&#8221; when it is no longer pointing to a branch reference.</p>
+
+					<p><span class="topic">Reattaching the Head.</span> To get out of the <span class="monoText">detached head</span> state, we simply switch to a branch. Here, we only have one branch, <span class="monoText">main</span>, so we use <span class="monoText">git switch main</span>:</p>
+					<pre class="language-bash"><code>
+						git switch main
+						
+						Previous HEAD position was 91efaf2 add new file, add first equation
+						Switched to branch 'main'
+					</code></pre>
+
+					<p>Now, let's say we make some more changes and commits to <span class="monoText">ein.txt</span>:</p>
+					<pre class="language-bash"><code>
+						9364fe0 (HEAD -> main) add fifth line
+						5943f03 add third, fourth lines
+						6c451c6 add second line
+						91efaf2 add new file, add first line
+					</code></pre>
+
+					<p><span class="topic">Creating a Branch at a Past Point in Time.</span> Now let's say that on the third commit, we want to create a new branch. First, let's time travel to the third commit, <span class="monoText">5943f03</span>.</p>
+					<pre class="language-bash"><code>
+						git checkout 5943f03
+					</code></pre>
+					<p><span class="monoText">HEAD</span> now points to the third commit. Now that we're on the third commit, we can simply use the <span class="monoText">git branch</span> command to create a new branch:</p>
+					<pre class="language-bash"><code>
+						git branch twig_3
+					</code></pre>
+					<p>Now we have a branch called <span class="monoText">twig_3</span> stemming from the third commit, and we can switch to it just like any other branch, and we can start working on that branch:</p>
+					<pre class="language-bash"><code>
+						git switch twig_3
+					</code></pre>
+
+					<!-- Discarding Changes -->
+						<p><span class="topic">Discarding Changes.</span> Let's say we've made and saved some changes to a file but it turns out we do not want to keep the changes. We can undo these changes by <span class="italicsText">reverting</span> the file to whatever it looked like when we last committed with the following syntax:</p>
+						<figure class="math-display">
+							<pre class="language-pseudo"><code>
+								git checkout HEAD <span class="italicsText">file-name</span>
+							</code></pre>
+						</figure>
+						<p>Suppose we wrote some gibberish to our <span class="monoText">ein.txt</span>:</p>
+						<pre class="language-bash"><code>
+							1 + 1 = 2
+							1 + 2 = 3
+							2 + 3 = 5
+							3 + 5 = 8
+							adfasdfadfs
+						</code></pre>
+						<p>We saved and closed this file, then went to bed, woke up, and realized we do not like what we saved. We could manually delete the line, but this would not be a good idea if we've made hundreds, if not thousands, of changes. Instead, we can simply revert to changes made on the last commit:</p>
+						<pre class="language-bash"><code>
+							git checkout HEAD ein.txt
+
+							Updated 1 path from 091ffbf
+						</code></pre>
+						<p>If we examine the contents of <span class="monoText">ein.txt</span>:</p>
+						<pre class="language-bash"><code>
+							cat ein.txt
+
+							1 + 1 = 2
+							1 + 2 = 3
+							2 + 3 = 5
+							3 + 5 = 8
+						</code></pre>
+						<p>Alternatively, we can just use the <span class="monoText">git restore</span> command. If we want to revert to changes in a specific commit, we use the following syntax:</p>
+						<figure class="math-display">
+							<ul class="syntax"><li>git restore --source HEAD~${n}$ ${\textit{file-name}}$</li></ul>
+						</figure>
+						<p>The option <span class="monoText">HEAD~${n}$</span> means "The commit ${n}$ commits before <span class="monoText">HEAD</span>." So, the command: <span class="boldText monoText">git restore --source HEAD~2 ein.txt</span> means, "Revert to the changes made in <span class="monoText">ein.txt</span> 2 commits ago."</p>
+
+					<!-- Unstaging Changes -->
+						<p><span class="topic">Unchanging Stages.</span> There are times where we unintentionally stage a change. How do we remove these changes from the staging area? By using the <span class="monoText">git restore</span> command:</p>
+						<pre class="language-bash"><code>
+							git restore --staged ein.txt
+						</code></pre>
+						<p>Now the changes we made have been removed from the staging area. The general syntax:</p>
+						<figure class="math-display">
+							<ul class="syntax"><li>git restore --staged ${\textit{file-name}}$</li></ul>
+						</figure>
+
+					<!-- Undoing Commits -->
+						<p><span class="topic">Undoing Commits.</span> There are then times where unintentionally make a commit. To undo a commit, we use the <span class="monoText">git reset</span> command. The general syntax:</p>
+						<figure class="math-display">
+							<ul class="syntax"><li>git reset ${\textit{commit-hash}}$</li></ul>
+						</figure>
+						<p>The <span class="monoText">git reset</span> command wil reset a repo back to the ${\text{commit-hash}}$ we passed as an argument. The command above will only remove the commits, but it will <span class="underlineText">not</span> remove the changes we made. If we want to remove those changes, then we must use a hard reset:</p>
+						<figure class="math-display">
+							<ul class="syntax"><li>git reset --hard ${\textit{commit-hash}}$</li></ul>
+						</figure>
+
+					<!-- Git revert -->
+						<p><span class="topic"><span class="monoText">git revert</span>.</span>Both <span class="monoText">git revert</span> and <span class="monoText">git reset</span> undo a commit, but they accomplish it in different ways. With <span class="monoText">git reset</span>, we actually move the branch pointer backwards and eliminate commits. With <span class="monoText">git revert</span>, however, we create a brand new commit which reverses the changes from a commit. Thus, in contrast to <span class="monoText">git rest</span>, the command <span class="monoText">git revert</span> will create a new commit, thereby prompting us to enter a commit message.</p>
+				</section>
+
+				<section id="github_intro" class="grid-item">
+					<h4>Github</h4>
+					<p>Github is a service providing a common place, a cloud, to share <span class="monoText">Git</span> repos. We can put our <span class="monoText">Git</span> repos on Github and share them with others, as well as view other people's <span class="monoText">Git</span> repos. Additionally, Github allows its users to collaborate on projects, as well as displaying static websites.</p>
+				</section>
+
+				<section id="git_cloning" class="grid-item">
+					<span class="topic">Cloning</span>
+					<p>With <span class="monoText">Git</span>, we can create our own repos. As we work on larger and larger projects, we often want to obtain pre-existing code. Whether its a Python module, a C library, or a Java package, a substantial part of programming is reusing code. That pre-existing code is likely hosted on Github or some other website.</p>
+					<p>To obtain a local copy of a pre-existing repo, we use the <span class="monoText">git clone</span> command and the <span class="monoText">URL</span> for that repo:</p>
+					<figure class="math-display">
+						<ul class="syntax"><li>git clone ${\textit{repo-URL}}$</li></ul>
+					</figure>
+					<p>When we clone a repo, we initialize a new repo in the current working directory. As such, we absolute must ensure that we are not in a repo when we clone. The ${\textit{repo-URL}}$ is simply the <span class="monoText">URL</span> for the page hosting the repo. For example, if we search for "MathJax github" on Google, the first result has the link <span class="monoText">https://github.com/mathjax/MathJax</span>. Clicking on this page, we see the page hosting the MathJax repo. The <span class="monoText">URL</span> for this page is what we use to clone the repo.</p>
+				</section>
+
+				<section id="pushing_to_github" class="grid-item">
+					<h4>Getting Code On Github</h4>
+
+					<p>The next sections assume that an <span class="monoText">SSH</span> key for the relevant machine has been added to a Github account. This assumption is met if the following steps have been completed:</p>
+					
+					<ol>
+						<li>A Github account has been made. See <a href="https://github.com/">this link</a> to make a Github account.</li>
+						<li>An <span class="monoText">SSH</span> key has been generated. See <a href="https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">this link</a> to generate an <span class="monoText">SSH</span> key. Be sure to first <a href="https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/checking-for-existing-ssh-keys">check</a> if an <span class="monoText">SSH</span> key doesn't already exist.</li>
+						<li>An <span class="monoText">SSH</span> key has been added to the Github account. See <a href="https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">this link</a> to add an <span class="monoText">SSH</span> key.</li>
+					</ol>
+
+					<!-- Pushing -->
+						<p><span class="topic">Pushing a Repo to Github.</span> The first thing we want to know is how to get our code on Github. We have two options: (1) Getting an existing repo on Github, and (2) start from scratch.</p>
+						<p><span class="topic">I have an existing repo.</span> If we have an existing repo locally, we can get our code on Github with the following steps:</p>
+						<figure class="math-display">
+							<div class="rule">
+								<ol>
+									<li>create a new repo on Github</li>
+									<li>connect the local repo (add a <span class="monoText">remote</span>).</li>
+									<li><span class="monoText">push</span> changes to Github.</li>
+								</ol>
+							</div>
+						</figure>
+						<p>To create a new repo on Github, simply go to the repositories tab, and click the green icon for a new repo. Name the repo and add a description. We will discuss the other options later.</p>
+						<p>Once a new repo is created, we need add a <span class="monoText">remote</span>. A <span class="monoText">remote</span> is simply a <span class="monoText">URL</span> for the hosted repo. At the moment, <span class="monoText">Git</span> on our local machine has no idea where the Github repo we just created is. A <span class="monoText">remote</span> is what gives <span class="monoText">Git</span> the necessary information.</p>
+
+					<!-- Creating a Remote -->
+						<p><span class="topic">Creating a <span class="monoText">remote</span>.</span> To create a <span class="monoText">remote</span>, we use the <span class="monoText">git remote -v</span> command. This command simply tells us the current remotes we have. Since we do not have any remotes currently, running this command will not output anything. To create a new <span class="monoText">remote</span>, we use the following syntax:</p>
+						<figure class="math-display">
+							<ul class="syntax"><li>git remote add ${\textit{remote-label}}$ ${\textit{github-repo-URL}}$</li></ul>
+						</figure>
+						<p>The two things we must pass as arguments is ${\textit{remote-label},}$ the &#8220;name&#8221; of our remote, and ${\textit{Github-repo-URL},}$ the <span class="monoText">URL</span> of the Github repo we created. A standard name for a remote is <span class="monoText">origin</span>. So, for example:</p>
+						<pre class="language-bash"><code>
+							git remote add origin  https://github.com/fuxaxar/repo-test
+						</code></pre>
+						<p>If we do not see any output after running that command, then it worked successfully. To ensure, we run <span class="monoText">git remote -v</span>:</p>
+						<pre class="language-bash"><code>
+							git remote -v
+
+							origin	https://github.com/fuxaxar/repo-test.git (fetch)
+							origin	https://github.com/fuxaxar/repo-test.git (push)
+						</code></pre>
+						<p>Great, we've connected our local repo to the Github repo.</p>
+					<!-- Pushing -->
+						<p><span class="topic">Pushing.</span> With the local repo connected to the Github repo, we can now actually get our code onto the the Github repo. To do so, we use the <span class="monoText">git push</span> command. The command has the following syntax:</p>
+						<figure class="math-display">
+							<ul class="syntax"><li>git push ${\textit{remote-label}}$ ${\textit{branch}}$</li></ul>
+						</figure>
+						<p>Thus, to push our example local repo:</p>
+						<pre class="language-bash"><code>
+							git push origin main
+						</code></pre>
+						<p>Running this command, we are prompted to enter our Github username and password. Here, simply enter the username, but for the password, you may need to generate a token. To do so, see <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">this link</a>. Once a token is generated, enter that token as the password. Save the token in a special place, it is what you will use to push changes. Assuming all goes well, we should see some data output, followed by a clean prompt. If we go on our Github account, and click on our repos tab, we should see the local repo now on Github.</p>
+
+					<!-- Starting from Scratch -->
+						<p><span class="topic">I am starting from scratch.</span> If we are starting from scratch, we follow these steps:</p>
+						<figure class="math-display">
+							<div class="rule">
+								<ol>
+									<li>create a new repo on Github.</li>
+									<li><span class="monoText">clone</span> said repo locally</li>
+									<li>do work locally</li>
+									<li><span class="monoText">push</span> changes to Github</li>
+								</ol>
+							</div>
+						</figure>
+					
+				</section>
+			</article>
+		</main>
+		<!-- Scripts -->
+			<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js" integrity="sha384-YNHdsYkH6gMx9y3mRkmcJ2mFUjTd0qNQQvY9VYZgQd7DcN7env35GzlmFaZ23JGp" crossorigin="anonymous"></script>
+			<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js " integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+			<script>
+				document.addEventListener("DOMContentLoaded", function () {
+					renderMathInElement(document.body, {
+						// customised options
+						// • auto-render specific keys, e.g.:
+						delimiters: [
+							{ left: "$$", right: "$$", display: true },
+							{ left: "$", right: "$", display: false },
+							{ left: "\\(", right: "\\)", display: false },
+							{ left: "\\[", right: "\\]", display: true },
+						],
+						// • rendering keys, e.g.:
+						throwOnError: false,
+					});
+				});
+			</script>
+			<!-- <script src="https://unpkg.com/function-plot@1.22.2/dist/function-plot.js"></script> -->
+			<script src="js/csfoundations.js"></script>
+			<script src="js/prism.js"></script>
+	</body>
+</html>
