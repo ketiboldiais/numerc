@@ -1,0 +1,76 @@
+/* Fonts */
+	html {font-size: 1.8vw}
+	/* Julia Mono Font */
+		@font-face {
+			font-family: "JuliaMono";
+			src: url('../fonts/julia_mono/juliaMono_regular.woff2') format("woff2");
+			font-weight: normal;
+			font-style: normal;
+		}
+		
+	/* Inconsolata Font */
+		@font-face {
+			font-family: "Inconsolata";
+			src: url('../fonts/inconsolata/inconsolata_regular.ttf');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: "Inconsolata";
+			src: url('../fonts/inconsolata/inconsolata_bold.ttf');
+			font-weight: bold;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: "Inconsolata";
+			src: url('../fonts/inconsolata/inconsolata_variable_width.ttf');
+			font-weight: normal;
+			font-style: italic;
+		}
+	/* CMU Serif Fonts */
+		@font-face {
+			font-family: "cmu_serif";
+			src: url("../fonts/cmu_serif/cmunrm.woff");
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: "cmu_serif";
+			src: url("../fonts/cmu_serif/cmunbx.woff");
+			font-weight: bold;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: "cmu_serif";
+			src: url("../fonts/cmu_serif/cmunti.woff");
+			font-weight: normal;
+			font-style: italic;
+		}
+
+		@font-face {
+			font-family: "cmu_serif";
+			src: url("../fonts/cmu_serif/cmunbi.woff");
+			font-weight: bold;
+			font-style: italic;
+		}
+
+		// Font Stacks
+		$serif: "cmu_serif";
+		$std-font-size: 1rem;
+		$std-color: #1a1a1a;
+		$std-padding: 0 3rem;
+body {
+	font-family: $serif;
+	color: $std-color;
+	font-size: $std-font-size;
+	padding: std-padding;
+	margin: 0;
+	text-align: left;
+}
+
+		
+	

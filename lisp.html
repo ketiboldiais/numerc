@@ -2978,6 +2978,7 @@
 											(else (cons (car l) (subst n first second (cdr l)))))))
 							</code></pre>
 							<p><span class="exh">Exercise.</span> Recall the function definition for <span class="monoText">rember</span>. Write a function called <span class="monoText">multirember</span> that gives as its final value a list with all occurrences of the argument <span class="monoText">a</span> removed.</p>
+							<p>We arrive at another rule for recursion: Always change <span class="underlineText">at least one</span> argument when recurring. It must be changed to be closer to termination. The changing argument must be tested in the termination condition. When using <span class="monoText">cdr</span>, the termination is tested with <span class="monoText">null?</span>.</p>
 						</details>
 					</details>
 				</section>

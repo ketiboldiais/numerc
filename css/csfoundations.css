@@ -57,19 +57,28 @@
 		}
 /* global styles */
 	html { 
-		font-size: 1.8vw; 
+		font-size: 1.6vw; 
 	}
 	* {box-sizing: border-box;}
 	body {
 		font-family: "cmu_serif";
 		color: #1a1a1a;
 		font-size: 1rem;
-		padding: 0 3rem;
-		margin: 0;
+		padding: 0;
+		margin: 0 0.8em;
 		text-align: left;
 	}
 	div {padding: 0; margin: 0}
 /* Page styles */
+	main {
+		display: grid;
+		grid-template-columns: 22% 73%;
+		margin-bottom: 4vh;
+	}
+	main.main-page {
+		display: block;
+		padding: 0 10vw;
+	}
 	article {
 		width: 100%;
 		padding: 0;
@@ -77,13 +86,84 @@
 		margin-bottom: 10vh;
 		background-color: white;
 	}
-	section {width: 100%; margin: 0; padding: 0; margin-bottom: 3vh}
-/* Nav and Note Lists */
+	section {
+		margin: 0; 
+		padding: 1em 0 0 1em; 
+		margin-bottom: 3vh
+	}
+/* Nav Bar */
+	html {
+		scroll-behavior: smooth;
+	}
+
+	main > nav {
+		position: sticky;
+		top: 1rem;
+		align-self: start;
+		height: 90vh;
+		overflow-y: auto;
+	}
+
+	main > nav ul {
+		margin: 0;
+		padding: 0 1.2em 0 1.2em;
+	}
+
+	main > nav ul li {
+		font-family: 'Inconsolata';
+		margin-bottom: 0.5em;
+		font-size: 0.8rem;
+	}
+
+	.section-nav li.active > a {
+		color: #333;
+		font-weight: 500;
+	}
+
+	.section-nav {
+		padding-left: 0;
+		border-left: 1px solid #efefef;
+	}
+
+	.section-nav a {
+		text-decoration: none;
+		display: block;
+		padding: .125rem 0;
+		color: #ccc;
+		transition: all 50ms ease-in-out;
+	}
+
+	.section-nav a:hover,
+	.section-nav a:focus {
+		color: #666;
+	}
+
+	/* Nav and Note Lists */
 	.note_list a {
 		font-family: "Inconsolata";
 		text-decoration: none;
 		color: rgb(12, 84, 105);
 		
+	}
+	/* Scroll Bar */
+	/* width */
+	nav::-webkit-scrollbar {
+		width: 3px;
+	}
+
+	/* Track */
+	nav::-webkit-scrollbar-track {
+		background: #f1f1f1;
+	}
+
+	/* Handle */
+	nav::-webkit-scrollbar-thumb {
+		background: #888;
+	}
+
+	/* Handle on hover */
+	nav::-webkit-scrollbar-thumb:hover {
+		background: #555;
 	}
 /* Figure element styling */
 	figure {
@@ -152,19 +232,20 @@
 	}
 	h2 {margin: 0}
 	h1 {
-		font-size: 2.5rem;
+		font-size: 2.8rem;
 		text-align: center;
 		line-height: 1;
 		margin: 1.3rem 0.3rem 2rem 0.3rem;
 		padding: 0;
 	}
 	h2 {
-		font-size: 150%;
+		font-size: 200%;
 		font-variant: small-caps;
 		padding: 0;
 		margin-top: 2%;
 		text-align: center;
 	}
+	h1, h2 {font-family: "Inconsolata";}
 	h3 {font-size: 110%; text-align: center; padding-bottom: 0.}
 	h4 {font-size: 105%;}
 	h5 {font-size: 100%;}
@@ -439,8 +520,6 @@
 	}
 /* Language - Java */
 	code[class*="language-java"], 
-	code[class*="language-html"],
-	pre[class*="language-html"],
 	pre[class*="language-java"] {
 		color: rgb(255, 247, 228); /* base00 */
 	}
@@ -904,7 +983,179 @@
 		height: 120%;
 		width: 120%;
 	}
+/* Language - cpp */
+	code[class*="language-cpp"],
+	pre[class*="language-cpp"] {
+		 /* base00 */
+	}
 
+	:not(pre) > code[class*="language-cpp"],
+	pre[class*="language-cpp"] {
+		background-color: rgb(46, 49, 50); /* base3 */
+	}
+
+	code[class*="language-cpp"] >.token.comment,
+	code[class*="language-cpp"] >.token.prolog,
+	code[class*="language-cpp"] >.token.doctype,
+	code[class*="language-cpp"] >.token.cdata {
+		color: hsl(0, 0%, 47%); /* #777777 */
+	}
+
+	code[class*="language-cpp"] >.token.punctuation {
+		color: #fcfcfc;
+	}
+
+	code[class*="language-cpp"] >.token.namespace {
+		opacity: .7;
+	}
+
+	code[class*="language-cpp"] >.token.function {
+		color: rgb(255, 122, 122);
+	}
+
+	code[class*="language-cpp"] >.token.tag,
+	code[class*="language-cpp"] >.token.boolean,
+	code[class*="language-cpp"] >.token.number,
+	code[class*="language-cpp"] >.token.deleted {
+		color: hsl(304, 100%, 82%); /* #CF6A4C */
+	}
+
+	code[class*="language-cpp"] >.token.keyword,
+	code[class*="language-cpp"] >.token.property,
+	code[class*="language-cpp"] >.token.selector,
+	code[class*="language-cpp"] >.token.constant,
+	code[class*="language-cpp"] >.token.symbol,
+	code[class*="language-cpp"] >.token.builtin {
+		color: hsl(0, 0%, 100%); /* #F9EE98 */
+	}
+
+	code[class*="language-cpp"] >.token.attr-name,
+	code[class*="language-cpp"] >.token.attr-value,
+	code[class*="language-cpp"] >.token.string,
+	code[class*="language-cpp"] >.token.char,
+	code[class*="language-cpp"] >.token.entity,
+	code[class*="language-cpp"] >.token.url,
+	code[class*="language-cpp"] >.language-css .token.string,
+	code[class*="language-cpp"] >.style .token.string,
+	code[class*="language-cpp"] >.token.variable,
+	code[class*="language-cpp"] >.token.inserted {
+		color: hsl(75, 63%, 70%); /* #8F9D6A */
+	}
+
+	code[class*="language-cpp"] >.token.operator {color: rgb(255, 239, 117)}
+
+
+
+	code[class*="language-cpp"] >.token.atrule {
+		color: hsl(218, 22%, 55%); /* #7587A6 */
+	}
+
+	code[class*="language-cpp"] >.token.regex,
+	code[class*="language-cpp"] >.token.important {
+		color: hsl(42, 75%, 65%); /* #E9C062 */
+	}
+
+	code[class*="language-cpp"] >.token.important,
+	code[class*="language-cpp"] >.token.bold {
+		font-weight: bold;
+	}
+	code[class*="language-cpp"] >.token.italic {
+		font-style: italic;
+	}
+
+	code[class*="language-cpp"] >.token.entity {
+		cursor: help;
+	}
+
+	code[class*="language-cpp"] >pre[data-line] {
+		padding: 1em 0 1em 3em;
+		position: relative;
+	}
+
+	/* Markup */
+	code[class*="language-cpp"] >.language-markup .token.tag,
+	code[class*="language-cpp"] >.language-markup .token.attr-name,
+	code[class*="language-cpp"] >.language-markup .token.punctuation {
+		color: hsl(33, 33%, 52%); /* #AC885B */
+	}
+/* Language Prolog */
+	code[class*="language-prolog"]>.token.comment,
+	code[class*="language-prolog"]>.token.prolog,
+	code[class*="language-prolog"]>.token.doctype,
+	code[class*="language-prolog"]>.token.cdata {
+		color: hsl(0, 0%, 47%); /* #777777 */
+	}
+
+	code[class*="language-prolog"]>.token.punctuation {
+		opacity: .7;
+	}
+
+	code[class*="language-prolog"]>.token.namespace {
+		opacity: .7;
+	}
+
+	code[class*="language-prolog"]>.token.tag,
+	code[class*="language-prolog"]>.token.boolean,
+	code[class*="language-prolog"]>.token.number,
+	code[class*="language-prolog"]>.token.deleted {
+		color: hsl(14, 58%, 55%); /* #CF6A4C */
+	}
+
+	code[class*="language-prolog"]>.token.keyword,
+	code[class*="language-prolog"]>.token.property,
+	code[class*="language-prolog"]>.token.selector,
+	code[class*="language-prolog"]>.token.constant,
+	code[class*="language-prolog"]>.token.symbol,
+	code[class*="language-prolog"]>.token.builtin {
+		color: hsl(53, 89%, 79%); /* #F9EE98 */
+	}
+
+	code[class*="language-prolog"]>.token.attr-name,
+	code[class*="language-prolog"]>.token.attr-value,
+	code[class*="language-prolog"]>.token.string,
+	code[class*="language-prolog"]>.token.char,
+	code[class*="language-prolog"]>.token.operator,
+	code[class*="language-prolog"]>.token.entity,
+	code[class*="language-prolog"]>.token.url,
+	code[class*="language-prolog"]>.language-css .token.string,
+	code[class*="language-prolog"]>.style .token.string,
+	code[class*="language-prolog"]>.token.variable,
+	code[class*="language-prolog"]>.token.inserted {
+		color: hsl(76, 21%, 52%); /* #8F9D6A */
+	}
+
+	code[class*="language-prolog"]>.token.atrule {
+		color: hsl(218, 22%, 55%); /* #7587A6 */
+	}
+
+	code[class*="language-prolog"]>.token.regex,
+	code[class*="language-prolog"]>.token.important {
+		color: hsl(42, 75%, 65%); /* #E9C062 */
+	}
+
+	code[class*="language-prolog"]>.token.important,
+	code[class*="language-prolog"]>.token.bold {
+		font-weight: bold;
+	}
+	code[class*="language-prolog"]>.token.italic {
+		font-style: italic;
+	}
+
+	code[class*="language-prolog"]>.token.entity {
+		cursor: help;
+	}
+
+	code[class*="language-prolog"]>pre[data-line] {
+		padding: 1em 0 1em 3em;
+		position: relative;
+	}
+
+	/* Markup */
+	code[class*="language-prolog"]>.language-markup .token.tag,
+	code[class*="language-prolog"]>.language-markup .token.attr-name,
+	code[class*="language-prolog"]>.language-markup .token.punctuation {
+		color: hsl(33, 33%, 52%); /* #AC885B */
+	}
 /* Language - Swift */
 	code[class*="language-swift"],
 	pre[class*="language-swift"] {
@@ -1272,6 +1523,94 @@
 	code[class*="language-haskell"] > .token.inserted {
 		color: green;
 	}
+/* HTML */
+	code[class*="language-html"],
+	pre[class*="language-html"] {
+		color: rgb(220,238,255);
+	}
+
+	:not(pre) > code[class*="language-html"],
+	pre[class*="language-html"] {
+		background: rgb(47, 49, 50);
+	}
+	code[class*="language-html"]>.token.comment,
+	code[class*="language-html"]>.token.prolog,
+	code[class*="language-html"]>.token.doctype,
+	code[class*="language-html"]>.token.cdata {
+		color: hsl(0, 0%, 47%); /* #777777 */
+	}
+
+	code[class*="language-html"]>.token.punctuation {
+		opacity: .7;
+	}
+
+	code[class*="language-html"]>.token.namespace {
+		opacity: .7;
+	}
+
+	code[class*="language-html"]>.token.tag,
+	code[class*="language-html"]>.token.boolean,
+	code[class*="language-html"]>.token.number,
+	code[class*="language-html"]>.token.deleted {
+		color: hsl(0, 0%, 96%); /* #CF6A4C */
+	}
+
+	code[class*="language-html"]>.token.keyword,
+	code[class*="language-html"]>.token.property,
+	code[class*="language-html"]>.token.selector,
+	code[class*="language-html"]>.token.constant,
+	code[class*="language-html"]>.token.symbol,
+	code[class*="language-html"]>.token.builtin {
+		color: hsl(53, 89%, 79%); /* #F9EE98 */
+	}
+
+	code[class*="language-html"]>.token.attr-name,
+	code[class*="language-html"]>.token.attr-value,
+	code[class*="language-html"]>.token.string,
+	code[class*="language-html"]>.token.char,
+	code[class*="language-html"]>.token.operator,
+	code[class*="language-html"]>.token.entity,
+	code[class*="language-html"]>.token.url,
+	code[class*="language-html"]>.language-css .token.string,
+	code[class*="language-html"]>.style .token.string,
+	code[class*="language-html"]>.token.variable,
+	code[class*="language-html"]>.token.inserted {
+		color: hsl(76, 21%, 52%); /* #8F9D6A */
+	}
+
+	code[class*="language-html"]>.token.atrule {
+		color: hsl(218, 22%, 55%); /* #7587A6 */
+	}
+
+	code[class*="language-html"]>.token.regex,
+	code[class*="language-html"]>.token.important {
+		color: hsl(42, 75%, 65%); /* #E9C062 */
+	}
+
+	code[class*="language-html"]>.token.important,
+	code[class*="language-html"]>.token.bold {
+		font-weight: bold;
+	}
+	code[class*="language-html"]>.token.italic {
+		font-style: italic;
+	}
+
+	code[class*="language-html"]>.token.entity {
+		cursor: help;
+	}
+
+	code[class*="language-html"]>pre[data-line] {
+		padding: 1em 0 1em 3em;
+		position: relative;
+	}
+
+	/* Markup */
+	.language-markup .token.tag,
+	.language-markup .token.attr-name,
+	.language-markup .token.punctuation {
+		color: hsl(33, 33%, 52%); /* #AC885B */
+	}
+
 
 /* Code annotation styling */
 	span.code-annotation {
@@ -1295,11 +1634,16 @@
 	}
 /* Media Queries */
 	/* Font Media Queries */
-	@media screen and (min-width: 601px) and (max-width: 1000px) {
+	@media screen and (min-width: 901px) {
+		html {font-size: 1.3vw;}
+		main.main-page {
+			padding: 0 30vw;
+		}
+	}
+	@media screen and (min-width: 601px) and (max-width: 900px) {
 		html {font-size: 2vw;}
-		body {padding: 0 8rem;}
 	}
 
 	@media screen and (min-width: 0px) and (max-width: 600px) {
-		html {font-size: 2.7vw;}
+		html {font-size: 2.5vw;}
 	}
