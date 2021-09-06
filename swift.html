@@ -1,53 +1,638 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Introduction to Computer Science with JavaScript</title>
-		<!-- <base href="http://127.0.0.1:5500/csfoundations/" /> -->
-		<link rel="stylesheet" href="css/csfoundations.css" />
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc" crossorigin="anonymous" />
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Introduction to Computer Science with JavaScript</title>
+	<!-- <base href="http://127.0.0.1:5500/csfoundations/" /> -->
+	<link rel="stylesheet" href="css/csfoundations.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc" crossorigin="anonymous" />
+	
+</head>
+
+<body>
+	<header>
+		<h1>numerc</h1>
+	</header>
+
+	<main>
+
+<nav class="section-nav">
+	<ul>
+		<li><a href="#introduction">Introduction</a></li>
+		<li><a href="#basic_constructs">Basic Constructs</a></li>
+		<li><a href="#statements">Statements</a></li>
+		<li><a href="#comments">Comments</a></li>
+		<li><a href="#variables">Variables</a></li>
+		<li><a href="#functions">Functions</a></li>
+		<li><a href="#swift_standard_library">The Swift Standard Library</a></li>
+		<li><a href="#casting">Casting</a></li>
+		<li><a href="#interpolation">Interpolation</a></li>
+		<li><a href="#arrays">Arrays</a></li>
+		<li><a href="#dictionaries">Dictionaries</a></li>
+		<li><a href="#conditionals_control">Conditional Control</a></li>
+		<li><a href="#control_loops">Control Loops</a></li>
+		<li><a href="#views">Views</a></li>
+		<li><a href="#view_modifiers">View Modifiers</a></li>
+		<li><a href="#theory_behind_views">Theory of Views</a></li>
+		<li><a href="#state_and_swiftUI">State and SwiftUI</a></li>
+		<li><a href="#program_architecture">Program Architecture</a></li>
+	</ul>
+</nav>
+
+		<article id="swift_introduction" class="grid" data-colcade="columns: .grid-col, items: .grid-item" >
+
+
+<section id="introduction">
+	<h2>Mobile Development: Swift</h2>
+	<p>The materials below provide an overview of mobile development in Swift. Mobile software production is fairly similar to software production on larger devices like desktops, with some nuances. We will encounter these nuances as we explore the materials, highlighting them accordingly. The following materials assume a basic knowledge of functional and object-oriented programming.</p>
+</section>
+
+<section id="basic_constructs">
+	<h3>Basic Constructs</h3>
+
+	<p>In the next few sections, we cover basic constructs in Swift &mdash; variables, functions, control flow, methods and properties, arrays, strings, etc. Much of these constructs should look familiar, but some constructs have remarkably powerful features. Given that the basic constructs are rudimentary, we will pay close attention to these Swift features.</p>
+
+	<p>True to tradition, here is our first program:</p>
+
+	<pre class="language-swift"><code>
+		print("Hello, world!")
+	</code></pre>
+	<pre class="language-bash"><code>
+		Hello, world!
+	</code></pre>
+
+	<p>This looks similar to C and Python. However, unlike C, we do not need to place code in a <span class="monoText">main()</span> function. All code written in the global scope is an entry point to the program. We also need not write semicolons at the end of every statement, nor do we need to import a separate library for I/O and string handling.</p>
+
+	<p>Swift is a <span class="term">compiled language</span>. This means that Swift source code undergoes both compilation (subject to compilation errors) and execution (subject to runtime errors). This means our source must first pass compilation before it can <span class="italicsText">run</span>. Swift's compiler is extremely strict, and Xcode will raise warnings as we write statements.</p>
+
+	<p><span class="topic">Axioms of Swift.</span> Somewhat like Python, everything in Swift is an <span class="term">object</span>. The difference, however, is that we must think of this idea somewhat differently from other object-oriented languages. Rather than thinking of every object in Swift as having a particular method associated with it, we must think of every object in Swift as capable of receiving a certain <span class="italicsText">message</span>. Just as certain objects in Python or Java can only perform certain actions, objects in Swift can only receive certain messages. To send a message to an object in Swift, we use <span class="term">dot-notation</span>. For example:</p>
+
+	<pre class="language-swift"><code>
+		cat.meow()
+	</code></pre>
+
+	<p>In this case, <span class="monoText">cat</span> is the object, and we send it the message <span class="monoText">meow()</span>. It is often good style to use a line break for such dot-notated expresions:</p>
+
+	<pre class="language-swift"><code>
+		cat
+			.meow()
+	</code></pre>
+
+	<p>In Swift, we can think of every noun as an object, and every verb as a message. As evidence of how everything in Swift is an object, we extend built-in types:</p>
+
+	<pre class="language-swift"><code>
+		extension Int {
+			func greet() {
+				print("Hello, I'm \(self)")
+			}
+		}
 		
-	</head>
-	<body>
-		<header>
-			<h1>Computer Science Fundamentals</h1>
-		</header>
-		<main>
-		<!-- Swift Programming -->
-			<article id="swift_introduction" class="grid" data-colcade="columns: .grid-col, items: .grid-item" >
-				<!-- Grid columns -->
-					<div class="grid-col grid-col--1"></div>
-					<div class="grid-col grid-col--2"></div>
-					<div class="grid-col grid-col--3"></div>
-					<div class="grid-col grid-col--4"></div>
-				<section></section>
-			</article>
-		</main>
-		<!-- Scripts -->
-			<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js" integrity="sha384-YNHdsYkH6gMx9y3mRkmcJ2mFUjTd0qNQQvY9VYZgQd7DcN7env35GzlmFaZ23JGp" crossorigin="anonymous"></script>
-			<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js " integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
-			<script>
-				document.addEventListener("DOMContentLoaded", function () {
-					renderMathInElement(document.body, {
-						// customised options
-						// • auto-render specific keys, e.g.:
-						delimiters: [
-							{ left: "$$", right: "$$", display: true },
-							{ left: "$", right: "$", display: false },
-							{ left: "\\(", right: "\\)", display: false },
-							{ left: "\\[", right: "\\]", display: true },
-						],
-						// • rendering keys, e.g.:
-						throwOnError: false,
-					});
+		0.sayHello()
+	</code></pre>
+	<pre class="language-bash"><code>
+		Hello, I'm 0
+	</code></pre>
+
+	<p>From the above example, we can see that <span class="monoText">0</span> is the object. This is significant difference from other languages, where <span class="monoText">Int</span> is a primitive type that cannot be modified, and its instances are <span class="term">scalars</span>. In Swift, there are no scalars &mdash; everything is an object.</p>
+
+	<p><span class="topic">Object Type.</span> Those with object-oriented backgrounds might ask, What is the object type then? In Swift, there are three possible object types: (1) <span class="term">class</span>, (2) <span class="term">struct</span> and (3) <span class="term">enum</span>. We will explore these different entities in a later section.</p>
+</section>
+
+<section id="statements">
+	<p><span class="topic">Statements.</span> A Swift command is a statement. Because Swift's default path of execution is to execute lines in sequence, line breaks are meaningful:</p>
+
+	<pre class="language-swift"><code>
+		// This is bad
+		print("Hello world") print("Hello world")
+
+		// This is ok
+		print("Hello world"); print("Hello world")
+	</code></pre>
+
+	<p>The use of a semicolon tells Swift when a statement is complete. They are not necessary in Swift, but they are necessary in Objective-C, the former language for iOS development.</p>
+</section>
+
+<section id="comments">
+	<p><span class="topic">Comments.</span> Comments in Swift are similar to comments in C, Objective-C, and Java:</p>
+	<pre class="language-swift"><code>
+		// This is a single line comment
+
+		/*
+		 *
+		 * This is a
+		 * multiline comment
+		 *
+		*/
+	</code></pre>
+</section>
+
+<section id="variables">
+	<p><span class="topic">Variables.</span> In Swift, a variable is a <span class="term">name</span> that <span class="italicsText">refers</span> to an object. This may familiar to those coming from Java. The variable itself does not store the object, but a <span class="term">reference</span> to the object. The object to which variable refers to is called the variable's <span class="term">value</span>.</p>
+	<p>Like JavaScript, we have two ways to declare a variable: (1) with the atom <span class="monoText">let</span>, or (2) with the atom <span class="monoText">var</span>. However, unlike JavaScript, these two atoms have very specific meanings that must be adhered to strictly. First, <span class="monoText">let</span> is used to initialize a constant, and <span class="monoText">var</span> is used to initialize a variable. Which of <span class="monoText">let</span> and <span class="monoText">var</span> should be used depends on the problem and the programmer's style. For those coming from a functional programming background, <span class="monoText">let</span> should be the preferred choice, so as to avoid mutability (a constant cannot be mutated; once declared, it is assigned that value permanently). For those coming from an object-oriented programming background, <span class="monoText">var</span> may or may not be the desired choice (a variable can be mutated).</p>
+
+	<pre class="language-swift"><code>
+		var x = 10
+		let z = 5
+
+		// this is ok - you can mutate x - returns 15
+		x = x + 5
+
+		// this is bad - you cannot mutate a constant - returns an error
+		z = z + 1
+	</code></pre>
+
+	<p>Both constants and variables must have the same <span class="term">type</span> as the value assigned to the variable. This type can <span class="underlineText">never</span> change. For example, if we write <span class="monoText">var x = 5</span>, then the variable <span class="monoText">x</span> will always store a value of type <span class="monoText">Int</span>; <span class="monoText">x</span> can never store any other value of a different type, but it can store a different value of type <span class="monoText">Int</span>.</p>
+
+	<pre class="language-swift"><code>
+		let implicitInt = 1
+		let implicitFloat = 1.0
+	</code></pre>
+
+	<p>We can be more explicit with constants and variables by specifying its type:</p>
+
+	<pre class="language-swift"><code>
+		let explicitInt: Int = 1
+		let explicitFloat: Float = 1.0
+	</code></pre>
+</section>
+
+<section id="functions">
+	<p><span class="topic">Functions.</span> To write a function in Swift, we use the following syntax:</p>
+	<figure class="math-display">
+		<ul class="syntax">
+			<li>func ${\textit{function}_{\textit{name}}}$ (${p_0: t_0 \ldots p_n: t_n}$) -> ${r_\textit{type}}$ {</li>
+			<ul>
+				<li>${\textit{statement}_0}$</li>
+				<li>${\vdots}$</li>
+				<li>${\textit{statement}_n}$</li>
+				<li>return ${r_\textit{value}}$</li>
+			</ul>
+			<li>}</li>
+		</ul>
+		<ul class="def">
+			<li class="where"> ${m_n}$ is the function's name,</li>
+			<li>${p_0 \ldots p_n}$ are the parameter names,</li>
+			<li>${t_0 \ldots t_n}$ are the parameter types,</li>
+			<li>${r_\textit{type}}$ is the return type, and</li>
+			<li>${r_\textit{value}}$ is the return value</li>
+		</ul>
+	</figure>
+</section>
+
+<section id="swift_standard_library">
+	<p><span class="topic">The Swift Standard Library.</span> The <span class="italicsText">Swift Standard Library</span> is a library provided by default in Swift. It includes many of the data types we've seen &mdash; <span class="monoText">Int</span>, <span class="monoText">Double</span>, <span class="monoText">Float</span>, <span class="monoText">Bool</span>, etc. It also provides many useful methods like <span class="monoText">print()</span>. We will not cover the methods, classes, and structs provided by the standard library; there are simply too many to list. Swift's documentation covers these implementations in detail, and should always be the first course of reference when we are thinking of performing a particular computation. The documentation can be quickly accessed by holding down the option key and hovering over a particular line of code we seek more information on.</p>
+	<p>The Swift Standard Library should always be checked whenever we are thinking of performing a particular complex computation that is routine among programs (e.g., rounding, generating a random number, etc.) Chances are, there is a method already written for whatever it is we are trying to compute.</p>
+</section>
+
+<section id="casting">
+	<p><span class="topic">Casting.</span> Unlike languages like JavaScript, Swift never implicitly converts a a value to another type. If we want to convert a value, we must explicitly do so.</p>
+
+	<pre class="language-swift"><code>
+		let saleText = "Buy now for "  
+		let price = 4.99
+		let advert = saleText + String(price)
+		print(advert)
+	</code></pre>
+	<pre class="language-bash"><code>
+		Buy now for 4.99
+	</code></pre>
+
+	<p>Notice that if we removed the explicit conversion, Swift informs us that we cannot apply an operand to values of different types (in this case, a string and double).</p>
+</section>
+
+<section id="interpolation">
+	<p><span class="topic">Interpolating Strings.</span> In the previous example, we attempted to include a value of numeric type in a string. We do not need to convert the numeric value to a string to do so. We can instead <span class="term">interpolate</span>:</p>
+
+	<pre class="language-swift"><code>
+		let currentStockPrice = 4.99
+		let formerStockPrice = 3.75
+
+		let summary = "The stock price changed from \(formerStockPrice) to \(currentStockPrice)."
+		print(summary)
+	</code></pre>
+	<pre class="language-bash"><code>
+		The stock price changed from 3.75 to 4.99.	
+	</code></pre>
+
+	<p>We can also include calculations in interpolated strings:</p>
+
+	<pre class="language-swift"><code>
+		let roses = 5
+		let daisies = 6
+		let summary = "I have \(roses + daisies) flowers."
+	</code></pre>
+</section>
+
+<section id="arrays">
+	<p><span class="topic">Arrays.</span> Arrays in Swift are similar to most languages in that they are created with square brackets:</p>
+
+	<pre class="language-swift"><code>
+		let shoppingList = ["mangoes", "milk", "orange juice", "eggs"]
+		print(shoppingList)
+	</code></pre>
+	<pre class="language-bash"><code>
+		["mangoes", "milk", "orange juice", "eggs"]
+	</code></pre>
+
+	<p>We can access individual elements in the array using angle brackets.</p>
+
+	<pre class="language-swift"><code>
+		let shoppingList = ["mangoes", "milk", "orange juice", "eggs"]
+		print(shoppingList[0])
+	</code></pre>
+	<pre class="language-bash"><code>
+		mangoes
+	</code></pre>
+
+	<p>Like most other languages, Swift indices start at 0. If we initialize a list with the keyword <span class="monoText">var</span>, we can mutate the list:</p>
+
+	<pre class="language-swift"><code>
+		var shoppingList = ["mangoes", "milk", "orange juice", "eggs"]
+		shoppingList[0] = "papayas"
+		print(shoppingList)
+	</code></pre>
+	<pre class="language-bash"><code>
+		["papayas", "milk", "orange juice", "eggs"]
+	</code></pre>
+
+	<p><span class="topic">Appending to an Array.</span> We can append to an array with the <span class="monoText">.append()</span> method:</p>
+
+	<pre class="language-swift"><code>
+		var studentList = ["John", "Kento", "Yuri"]
+		studentList.append("Taeyon")
+		
+		print(studentList)
+	</code></pre>
+	<pre class="language-bash"><code>
+		["John", "Kento", "Yuri", "Taeyon"]
+	</code></pre>
+
+	<p>Of course, we cannot append to a list initialized with <span class="monoText">const</span>:</p>
+	<pre class="language-swift"><code>
+		let studentList = ["John", "Kento", "Yuri"]
+
+		// returns an error
+		studentList.append("Taeyon")
+	</code></pre>
+
+	<p><span class="topic">Empty Array.</span> To create an empty array, we use the following initializer syntax:</p>
+	<pre class="language-swift"><code>
+		var studentList: [String] = []
+	</code></pre>
+	<p>Notice the general form:</p>
+
+	<figure class="math-display">
+		<ul class="syntax"><li>var ${n}$: [${t}$] = []</li></ul>
+		<ul class="def">
+			<li class="where"> ${n}$ is the array's name; and</li>
+			<li>${t}$ is the type for each value in the array</li>
+		</ul>
+	</figure>
+
+	<p>If type can be inferred, we can create the empty array with just square brackets:</p>
+	<pre class="language-swift"><code>
+		var myArray = []
+	</code></pre>
+</section>
+
+<section id="dictionaries">
+	<p><span class="topic">Dictionaries.</span> Like Python, Swift supports dictionaries natively. However, unlike Python, dictionaries are initialized in Swift with square brackets rather than curly braces:</p>
+
+	<pre class="language-swift"><code>
+		var studentMajors = [
+			"Immanuel Kant": "philosophy",
+			"Maurits Cornelis Escher": "art",
+			"Evariste Galois": "mathematics"
+		]
+
+		studentMajors["Roger Ebert"] = "film"
+	</code></pre>
+
+	<p><span class="topic">Empty Dictionary.</span> To create an empty dictionary, we use the same initializer syntax:</p>
+
+	<pre class="language-swift"><code>
+		var studentMajors: [String: String] = [:]
+	</code></pre>
+
+	<p>The general syntax:</p>
+
+	<figure class="math-display">
+		<ul class="syntax"><li>var ${n}$: [${k_{t}}$ : ${v_{t}}$] = [:]</li></ul>
+		<ul class="def">
+			<li class="where"> ${n}$ is the dictionary's name,</li>
+			<li>${k_t}$ is the key's type, and</li>
+			<li>${v_t}$ is the value's type</li>
+		</ul>
+	</figure>
+
+	<p>Like arrays, if type can be inferred, we can create the empty dictionary with just square brackets and a colon:</p>
+
+	<pre class="language-swift"><code>
+		var myDictionary = [:]
+	</code></pre>
+
+</section>
+
+<section id="conditionals_control">
+	<p><span class="topic">Control: Conditionals.</span> In Swift, the default <span class="term">path of execution</span> is executing statements in sequence. We can change this with <span class="term">flow control</span>, of which there are several kinds. The most basic form of flow control is <span class="term">branching</span>, or <span class="term">conditional control</span>. This is done with conditional statements. Conditional control is provided in Swift via <span class="monoText">if</span>, <span class="monoText">else</span>, <span class="monoText">else if</span>, and <span class="monoText">switch</span>. First, let's focus on the staple <span class="monoText">if</span>, <span class="monoText">else if</span> and <span class="monoText">else</span>. The general syntax:</p>
+
+	<figure class="math-display">
+		<ul class="syntax">
+			<li>if ${c_1}$ {</li>
+			<ul>
+				<li>${\text{statements}}$</li>
+			</ul>
+			<li>} else if ${c_2}$ {</li>
+			<ul>
+				<li>${\text{statements}}$</li>
+			</ul>
+			<li>} else {</li>
+			<ul>
+				<li>${\text{statements}}$</li>
+			</ul>
+		</ul>
+	</figure>
+
+	<p>In the syntax above, ${c_n}$ are expressions that evaluate to the values <span class="monoText">true</span> or <span class="monoText">false</span>. The braces are required in Swift, and by convention, we employ the indentation above.</p>
+
+	<p><span class="topic">Conditional Binding.</span> Something that might be unusual in Swift is the ability to write <span class="term">conditional bindings</span>. We can follow an <span class="monoText">if</span> with a variable declaration or assignment and a new local variable name.</p>
+
+	<figure class="math-display">
+		<ul class="syntax">
+			<li>if let ${n}$ = ${v}$ {</li>
+			<ul>
+				<li>${\text{statements}}$</li>
+			</ul>
+			<li>}</li>
+		</ul>
+	</figure>
+
+	<p>For example:</p>
+
+	<pre class="language-swift"><code>
+		var optionalName: String? = "Dorian Gray"
+		var greeting = "A beauty you are"
+		if let name = optionalName {
+			greeting = "A beauty you are, \(name)"
+		}
+	</code></pre>
+
+	<p><span class="topic"><span class="monoText">switch</span>.</span> Like Java and many other languages, Swift provides a <span class="monoText">switch</span> construct:</p>
+
+	<pre class="language-swift"><code>
+		let fruit = "mango"
+
+		switch fruit {
+			case "apple":
+				print("Good for pies.")
+			case "papaya", "tomato":
+				print("Good for salads.")
+			default:
+				print("Good for you.")
+		}
+	</code></pre>
+</section>
+
+<section id="control_loops">
+	<p><span class="topic">Loops.</span> </p>
+</section>
+
+<section id="views">
+	<h3>Views</h3>
+	<p>In SwiftUI, we implement user interface design with <span class="term">views</span>. There are many different kinds of views &mdash; <span class="monoText">text</span>, <span class="monoText">slider</span>, <span class="monoText">button</span>, etc. Everything we see on the screen when we open an application is a <span class="monoText">view</span>.</p>
+
+	<p><span class="topic"><span class="monoText">text view.</span></span> The <span class="monoText">text</span> view is a view that displays one or more lines of read-only text. We can think of this view as a text field, with the added limitation that it is read-only (no writing/modifying by the user).</p>
+
+	<p><span class="topic"><span class="monoText">slider view.</span></span> The <span class="monoText">slider</span> view displays a slider. The slider is an input interface that allows a user to enter a number by moving a control, called a <span class="italicsText">thumb</span>, along a straight line. The endpoints of the slider represent the minimum and the maximum input value.</p>
+
+	<p><span class="topic"><span class="monoText">button view.</span></span> The <span class="monoText">button</span> view displays a button. This input interface has takes only one of two inputs: (a) the button is pressed, and (b) the button is not pressed. We can place a <span class="monoText">text</span> view inside the button as a label.</p>
+
+	<p><span class="topic"><span class="monoText">vertical stack view.</span></span> The <span class="monoText">vertical stack</span>, or <span class="monoText">v-stack</span>, is a view that acts like a container for other views, called the <span class="monoText">v-stack</span>'s <span class="italicsText">children</span>. A <span class="monoText">v-stack</span> arranges its children in a vertical stack.</p>
+
+	<p><span class="topic"><span class="monoText">horizontal stack view.</span></span> The <span class="monoText">horizontal stack</span>, or <span class="monoText">h-stack</span>, also acts like a container for other views. In contrast to the <span class="monoText">v-stack</span>, the <span class="monoText">h-stack</span> arranges its children in a horizontal stack.</p>
+</section>
+
+<section id="view_modifiers">
+	<p><span class="topic">View Modifiers.</span> View modifiers are what we use to style views. For example, if we want to set an opacity to text as well as a border, we would write:</p>
+
+	<pre class="language-swift"><code>
+		Text("Hello world")
+			.opacity(0.5)
+			.border(Color.red, width: 1.5)
+	</code></pre>
+
+	<p>Note that everytime we apply a view modifier, Swift creates a new version of the original view. Thus, when we write <span class="monoText">Text("Hello world").opacity(0.5)</span>, we create modified view of <span class="monoText">Text("Hello world")</span>. In this case, the text has an opacity of 0.5. When we write <span class="monoText">Text.("Hello world").opacity(0.5).border(Color.red, width: 1.5)</span>, we modify <span class="monoText">Text("Hello world").opacity(0.5)</span>. That border is not transparent, because the border modifier is only adding a red border around the original view. If we wanted the border to be transparent, we would write:</p>
+
+	<pre class="language-swift"><code>
+		Text("Hello world")
+			.border(Color.red, width: 1.5)
+			.opacity(0.5)
+	</code></pre>
+	
+	<p>This demonstrates a rule with view modifiers: Order matters.</p>
+</section>
+
+<section id="theory_behind_views">
+	<h3>Swift Theory: <span class="monoText">Views</span></h3>
+	<p>The foundational axiom of OOP (Object-oriented Programming) is to associate certain pieces of data with functionality. For example, a data of type <span class="monoText">dog</span> might have related data like <span class="monoText">name</span>, <span class="monoText">breed</span>, <span class="monoText">color</span>, and <span class="monoText">sex</span>. We call this related data <span class="term">properties.</span> The data type might also have related functionality like <span class="monoText">bark</span> and <span class="monoText">growl</span>. These related functions are called <span class="term">methods</span>.</p>
+
+	<p>Once we've created the data type <span class="monoText">dog</span>, we can create <span class="term">instances</span> of that type. These instances are called <span class="term">objects</span>. For example, we might have an instance of a <span class="monoText">dog</span> called <span class="monoText">hachiko</span> and another instance of a <span class="monoText">dog</span> called <span class="monoText">cujo</span>.</p>
+
+	<p>In Swift, there are two ways to design these custom data types: with a <span class="term"><span class="term">class</span></span>, or with a <span class="term"><span class="monoText">struct</span></span>. In languages like Objective-C, <span class="monoText">class</span> and <span class="monoText">struct</span> are two very different entities. In Swift, however, the differences between a <span class="monoText">class</span> and a <span class="monoText">struct</span> are subtle; <span class="monoText">struct</span>s being much more powerful.</p>
+
+	<p>In a Swift application, everything (e.g., <span class="monoText">view</span>s) is an instace of a particular <span class="monoText">class</span> or <span class="monoText">struct</span> that communicate with each other. Swift provides many default data types: <span class="monoText">button</span>, <span class="monoText">text</span>, <span class="monoText">ContentView</span>, etc. When we create the application's layout, we are creating a custom data type.</p>
+
+	<p>Each of the <span class="monoText">view</span>s inside our layout, as an object, has data and functionality. For example, if we create a <span class="monoText">button</span> object, that button might have several properties: a <span class="monoText">View</span> to display; a <span class="monoText">position</span>; a <span class="monoText">width</span>; a <span class="monoText">height</span>; and if we have a label for the button, a <span class="monoText">text</span>. That <span class="monoText">button</span> object can also have methods &mdash; recognizing a user tap; highlighting itself; a trigger action; etc. The general syntax for calling a method:</p>
+
+	<figure class="math-display">
+		<ul class="syntax">
+			<li>${Obj}$</li>
+			<ul>
+				<li>${m.}$(${p_0 \ldots p_n}$)</li>
+			</ul>
+		</ul>
+		<ul class="def">
+			<li class="where">${Obj}$ is the object's name,</li>
+			<li>${m}$ is the method, and</li>
+			<li>${p_0 \ldots p_n}$ are the parameters</li>
+		</ul>
+	</figure>
+
+	<p>The <span class="term">parameters</span> to a method are the necessary arguments to be passed into the method. We can think of them as the inputs that must be passed into the method for the method to work. Commanding an instance to call a method is how we get instances to perform certain actions, and more broadly, how we get an application to perform. A clear example of calling a method is when we apply view modifiers:</p>
+
+	<pre class="language-swift"><code>
+		Text("Hello world")
+			.bold()
+			.kerning(2.0)
+	</code></pre>
+
+	<p><span class="topic">Properties.</span> Swift provides two ways to bind properties to an object: (1) a <span class="term">stored property</span>, and (2) a <span class="term">computed property</span>.</p>
+
+	<pre class="language-swift"><code>
+		// These are stored properties
+		var subtotal: Double
+		var discountRate: Double
+		var tax: Double
+
+		// These are computed properties
+		var discountAmount: Double {
+			return subtotal * discountRate
+		}
+		
+		var total: Double {
+			return (subtotal - discountAmount) + tax 
+		}
+	</code></pre>
+
+	<p>We use a stored property when we just want a particular instance to store a piece of data. If we have related data that must be computed, we use a computed property. To see how all of this works in the context of SwiftUI, consider the following code:</p>
+
+	<pre class="language-swift"><code>
+		import SwiftUI
+
+		struct ContentView: View {
+			var body: some View {
+				VStack {
+					VStack {
+						Text("Hello world")
+							.kerning(1.0)
+							.bold()
+					}
+				}
+			}
+		}
+	</code></pre>
+
+	<p>In the code above, the line <span class="monoText">struct ContentView: View</span> creates an instance of the <span class="monoText">struct</span> <span class="monoText">ContentView</span>. More specifically, we are telling Swift, "Create a <span class="monoText">View</span> object called <span class="monoText">ContentView</span>." If we go to the file called <span class="monoText">AppName.swift</span> (the Swift file other than <span class="monoText">ContentView.swift</span>), we see the following code:</p>
+
+	<pre class="language-swift"><code>
+		import SwiftUI
+
+		@main
+		struct nameApp: App {
+			var body: some Scene {
+				WindowGroup {
+					ContentView()
+				}
+			}
+		}
+	</code></pre>
+
+	<p>The line <span class="monoText">ContentView()</span> creates an instance of <span class="monoText">ContentView</span> based on the <span class="monoText">struct</span> we created in <span class="monoText">ContentView.swift</span>. Back inside <span class="monoText">ContentView.swift</span>, we see the line <span class="monoText">var body: some View { ... }</span>. This line creates a <span class="italicsText">property</span> of <span class="monoText">ContentView</span>. More specifically, it creates a property called <span class="monoText">body</span> of type <span class="monoText">some View</span>. That property, <span class="monoText">body</span>, is where all other views placed inside.</p>
+
+	<p>Notice that <span class="monoText">body</span> is declared with <span class="monoText">var</span> rather than <span class="monoText">let</span>. This is because <span class="monoText">body</span> stores data, and more specifically, it stores mutable data &mdash; data that can be changed. The line <span class="monoText">var body: some View { ... }</span> tells Swift, "This is a definition for a variable called <span class="monoText">body</span> of type <span class="monoText">some View</span>."</p>
+
+	<p>Question: Why is it called <span class="monoText">some View</span>? The keyword <span class="monoText">some</span> is used because there are many different kinds of <span class="monoText">View</span>s. We have <span class="monoText">button</span>, <span class="monoText">text</span>, <span class="monoText">VStack</span>, etc. This tells Swift that <span class="monoText">body</span> will contain a <span class="monoText">View</span> or something that behaves like a <span class="monoText">View</span>.</p>
+
+	<p>Everything after <span class="monoText">some View</span> contains the contents of <span class="monoText">body</span>. All of the lines containing view modifiers are examples of calling methods.</p>
+</section>
+
+<section id="state_and_swiftUI">
+	<p><span class="topic">SwiftUI and State.</span> Suppose we had a <span class="monoText">button View</span> inside our <span class="monoText">ContentView</span>:</p>
+	
+	<pre class="language-swift"><code>
+		Button(action: {})
+	</code></pre>
+
+	<p>The expression <span class="monoText">action: {}</span> combines <span class="term">state</span> with the <span class="monoText">Button</span> object. In other words, when the user taps the button, then the code inside the braces is evaluated and executed. What is <span class="term">state</span>? A good way to think about state is in terms of a car dashboard. If we look at a dashboard, there are several pieces of data: <span class="italicsText">numeric values</span> like speed, fuel level, mileage; and Boolean values like low oil, flat tire, low tire pressure, emergency break off, etc. All of this data embodies the car's current <span class="italicsText">state</span>.</p>
+
+	<p>Now, we can change the car's state by performing certain actions on that data. For example, if we refill our tank, the fuel level goes up. If we drive more miles, the mileage goes up. If we add more oil, the low oil indicator turns off, and if we pull the emergency break, the emergency break light goes on. In doing all of this, we modify the car's state. We call the actions that change the car's state <span class="term">behavior</span>.</p>
+
+	<p>A car works properly only if state and behavior are in sync. If we continue driving, the fuel level should go down, and the odometer should go up. If we step on the accelerator, the speedometer should go up, and if we break, it should go down. When state and behavior are not in sync, not only does the car fail to work properly, it potentially becomes dangerous.</p>
+
+	<p>This same phenomenon applies to programs, and more broadly, applications. If we fail to properly link state and behavior between properties and methods, we manifest bugs. The application informs the user there are 0 new messages, when there is actually 1. The application tells the user an order was completed, when the order was never sent. SwiftUI is cognizant of how dangerous these bugs can be and forces the programmer to be consistent when writing code.</p>
+
+	<p>So, suppose that we want to display a popup alert when the user taps the <span class="monoText">Button View</span>. In SwiftUI, there are only two possible conditions for displaying a popup alert: (1) the popup alert is displayed on the screen, or (2) the popup alert is not displayed on the screen. This means the popup alert has a Boolean value: <span class="monoText">true</span> or <span class="monoText">false</span>. The Boolean value for this popup alert is an example of data that must be accounted for in our <span class="monoText">ContentView</span> object. To do so, we write the following:</p>
+
+	<pre class="language-swift"><code>
+		import SwiftUI
+
+		struct ContentView: View {
+			@State private var alertIsVisible: Bool = false
+
+			var body: some View {
+				Button(action: {
+					self.alertIsVisible = true
+				}) {
+					Text("Tap for Alert")
+				}
+			}
+		}
+
+	</code></pre>
+
+	<p>The keyword <span class="monoText">@State</span> tells Swift that we are creating a <span class="italicsText">state</span> variable, meaning, this variable will change depending on something inside this <span class="monoText">ContentView</span>. We also include the keyword <span class="monoText">private</span> to indicate that the variable belongs only to <span class="monoText">ContentView</span> (more on this in another section). Finally, we declare the variable <span class="monoText">alertIsVisible</span>, which is of type <span class="monoText">Bool</span>, and initialize it the value <span class="monoText">false</span>.</p>
+
+	<p>In our <span class="monoText">Button view</span>, we write <span class="monoText">self.alertIsVisible = true</span>, which effectively tells Swift, when the button is tapped, change the value of <span class="monoText">alertIsVisible</span> to <span class="monoText">true</span>.</p>
+
+	<p>Each state variable has an initial value. That value is updated, or mutated, based on the execution of some code in the body. Now, we want to actually display the alert when the button is tapped:</p>
+
+	<pre class="language-swift"><code>
+		import SwiftUI
+
+		struct ContentView: View {
+			@State private var alertIsVisible: Bool = false
+
+			var body: some View {
+				Button(action: {
+					self.alertIsVisible = true
+				}) {
+					Text("Tap for Alert")
+				}
+				.alert(isPresented: $alertIsVisible, 
+					content: {
+						return Alert(
+							title: Text("popup1"), 
+							message: Text("This is a pop-up"), 
+							dismissButton: 
+								.default(Text("Dismiss")))
+					})
+			}
+		}
+	</code></pre>
+
+	<p>There are several things to note in this code. First, note that when the <span class="monoText">Button View</span> is tapped, the state variable <span class="monoText">alertIsVisible</span> updates to <span class="monoText">true</span>. Because the state variable is now <span class="monoText">true</span>, we can proceed to call the <span class="monoText">.alert()</span> method. The <span class="monoText">.alert()</span> method takes several arguments, first, an argument called <span class="monoText">isPresented</span>, and argument called <span class="monoText">content</span>. The <span class="monoText">isPresented</span> argument is assigned <span class="monoText">$alertIsVisible</span>, a variable binding. The <span class="monoText">content</span> argument has several properties: <span class="monoText">title</span>, <span class="monoText">message</span>, and <span class="monoText">dismissButton</span>. Here, we've passed a <span class="monoText">Text</span> object of type <span class="monoText">View</span>. For the <span class="monoText">dismissButton</span>, we've used the <span class="monoText">.default()</span> method, which uses SwiftUI's default button styling.</p>
+
+	<p><span class="topic">Variable Binding.</span> In the example above, we wrote <span class="monoText">.alert(isPresented: $alertIsVisible)</span>. This expression tells Swift, "This property called <span class="monoText">isPresented</span> is always bound to the variable <span class="monoText">alertIsVisible</span>."" The dollar sign, <span class="monoText">$</span>, is what tells Swift that we are indicating a binding. In this case, the property <span class="monoText">isPresented</span> is always bound to the state variable <span class="monoText">alertIsVisible</span>. The property <span class="monoText">isPresented</span> is what determines whether the alert is visible. If its value is <span class="monoText">true</span>, then the alert is displays, otherwise, the alert is not displayed.</p>
+</section>
+
+<section id="program_architecture">
+	<h3>Program Architecture</h3>
+	<p>Whether we're designing UI or functionality, putting all of our code into a single file leads to a phenomenon called <span class="term">spaghetti</span> code. This is where a source code file grows so large that it becomes unnecessarily difficult to find certain code and worse, debugging. The solution then is separate source code into their respective files, forming a more modular <span class="term">program architecture</span>.</p>
+
+	<p>Often, the best way to divide source code into separate files is by following the <span class="term">single responsbility principle</span> &mdash; separate source code into their respective modules depending on their responsibility. For example, we might have source code that parses a file, code that authenticates a user, code that performs a calculation, a code for the main page layout, code for settings layout, and so on. By separating source code into separate modules (whether inside the code through separate classes or structs or more broadly in separate files), it is much easier to debug and analyze code. It also prevents code from <span class="italicsText">cross-contamination</span>. Often, having so much source code in a single class, struct, or file can lead to forgetting a parentheses or brace for a particular block, thereby leading to unexpected results.</p>
+</section>
+
+
+		</article>
+	</main>
+
+	<!-- Scripts -->
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js" integrity="sha384-YNHdsYkH6gMx9y3mRkmcJ2mFUjTd0qNQQvY9VYZgQd7DcN7env35GzlmFaZ23JGp" crossorigin="anonymous"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js " integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				renderMathInElement(document.body, {
+					// customised options
+					// • auto-render specific keys, e.g.:
+					delimiters: [
+						{ left: "$$", right: "$$", display: true },
+						{ left: "$", right: "$", display: false },
+						{ left: "\\(", right: "\\)", display: false },
+						{ left: "\\[", right: "\\]", display: true },
+					],
+					// • rendering keys, e.g.:
+					throwOnError: false,
 				});
-			</script>
-			<!-- <script src="https://unpkg.com/function-plot@1.22.2/dist/function-plot.js"></script> -->
-			<script src="js/csfoundations.js"></script>
-			<script src="js/prism.js"></script>
-	</body>
+			});
+		</script>
+		<!-- <script src="https://unpkg.com/function-plot@1.22.2/dist/function-plot.js"></script> -->
+		<script src="js/csfoundations.js"></script>
+		<script src="js/prism.js"></script>
+</body>
+
 </html>
 
 

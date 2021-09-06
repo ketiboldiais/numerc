@@ -193,123 +193,131 @@
 </section>
 
 <section id="lambda_terms">
-	<!-- Introduction -->
-		<h4>Lambda Terms</h4>
-		<p>There are three basic components, called <span class="term">lambda terms</span>, to a lambda function:</p>
+	<h4>Lambda Terms</h4>
+	<p>There are three basic components, called <span class="term">lambda terms</span>, to a lambda function:</p>
 
-		<ul>
-			<li><span class="italicsText">expressions</span>,</li>
-			<li><span class="italicsText">variables</span>, and</li>
-			<li><span class="italicsText">abstractions</span></li>
+	<ul>
+		<li><span class="italicsText">expressions</span>,</li>
+		<li><span class="italicsText">variables</span>, and</li>
+		<li><span class="italicsText">abstractions</span></li>
+	</ul>
+
+	<p><span class="term">Expressions</span> is the superset of all the components &mdash; expressions, variables, and abstractions. The simplest expression is a single variable. A <span class="term">variable</span> has no meaning or value; a variable is simply a name for potential inputs to functions.</p>
+
+	<p>An <span class="term">abstraction</span> is a function. The function itself has two components:</p>
+
+	<ul>
+		<li>a <span class="italicsText">head</span>, and</li>
+		<li>a <span class="italicsText">body</span>.</li>
+	</ul>
+
+	<p>A function's head is a lambda, ${\lambda,}$ followed by a variable name. The body of a function is another expression. Here is a simple function in lambda terms:</p>
+
+	<figure class="math-display">
+		<div>
+			<p>${\lambda x.x}$</p>
+		</div>
+	</figure>
+
+	<p>The variable named in the head, ${x,}$ is called the <span class="italicsText">parameter</span>. It <span class="italicsText">binds</span> all instances of ${x}$ in the function's body. Variables inside the body that are not bound in the head are called <span class="term">free variables</span> (more on this later). What does <span class="italicsText">bind</span> mean? It means that when we pass an argument into the function, each ${x}$ in the function's body will have the value of the argument. Separating the head from the body is a dot.</p>
+
+	<figure><img src="images/lambda_terms.svg" alt="lambda terms" class="twenty-p" loading="lazy"></figure>
+
+	<p>When we write ${f(x) = x^2,}$ the function has a name &mdash; ${f.}$ We call such functions <span class="term">named functions</span>. In contrast, the function ${\lambda x.x}$ has no name; it is an <span class="term">anonymous function</span>. The difference? We can call named functions by referencing its name, but we cannot do the same with anonymous functions.</p>
+</section>
+
+<section id="alpha_equivalence">
+	<p><span class="topic">Alpha Equivalence.</span> The variable ${x}$ has no meaning other than its role in a single expression. Because of this, the actual variable used is irrelevant when comparing functions similarly structured. For example, ${\lambda x.x}$ is the same function as:</p>
+	<figure class="math-display">
+		<div>
+			<p>${\lambda a.a}$</p>
+			<p>${\lambda g.g}$</p>
+			<p>${\lambda w.w}$</p>
+		</div>
+	</figure>
+	<p>The functions above are all <span class="italicsText">alpha equivalent</span>.</p>
+</section>
+
+<section id="beta_reduction">
+	<p><span class="topic">Beta Reduction.</span> The expression we input to a function is called an <span class="term">argument</span>. Once an argument is input to a function, the function is <span class="italicsText">applied</span> to the argument &mdash; all instances of the bound variables (the parameters) are substituted with the input expression inside the function's body. When these bound variables are substituted, they become bound to the input expression. Because they are now bound to the input expressions, the function's head is eliminated, since its only purpose was to bind a variable. We call this process <span class="term">beta reduction</span>.</p>
+	<p>For example:</p>
+	<figure class="math-display">
+		<ul class="syntax">
+			<li>${\lambda x.x}$</li>
+			<li>${\darr}$</li>
+			<li>${(\lambda x.x) 2}$</li>
+			<li>${\darr}$</li>
+			<li>${2}$</li>
 		</ul>
-
-		<p><span class="term">Expressions</span> is the superset of all the components &mdash; expressions, variables, and abstractions. The simplest expression is a single variable. A <span class="term">variable</span> has no meaning or value; a variable is simply a name for potential inputs to functions.</p>
-
-		<p>An <span class="term">abstraction</span> is a function. The function itself has two components:</p>
-
-		<ul>
-			<li>a <span class="italicsText">head</span>, and</li>
-			<li>a <span class="italicsText">body</span>.</li>
+	</figure>
+	<p>Here, there is only one bound variable, ${x,}$ so applying the function to the input expression 2 returns 2. We call this the <span class="term">identity function</span> &mdash; a function that consumes a single argument ${x,}$ and returns the same argument ${x.}$</p>
+	<p>In lambda calculus, we use parentheses to clarify the function's lambda terms. Here is another lambda function:</p>
+	<figure class="math-display">
+		<div>
+			<p>${(\lambda x.x+1)}$</p>
+		</div>
+	</figure>
+	<p>Passing the input expression 2:</p>
+	<figure class="math-display">
+		<ul class="syntax">
+			<li>${(\lambda x.x+1) 2}$</li>
+			<li>${\darr}$</li>
+			<li>${2 + 1}$</li>
+			<li>${\darr}$</li>
+			<li>${3}$</li>
 		</ul>
+	</figure>
+	<p>Beta reduction continues as long as there are (1) heads or (b) lambdas (i.e., abstractions). Once there are no more heads and no more lambdas, beta reduction ceases.</p>
+</section>
 
-		<p>A function's head is a lambda, ${\lambda,}$ followed by a variable name. The body of a function is another expression. Here is a simple function in lambda terms:</p>
+<section id="lambda_abstractions">
+	<p><span class="topic">Abstractions as Arguments.</span> We can also pass lambda abstractions as inputs:</p>
+	<figure class="math-display">
+		<div>
+			<p>${(\lambda x.x)(\lambda y.y)}$</p>
+		</div>
+	</figure>
+	<p>When we pass a lambda abstraction as an input, we substitute ${x}$ with the lambda abstraction, just as we would with numbers. We can denote this process with ${[x \coloneqq z,]}$ meaning, ${z}$ will substitute all occurrences of ${x.}$ In this case, ${z}$ is the abstraction ${\lambda y.y.}$ The beta reduction looks like:</p>
+	<figure class="math-display">
+		$$
+			\begin{aligned}
+				(\lambda x.x)(\lambda y.y)& \\
+				[x \coloneqq (\lambda y.y)]& \\
+				\lambda y.y& 
+			\end{aligned}
+		$$
+	</figure>
+</section>
 
-		<figure class="math-display">
-			<div>
-				<p>${\lambda x.x}$</p>
-			</div>
-		</figure>
+<section id="additional_arguments">
+	<p><span class="topic">Additional Arguments.</span> A lambda abstraction can take additional arguments:</p>
+	<figure class="math-display">
+		<div>
+			<p>${(\lambda x.x)(\lambda y.y)z}$</p>
+		</div>
+	</figure>
+	<p>How do we reduce the lambda abstraction above? By following this rule: Applications are <span class="underlineText">left-associative</span>. This means, if there are no parentheses, then the abstractions group to the left. Thus, the abstraction above is evaluated as:</p>
+	<figure class="math-display">
+		<div>
+			<p>${((\lambda x.x)(\lambda y.y))z}$</p>
+		</div>
+	</figure>
+	<p>The beta reduction is thus:</p>
+	<figure class="math-display">
+		$$
+			\begin{aligned}
+				((\lambda x.x)(\lambda y.y))z& \\
+				[x \coloneqq (\lambda y.y)]& \\
+				(\lambda y.y)z& \\
+				[y \coloneqq z]& \\
+				z&
+			\end{aligned}
+		$$
+	</figure>
+</section>
 
-		<p>The variable named in the head, ${x,}$ is called the <span class="italicsText">parameter</span>. It <span class="italicsText">binds</span> all instances of ${x}$ in the function's body. Variables inside the body that are not bound in the head are called <span class="term">free variables</span> (more on this later). What does <span class="italicsText">bind</span> mean? It means that when we pass an argument into the function, each ${x}$ in the function's body will have the value of the argument. Separating the head from the body is a dot.</p>
-
-		<figure><img src="images/lambda_terms.svg" alt="lambda terms" class="twenty-p" loading="lazy"></figure>
-
-		<p>When we write ${f(x) = x^2,}$ the function has a name &mdash; ${f.}$ We call such functions <span class="term">named functions</span>. In contrast, the function ${\lambda x.x}$ has no name; it is an <span class="term">anonymous function</span>. The difference? We can call named functions by referencing its name, but we cannot do the same with anonymous functions.</p>
-	<!-- Alpha Equivalence -->
-		<p><span class="topic">Alpha Equivalence.</span> The variable ${x}$ has no meaning other than its role in a single expression. Because of this, the actual variable used is irrelevant when comparing functions similarly structured. For example, ${\lambda x.x}$ is the same function as:</p>
-		<figure class="math-display">
-			<div>
-				<p>${\lambda a.a}$</p>
-				<p>${\lambda g.g}$</p>
-				<p>${\lambda w.w}$</p>
-			</div>
-		</figure>
-		<p>The functions above are all <span class="italicsText">alpha equivalent</span>.</p>
-	<!-- Beta Reduction -->
-		<p><span class="topic">Beta Reduction.</span> The expression we input to a function is called an <span class="term">argument</span>. Once an argument is input to a function, the function is <span class="italicsText">applied</span> to the argument &mdash; all instances of the bound variables (the parameters) are substituted with the input expression inside the function's body. When these bound variables are substituted, they become bound to the input expression. Because they are now bound to the input expressions, the function's head is eliminated, since its only purpose was to bind a variable. We call this process <span class="term">beta reduction</span>.</p>
-		<p>For example:</p>
-		<figure class="math-display">
-			<ul class="syntax">
-				<li>${\lambda x.x}$</li>
-				<li>${\darr}$</li>
-				<li>${(\lambda x.x) 2}$</li>
-				<li>${\darr}$</li>
-				<li>${2}$</li>
-			</ul>
-		</figure>
-		<p>Here, there is only one bound variable, ${x,}$ so applying the function to the input expression 2 returns 2. We call this the <span class="term">identity function</span> &mdash; a function that consumes a single argument ${x,}$ and returns the same argument ${x.}$</p>
-		<p>In lambda calculus, we use parentheses to clarify the function's lambda terms. Here is another lambda function:</p>
-		<figure class="math-display">
-			<div>
-				<p>${(\lambda x.x+1)}$</p>
-			</div>
-		</figure>
-		<p>Passing the input expression 2:</p>
-		<figure class="math-display">
-			<ul class="syntax">
-				<li>${(\lambda x.x+1) 2}$</li>
-				<li>${\darr}$</li>
-				<li>${2 + 1}$</li>
-				<li>${\darr}$</li>
-				<li>${3}$</li>
-			</ul>
-		</figure>
-		<p>Beta reduction continues as long as there are (1) heads or (b) lambdas (i.e., abstractions). Once there are no more heads and no more lambdas, beta reduction ceases.</p>
-	<!-- Lambda abstractions as arguments -->
-		<p><span class="topic">Abstractions as Arguments.</span> We can also pass lambda abstractions as inputs:</p>
-		<figure class="math-display">
-			<div>
-				<p>${(\lambda x.x)(\lambda y.y)}$</p>
-			</div>
-		</figure>
-		<p>When we pass a lambda abstraction as an input, we substitute ${x}$ with the lambda abstraction, just as we would with numbers. We can denote this process with ${[x \coloneqq z,]}$ meaning, ${z}$ will substitute all occurrences of ${x.}$ In this case, ${z}$ is the abstraction ${\lambda y.y.}$ The beta reduction looks like:</p>
-		<figure class="math-display">
-			$$
-				\begin{aligned}
-					(\lambda x.x)(\lambda y.y)& \\
-					[x \coloneqq (\lambda y.y)]& \\
-					\lambda y.y& 
-				\end{aligned}
-			$$
-		</figure>
-	<!-- Additional arguments -->
-		<p><span class="topic">Additional Arguments.</span> A lambda abstraction can take additional arguments:</p>
-		<figure class="math-display">
-			<div>
-				<p>${(\lambda x.x)(\lambda y.y)z}$</p>
-			</div>
-		</figure>
-		<p>How do we reduce the lambda abstraction above? By following this rule: Applications are <span class="underlineText">left-associative</span>. This means, if there are no parentheses, then the abstractions group to the left. Thus, the abstraction above is evaluated as:</p>
-		<figure class="math-display">
-			<div>
-				<p>${((\lambda x.x)(\lambda y.y))z}$</p>
-			</div>
-		</figure>
-		<p>The beta reduction is thus:</p>
-		<figure class="math-display">
-			$$
-				\begin{aligned}
-					((\lambda x.x)(\lambda y.y))z& \\
-					[x \coloneqq (\lambda y.y)]& \\
-					(\lambda y.y)z& \\
-					[y \coloneqq z]& \\
-					z&
-				\end{aligned}
-			$$
-		</figure>
-
-	<!-- Free Variables -->
-		<p><span class="topic">Free Variables.</span> The body of a function may sometimes contain a variable that is not defined in the function's head. For example, the general form of a logarithmic function:</p>
+<section id="free_variables">
+	<p><span class="topic">Free Variables.</span> The body of a function may sometimes contain a variable that is not defined in the function's head. For example, the general form of a logarithmic function:</p>
 		<figure class="math-display">
 			<div>
 				<p>${t(x) = \log_{b}(x)}$</p>
@@ -334,127 +342,170 @@
 		<p>The second step in the reduction above merits careful attention. Since ${x}$ is a bound variable, all instances of ${x}$ in the body are substituted with ${z.}$ Hence the inclusion of ${[x \coloneqq z]}$ inside the function's head. Only then do we proceed to the third step, where we replace all instances of ${x}$ in the body with ${z,}$ and eliminate the head.</p>
 		<p>Of note, the rule of alpha equivalence does not apply to lambdas with free variables. In other words, ${(\lambda x.xz)}$ is not equivalent to ${\lambda x.xy.}$ This is because ${z}$ and ${y}$ are not bound in the head, and as such, are both capable of meaning different things. If, however, we wrote ${\lambda xz.xz}$ and ${\lambda xy.xy}$ (binding ${y}$ and ${z}$ in the function's head), then alpha equivalence applies, since ${y}$ and ${z}$ are no longer free variables. But, the lambdas ${\lambda x.xy}$ and ${\lambda z.zy}$ are alpha equivalent, because both lambdas leave the free variables alone.</p>
 
-	<!-- Multiple Arguments -->
-		<p><span class="topic">Multiple Arguments.</span> A lambda can bind one, and only one parameter, and can only accept one, and only one, argument. If a function requires multiple arguments, then its corresponding lambda must have <span class="underlineText">multiple and nested</span> heads. How are such lambdas evaluated? By eliminating the first (leftmost) head, then the next, then the next, etc. We call this process <span class="term">currying</span>. Here is a lambda that represents a function consuming multiple arguments:</p>
-		<figure class="math-display">
-			<div>
-				<p>${\lambda x.(\lambda y.xy)}$</p>
-			</div>
-		</figure>
-		<p>As a matter of short-hand syntax, we write the lambda above more concisely as:</p>
-		<figure class="math-display">
-			<div>
-				<p>${\lambda xy.xy}$</p>
-			</div>
-		</figure>
-		<p>Do not confuse this short-hand syntax as implying a lambda whose head binds multiple parameters. The expression above should always be read as a lambda with multiple, nested heads: ${\lambda x(\lambda y.xy).}$ Now, when we evaluate the argument, we first bind ${x,}$ the variable bound by the outermost lambda. For example, suppose the lambda ${(\lambda xy.xy) 1 \space 2}$ The beta reduction:</p>
-		<figure class="math-display">
-			$$
-				\begin{aligned}
-					(\lambda xy.xy) 1 \space \space 2& \\
-					(\lambda x (\lambda y.xy)) 1 \space \space 2& \\
-					[x \coloneqq 1]& \\
-					(\lambda y.1y) \space 2& \\
-					[y \coloneqq 2]& \\
-					1 \space \space 2&
-				\end{aligned}
-				
-			$$
-		</figure>
-		<p>Here is another example:</p>
+</section>
+
+<section id="multiple_arguments">
+	<p><span class="topic">Multiple Arguments.</span> A lambda can bind one, and only one parameter, and can only accept one, and only one, argument. If a function requires multiple arguments, then its corresponding lambda must have <span class="underlineText">multiple and nested</span> heads. How are such lambdas evaluated? By eliminating the first (leftmost) head, then the next, then the next, etc. We call this process <span class="term">currying</span>. Here is a lambda that represents a function consuming multiple arguments:</p>
+
+	<figure class="math-display">
+		<div>
+			<p>${\lambda x.(\lambda y.xy)}$</p>
+		</div>
+	</figure>
+
+	<p>As a matter of short-hand syntax, we write the lambda above more concisely as:</p>
+
+	<figure class="math-display">
+		<div>
+			<p>${\lambda xy.xy}$</p>
+		</div>
+	</figure>
+
+	<p>Do not confuse this short-hand syntax as implying a lambda whose head binds multiple parameters. The expression above should always be read as a lambda with multiple, nested heads: ${\lambda x(\lambda y.xy).}$ Now, when we evaluate the argument, we first bind ${x,}$ the variable bound by the outermost lambda. For example, suppose the lambda ${(\lambda xy.xy) 1 \space 2}$ The beta reduction:</p>
+
+	<figure class="math-display">
+		$$
+			\begin{aligned}
+				(\lambda xy.xy) 1 \space \space 2& \\
+				(\lambda x (\lambda y.xy)) 1 \space \space 2& \\
+				[x \coloneqq 1]& \\
+				(\lambda y.1y) \space 2& \\
+				[y \coloneqq 2]& \\
+				1 \space \space 2&
+			\end{aligned}
+			
+		$$
+	</figure>
+	<p>Here is another example:</p>
+
+	<div class="mproof">
+		<div class="premises">
+			<ul>
+				<li>${\lambda xy.xy}$</li>
+				<li>the lambda</li>
+			</ul>
+			<ul>
+				<li>${(\lambda xy.xy)(\lambda z.a) \space 1}$</li>
+				<li>arguments ${(\lambda z.a)}$ and ${1}$ passed</li>
+			</ul>
+			<ul>
+				<li>${(\lambda x (\lambda y.xy)) (\lambda z.a) 1}$</li>
+				<li>rewrite as multiple, nested heads</li>
+			</ul>
+			<ul>
+				<li>${[x \coloneqq (\lambda z.a)]}$</li>
+				<li>bind ${x}$</li>
+			</ul>
+			<ul>
+				<li>${(\lambda y.(\lambda z.a)y) 1}$</li>
+				<li>eliminate first head</li>
+			</ul>
+			<ul>
+				<li>${[y \coloneqq 1]}$</li>
+				<li>bind ${y}$</li>
+			</ul>
+			<ul>
+				<li>${(\lambda z.a) 1}$</li>
+				<li>eliminate second head</li>
+			</ul>
+			<ul>
+				<li>${[z \coloneqq 1]}$</li>
+				<li>bind ${z}$</li>
+			</ul>
+			<ul>
+				<li>${a}$</li>
+				<li>no ${z}$ in the body of the function, so there is nowhere to place 1; eliminate the head, and this is the final result</li>
+			</ul>
+		</div>
+	</div>
+		
+	<p><span class="exh">Exercise.</span> Perform a beta reduction: ${(\lambda xyz.xz(yz))(\lambda mn.m)(\lambda p.p)}$</p>
+	<details class="answer">
+		<summary>Solution</summary>
 		<div class="mproof">
 			<div class="premises">
 				<ul>
-					<li>${\lambda xy.xy}$</li>
-					<li>the lambda</li>
+					<li>${(\lambda xyz.xz(yz))(\lambda mn.m)(\lambda p.p)}$</li>
+					<li>the lambda with arguments passed</li>
 				</ul>
 				<ul>
-					<li>${(\lambda xy.xy)(\lambda z.a) \space 1}$</li>
-					<li>arguments ${(\lambda z.a)}$ and ${1}$ passed</li>
+					<li>${(\lambda x.\lambda y.\lambda z.xz(yz))(\lambda m.\lambda n.m)(\lambda p.p)}$</li>
+					<li>currying made explicit</li>
 				</ul>
 				<ul>
-					<li>${(\lambda x (\lambda y.xy)) (\lambda z.a) 1}$</li>
-					<li>rewrite as multiple, nested heads</li>
-				</ul>
-				<ul>
-					<li>${[x \coloneqq (\lambda z.a)]}$</li>
+					<li>${[x \coloneqq (\lambda mn.m) = (\lambda m. \lambda n.m)]}$</li>
 					<li>bind ${x}$</li>
 				</ul>
 				<ul>
-					<li>${(\lambda y.(\lambda z.a)y) 1}$</li>
+					<li>${(\lambda y.\lambda z.(\lambda m. \lambda n.m)z(yz))(\lambda p.p)}$</li>
 					<li>eliminate first head</li>
 				</ul>
 				<ul>
-					<li>${[y \coloneqq 1]}$</li>
+					<li>${[y \coloneqq (\lambda p.p)]}$</li>
 					<li>bind ${y}$</li>
 				</ul>
 				<ul>
-					<li>${(\lambda z.a) 1}$</li>
-					<li>eliminate second head</li>
+					<li>${\lambda z.(\lambda m. \lambda n.m)(z)((\lambda p.p)z)}$</li>
+					<li>eliminate second head; ${\lambda z}$ cannot be reduced any further, because it has no arguments to apply to; now we go inside and reduce one layer at a time</li>
 				</ul>
 				<ul>
-					<li>${[z \coloneqq 1]}$</li>
-					<li>bind ${z}$</li>
+					<li>${m \coloneqq z}$</li>
+					<li>bind ${m}$</li>
 				</ul>
 				<ul>
-					<li>${a}$</li>
-					<li>no ${z}$ in the body of the function, so there is nowhere to place 1; eliminate the head, and this is the final result</li>
+					<li>${\lambda z.(\lambda n.z)((\lambda p.p)z)}$</li>
+					<li>eliminate head</li>
+				</ul>
+				<ul>
+					<li>${[n \coloneqq ((\lambda p.p)z)]}$</li>
+					<li>bind ${n}$</li>
+				</ul>
+				<ul>
+					<li>${\lambda z.z}$</li>
+					<li>there is no variable ${n}$ for substitution; this is the final result, an irreducible lambda expression</li>
 				</ul>
 			</div>
 		</div>
-		<p>Below are some exercises. For each of the lambdas, perform a beta reduction.</p>
-		<div class="compare">
-			<div>
-				<p><span class="exh">Exercise.</span> ${(\lambda xyz.xz(yz))(\lambda mn.m)(\lambda p.p)}$</p>
-				<details class="answer">
-					<summary>Solution</summary>
-					<div class="mproof">
-						<div class="premises">
-							<ul>
-								<li>${(\lambda xyz.xz(yz))(\lambda mn.m)(\lambda p.p)}$</li>
-								<li>the lambda with arguments passed</li>
-							</ul>
-							<ul>
-								<li>${(\lambda x.\lambda y.\lambda z.xz(yz))(\lambda m.\lambda n.m)(\lambda p.p)}$</li>
-								<li>currying made explicit</li>
-							</ul>
-							<ul>
-								<li>${[x \coloneqq (\lambda mn.m) = (\lambda m. \lambda n.m)]}$</li>
-								<li>bind ${x}$</li>
-							</ul>
-							<ul>
-								<li>${(\lambda y.\lambda z.(\lambda m. \lambda n.m)z(yz))(\lambda p.p)}$</li>
-								<li>eliminate first head</li>
-							</ul>
-							<ul>
-								<li>${[y \coloneqq (\lambda p.p)]}$</li>
-								<li>bind ${y}$</li>
-							</ul>
-							<ul>
-								<li>${\lambda z.(\lambda m. \lambda n.m)(z)((\lambda p.p)z)}$</li>
-								<li>eliminate second head; ${\lambda z}$ cannot be reduced any further, because it has no arguments to apply to; now we go inside and reduce one layer at a time</li>
-							</ul>
-							<ul>
-								<li>${m \coloneqq z}$</li>
-								<li>bind ${m}$</li>
-							</ul>
-							<ul>
-								<li>${\lambda z.(\lambda n.z)((\lambda p.p)z)}$</li>
-								<li>eliminate head</li>
-							</ul>
-							<ul>
-								<li>${[n \coloneqq ((\lambda p.p)z)]}$</li>
-								<li>bind ${n}$</li>
-							</ul>
-							<ul>
-								<li>${\lambda z.z}$</li>
-								<li>there is no variable ${n}$ for substitution; this is the final result, an irreducible lambda expression</li>
-							</ul>
-						</div>
-					</div>
-				</details>
-			</div>
+	</details>
+
+</section>
+
+<section id="normal_forms">
+	<p><span class="topic">Beta Normal Form.</span> The term <span class="term">beta normal form</span> is a fancy word for when we cannot beta reduce the term any further. For example, the number 5 is the beta normal form of the term ${25,000/5,000.}$ We use the term "beta normal form" because there are different kinds of normal forms resulting from different kinds of reduction. In programming, beta normal form is exemplified through either (a) fully-evaluated expression or (b) a fully-executed program (this second point yields insight: in Haskell, a program is just another lambda function).</p>
+		
+	<p>There is a distinction between a term in normal form and a <span class="term">saturated term</span>. The term ${10-5}$ is a saturated term (a term whose arguments have applied). There is a function, subtraction, and there are arguments applied &mdash; 10 and 5. But, ${10-5}$ is not fully-evaluated. It is saturated, but the normal form is 5.</p>
+</section>
+
+<section id="combinators">
+	<p><span class="topic">Combinators.</span> Consider the following lambda functions:</p>
+	<div class="compare">
+		<div>
+			<p>${\lambda x.x}$</p>
 		</div>
+		<div>
+			<p>${\lambda xy.x}$</p>
+		</div>
+		<div>
+			<p>${\lambda xyz.xz(yz)}$</p>
+		</div>
+	</div>
+
+	<p>Notice that every term in the function's body also appears in the function's head. Each function above is called a <span class="term">combinator</span> &mdash; a lambda term with no free variables. The functions above contrast from these functions:</p>
+
+	<div class="compare">
+		<div>
+			<p>${\lambda y.x}$</p>
+		</div>
+		<div>
+			<p>${\lambda x.xz}$</p>
+		</div>
+	</div>
+
+	<p>These functions are no combinators, since they have <span class="italicsText">free variables</span>. In the first, ${y}$ is bound to the function's head, but ${x}$ is not. The same goes for the second function, ${x}$ is bound to the function's head, but ${z}$ is not.</p>
+</section>
+
+<section id="divergence">
+	<p><span class="topic">Divergence.</span> </p>
 </section>
 
 
