@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>objective-c</title>
+	<!-- <base href="http://127.0.0.1:5500/csfoundations/" /> -->
+	<link rel="stylesheet" href="css/csfoundations.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc" crossorigin="anonymous" />
+</head>
+
+<body>
+
+<header>
+	<h1><span class="monoText">numerc</span></h1>
+</header>
+
+<main>
+
+<nav class="section-nav">
+	<ul>
+		<li><a href="#intro">Introduction</a></li>
+	</ul>
+</nav>
+
+<article id="objective_c">
+
+<section id="intro">
+	<h2>Objective-C</h2>
+	<p>The following materials discuss Objective-C, an object-oriented model of the C language. The materials here assume knowledge of basic programming fundamentals, and some knowledge of the C language (although we will cover concepts in C along the way). Objective-C is associated most strongly with iOS development. However, iOS development today and in the future is and most likely will be done in Swift. Despite this fact, legacy code will persist in the years to come, and that code is in Objective-C. A strong iOS developer should have a working knowledge of both Objective-C and Swift, and these materials aim to provide some basis for that knowledge.</p>
+</section>
+
+<section id="variables_and_types">
+	<h3>Variables &amp; Types</h3>
+	<p>Objective-C is a compiled language. This means the code we write, called <span class="term">source code</span>, must be first compiled before it is executed. To execute source code, Objective-C needs to store the relevant data to be used later. One way to store such data is through <span class="term">variables</span>. Every variable in Objective-C must have (1) a <span class="italicsText">name</span>, and (2) a <span class="italicsText">type</span>.</p>
+</section>
+
+</article>
+</main>
+	<!-- Scripts -->
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js" integrity="sha384-YNHdsYkH6gMx9y3mRkmcJ2mFUjTd0qNQQvY9VYZgQd7DcN7env35GzlmFaZ23JGp" crossorigin="anonymous"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js " integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				renderMathInElement(document.body, {
+					// customised options
+					// • auto-render specific keys, e.g.:
+					delimiters: [
+						{ left: "$$", right: "$$", display: true },
+						{ left: "$", right: "$", display: false },
+						{ left: "\\(", right: "\\)", display: false },
+						{ left: "\\[", right: "\\]", display: true },
+					],
+					// • rendering keys, e.g.:
+					throwOnError: false,
+				});
+			});
+		</script>
+		<!-- <script src="https://unpkg.com/function-plot@1.22.2/dist/function-plot.js"></script> -->
+		<script src="js/csfoundations.js"></script>
+		<script src="js/prism.js"></script>
+</body>
+
+</html>

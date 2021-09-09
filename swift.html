@@ -50,6 +50,67 @@
 	<p>The materials below provide an overview of mobile development in Swift. Mobile software production is fairly similar to software production on larger devices like desktops, with some nuances. We will encounter these nuances as we explore the materials, highlighting them accordingly. The following materials assume a basic knowledge of functional and object-oriented programming.</p>
 </section>
 
+<section id="first_files">
+	<p>When we create a new project in XCode, we are automatically given several files and directories. Supposing the appplication's name is <span class="monoText">foo</span>, we have: (1) <span class="monoText">fooApp.swift</span>; (2) <span class="monoText">ContentView.swift</span>; (3) a directory called <span class="monoText">Assets.xcassets</span>; (4) <span class="monoText">Info.plist</span>; (5) a directory called <span class="monoText">Preview Content</span>; and (6) a directory called <span class="monoText">Products</span>. All of these files and directories are nested under an application icon named <span class="monoText">foo</span>.</p>
+	
+	<p>First, if we click on the icon <span class="monoText">foo</span>, we can see a variety of preferences. We can modify these preferences as needed. These changes are directly then reflected in the <span class="monoText">Info.plist</span> file. For most projects, these high-level modifications are handled through the pane presented in the <span class="monoText">foo</span> application icon, rather than through <span class="monoText">Info.plist</span>. Of course, we are free to modify <span class="monoText">Info.plist</span>.</p>
+
+	<p>Next, if we click on the <span class="monoText">fooApp.swift</span> file, we see the following content:</p>
+
+	<pre class="language-swift"><code>
+		import SwiftUI
+
+		@main
+		struct fooApp: App {
+				var body: some Scene {
+						WindowGroup {
+								ContentView()
+						}
+				}
+		}
+	</code></pre>
+
+	<p>Generally, we make very few changes to this file. What we should look familiar is the <span class="monoText">@main</span> symbol. This is similar to a <span class="monoText">main()</span> function, as found in languages like Java and C. Ignoring the other parts of the code, we can see that inside the <span class="monoText">struct</span> is something that says <span class="monoText">ContentView</span>. For those familiar with object-oriented programming, this is an instance of <span class="monoText">ContentView</span>. For those unfamiliar with object-oriented programming, the line <span class="monoText">ContentView()</span> indicates some object, or thing, called <span class="monoText">ContentView</span>. What is <span class="monoText">ContentView</span>? To find out, we look at the next file, <span class="monoText">ContentView.swift</span>.</p>
+
+	<p>Inside the <span class="monoText">ContentView.swift</span> file, we can see the following code:</p>
+
+	<pre class="language-swift"><code>
+		import SwiftUI
+
+		struct ContentView: View {
+				var body: some View {
+						Text("Hello, world!")
+								.padding()
+				}
+		}
+
+		struct ContentView_Previews: PreviewProvider {
+				static var previews: some View {
+						ContentView()
+				}
+		}
+	</code></pre>
+	<p>There's a lot going on in this code, so let's take it slowly. First, we have the line <span class="monoText">import SwiftUI</span>. This tells Swift to use a package (source code outside our file) called <span class="monoText">SwiftUI</span>.</p>
+	<p>Second, at the very bottom of the file, we see the code:</p>
+	<pre class="language-swift"><code>
+		struct ContentView_Previews: PreviewProvider {
+			static var previews: some View {
+					ContentView()
+			}
+		}
+	</code></pre>
+	<p>This block of code generates the previews we see in the simulator to the right.</p>
+	<p>Further down, we have the code <span class="monoText">struct ContentView: View { ... }</span> (the ellipses indicating content). This tells Swift to create a <span class="monoText">struct</span> named <span class="monoText">ContentView</span> of type <span class="monoText">View</span> (more on the <span class="monoText">View</span> type later). Roughly speaking, a <span class="monoText">struct</span>, short for &#8220;structure&#8221;, is a collection of variables.</p>
+	<p>Inside the <span class="monoText">struct</span>, we have the following code:</p>
+	<pre class="language-swift"><code>
+		var body: some View {
+			Text("Hello, world!")
+					.padding()
+	}
+	</code></pre>
+	<p>This block of code creates a variable called <span class="monoText">body</span>, with a type called <span class="monoText">some View</span>. Why do we write <span class="monoText">some View</span>? Because inside these block of code, there will be multiple <span class="monoText">View</span> objects, and each of those <span class="monoText">View</span> objects may be certain type of the type <span class="monoText">View</span>.</p>
+</section>
+
 <section id="basic_constructs">
 	<h3>Basic Constructs</h3>
 
@@ -603,6 +664,107 @@
 	<p>Whether we're designing UI or functionality, putting all of our code into a single file leads to a phenomenon called <span class="term">spaghetti</span> code. This is where a source code file grows so large that it becomes unnecessarily difficult to find certain code and worse, debugging. The solution then is separate source code into their respective files, forming a more modular <span class="term">program architecture</span>.</p>
 
 	<p>Often, the best way to divide source code into separate files is by following the <span class="term">single responsbility principle</span> &mdash; separate source code into their respective modules depending on their responsibility. For example, we might have source code that parses a file, code that authenticates a user, code that performs a calculation, a code for the main page layout, code for settings layout, and so on. By separating source code into separate modules (whether inside the code through separate classes or structs or more broadly in separate files), it is much easier to debug and analyze code. It also prevents code from <span class="italicsText">cross-contamination</span>. Often, having so much source code in a single class, struct, or file can lead to forgetting a parentheses or brace for a particular block, thereby leading to unexpected results.</p>
+
+	<p><span class="topic">Magic Numbers.</span> When we write Swift code, it is best practice to avoid using too many literals. For example, consider these shape objects:</p>
+
+	<pre class="language-swift"><code>
+		struct Shapes: View {
+			var body: some View {
+				VStack {
+					Circle()
+						.strokeBorder(lineWidth: 20.0)
+					RoundedRectangle(cornerRadius: 20.0)
+						.stroke(lineWidth: 12.0)
+				}
+			}
+		}
+	</code></pre>
+
+	<p>The numbers above are literals, and they are colloquially called <span class="term">magic numbers</span>. We call them magic numbers because they do not give any indication of where they came from, or what exactly they mean. They are just a number. They are also problematic because if we wanted to change these numbers, we would have to search throughout the program to look for where these numbers are relevant.</p>
+	<p>The best practice approach is to use <span class="term">named constants</span>. Values that never change should be bound to a constant (so they never change), and we write those constants separately from the objects that need them. This way, if we ever need to make a change, we simply change write a different literal for the value bound to the constant. Here is one way to do so:</p>
+
+	<pre class="language-swift"><code>
+		enum Constants {
+			enum General {
+				public static let circleStrokeWidth = CGFloat(20.0)
+				public static let roundRectStrokeWidth = CGFloat(12.0)
+				public static let roundRectCornerRadius = CGFloat(20.0)
+			}
+		}
+	</code></pre>
+
+	<p>We can then rewrite the original code above as:</p>
+
+	<pre class="language-swift"><code>
+		struct Shapes: View {
+			var body: some View {
+				VStack {
+					Circle()
+						.strokeBorder(lineWidth: Constants.General.circleStrokeWidth)
+					RoundedRectangle(cornerRadius: Constants.General.roundRectCornerRadius)
+						.stroke(lineWidth: Constants.General.roundRectStrokeWidth)
+				}
+			}
+		}
+	</code></pre>
+
+	<p>While it may seem like more verbose code, it is far more readable and easier to understand that using magic numbers. This is a good example of balancing between conciseness and readability.</p>
+</section>
+
+<section id="shortcuts">
+	<h3>Shortcuts</h3>
+	<p>Because XCode is proprietary software, it's often best to stick with Apple's provided shortcuts (in the event we switch to working on someone else's machine). There are numerous shortcuts, but some shortcuts are more commonly used than others:</p>
+
+	<figure class="table">
+		<table class="truth_table">
+			<thead>
+				<th>shortcut</th>
+				<th>behavior</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>cmd + b</td>
+					<td>builds application</td>
+				</tr>
+				<tr>
+					<td>cmd + r</td>
+					<td>run application</td>
+				</tr>
+				<tr>
+					<td>cmd + u</td>
+					<td>run unit tests</td>
+				</tr>
+				<tr>
+					<td>opt + cmd + u</td>
+					<td>run unit tests</td>
+				</tr>
+				<tr>
+					<td>opt + cmd + enter</td>
+					<td>show/hide preview</td>
+				</tr>
+				<tr>
+					<td>opt + cmd + p</td>
+					<td>run preview application in SwiftUI canvas</td>
+				</tr>
+				<tr>
+					<td>opt + cmd + [</td>
+					<td>move a line of code up</td>
+				</tr>
+				<tr>
+					<td>opt + cmd + ]</td>
+					<td>move a line of code down</td>
+				</tr>
+				<tr>
+					<td>shift + cmd + y</td>
+					<td>show/hide debug console (y is my code not working)</td>
+				</tr>
+				<tr>
+					<td>opt + ${n}$</td>
+					<td>where ${n}$ is a number key, moves between the options navigator</td>
+				</tr>
+			</tbody>
+		</table>
+	</figure>
 </section>
 
 

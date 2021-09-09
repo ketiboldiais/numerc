@@ -17,89 +17,214 @@
 		</header>
 
 		<main>
-			<nav class="section-nav">
-				<ul>
-					<li><a href="#introduction">Variables &amp; Types</a></li>
-					<li><a href="#variables_and_types">Variables &amp; Types</a></li>
-				</ul>
-			</nav>
-		<!-- Foreword -->
-			<article id="foreword" class="grid" data-colcade="columns: .grid-col, items: .grid-item">
-				<!-- Grid columns -->
-				<div class="grid-col grid-col--1"></div>
-				<div class="grid-col grid-col--2"></div>
-				<div class="grid-col grid-col--3"></div>
-				<div class="grid-col grid-col--4"></div>
 
-				<section id="introduction" class="grid-item">
-					<h2>Data Structures with <span class="monoText">C++</span></h2>
+<nav class="section-nav">
+	<ul>
+		<li><a href="#introduction">Variables &amp; Types</a></li>
+		<li><a href="#variables_and_types">Variables &amp; Types</a></li>
+	</ul>
+</nav>
 
-					<p>For all the programs below, all code is written in the curly braces following <span class="monoText">main</span>:</p>
-					<pre class="language-cpp"><code>
-						using namespace std;
-						int main() {
+<article id="cpp">
+
+	<section id="introduction" class="grid-item">
+		<h2>Data Structures with <span class="monoText">C++</span></h2>
+
+		<p>For all the programs below, all code is written in the curly braces following <span class="monoText">main</span>:</p>
+		<pre class="language-cpp"><code>
+			using namespace std;
+			int main() {
 
 
-							return 0;
-						}
-					</code></pre>
+				return 0;
+			}
+		</code></pre>
 
-					<p><span class="monoText">main()</span> is a function, and the brunt of our source code is placed inside the function <span class="monoText">main()</span> because <span class="monoText">main()</span> is what the operating system calls when it executes a <span class="monoText">C++</span> program. The <span class="monoText">int</span> prefacing <span class="monoText">main()</span> is the function's <span class="term">return type</span>, <span class="monoText">main</span> is the function's <span class="term">name</span>, the <span class="monoText">()</span> enclose the function's <span class="term">parameters</span>, and everything inside the curly braces <span class="monoText">{}</span> is the <span class="term">function body</span>. By convention, we will <span class="monoText">return 0</span> to indicate the program ran successfully. For example:</p>
-					<pre class="language-cpp"><code>
-						#include "console.h"
-						#include &lt;iostream&gt;
-						using namespace std;
+		<p><span class="monoText">main()</span> is a function, and the brunt of our source code is placed inside the function <span class="monoText">main()</span> because <span class="monoText">main()</span> is what the operating system calls when it executes a <span class="monoText">C++</span> program. The <span class="monoText">int</span> prefacing <span class="monoText">main()</span> is the function's <span class="term">return type</span>, <span class="monoText">main</span> is the function's <span class="term">name</span>, the <span class="monoText">()</span> enclose the function's <span class="term">parameters</span>, and everything inside the curly braces <span class="monoText">{}</span> is the <span class="term">function body</span>. By convention, we will <span class="monoText">return 0</span> to indicate the program ran successfully. For example:</p>
+		<pre class="language-cpp"><code>
+			#include "console.h"
+			#include &lt;iostream&gt;
+			using namespace std;
 
-						int main() {
-							cout << "Hello, world!" << endl;
-							return 0;
-						}
-					</code></pre>
-					<pre class="language-bash"><code>
-						Hello, world!
-					</code></pre>
-					<p><span class="monoText">C++</span> is a compiled language. This separates it from languages like Python, which are interpreted. In very broad terms, a compiled language is one whose programs must be first entirely translated into machine code by a compiler before execution. An interpreted language, however, translates each statement into machine code and executes, one by one (these days, most interpreted languages translate source code into an intermediate format, called <span class="italicsText">byte code</span>). Examples of compiled languages include <span class="monoText">C++</span>, <span class="monoText">C</span>, <span class="monoText">Go</span>, <span class="monoText">Haskell</span>, and <span class="monoText">Rust</span>. Examples of interpreted languages include <span class="monoText">Python</span>, <span class="monoText">JavaScript</span>, <span class="monoText">Scheme</span>, <span class="monoText">Ruby</span>, etc. Some languages fall somewhere in the middle, like <span class="monoText">Java</span>, which first compiles source code to bytecode before compiling or interpreting to machine code. </p>
+			int main() {
+				cout << "Hello, world!" << endl;
+				return 0;
+			}
+		</code></pre>
+		<pre class="language-bash"><code>
+			Hello, world!
+		</code></pre>
+		<p><span class="monoText">C++</span> is a compiled language. This separates it from languages like Python, which are interpreted. In very broad terms, a compiled language is one whose programs must be first entirely translated into machine code by a compiler before execution. An interpreted language, however, translates each statement into machine code and executes, one by one (these days, most interpreted languages translate source code into an intermediate format, called <span class="italicsText">byte code</span>). Examples of compiled languages include <span class="monoText">C++</span>, <span class="monoText">C</span>, <span class="monoText">Go</span>, <span class="monoText">Haskell</span>, and <span class="monoText">Rust</span>. Examples of interpreted languages include <span class="monoText">Python</span>, <span class="monoText">JavaScript</span>, <span class="monoText">Scheme</span>, <span class="monoText">Ruby</span>, etc. Some languages fall somewhere in the middle, like <span class="monoText">Java</span>, which first compiles source code to bytecode before compiling or interpreting to machine code. </p>
 
-					<p>The supposed distinction between interpreted and compiled languages is not all that meaningful; what is more important is <span class="italicsText">how</span> the particular language is understood by the computer. The real benefit to languages like <span class="monoText">C++</span> is that it takes us very close to the metal &mdash; we have access to very low-level computing resources, such as direct control over computer memory. We could, of course, do the same using <span class="monoText">C</span>, but it would be too cumbersome to create and handle large, complex data structures. Moreover, <span class="monoText">C++</span> is a superset of <span class="monoText">C</span>.</p>
+		<p>The supposed distinction between interpreted and compiled languages is not all that meaningful; what is more important is <span class="italicsText">how</span> the particular language is understood by the computer. The real benefit to languages like <span class="monoText">C++</span> is that it takes us very close to the metal &mdash; we have access to very low-level computing resources, such as direct control over computer memory. We could, of course, do the same using <span class="monoText">C</span>, but it would be too cumbersome to create and handle large, complex data structures. Moreover, <span class="monoText">C++</span> is a superset of <span class="monoText">C</span>.</p>
 
-					<!-- comments -->
-					<p><span class="topic">Comments.</span> Comments in <span class="monoText">C++</span> take the following form:</p>
-					<pre class="language-cpp"><code>
-						// This is a single line comment
+		<!-- comments -->
+		<p><span class="topic">Comments.</span> Comments in <span class="monoText">C++</span> take the following form:</p>
+		<pre class="language-cpp"><code>
+			// This is a single line comment
 
-						/* 
-						 * This is
-						 * a multiline
-						 * comment
-						*/
-					</code></pre>
+			/* 
+				* This is
+				* a multiline
+				* comment
+			*/
+		</code></pre>
 
-					<!-- includes -->
-					<p><span class="topic"><span class="monoText">includes</span>.</span> We can utilize code written by other programmers by <span class="italicsText">including</span> a header file. There are two ways to do so:</p>
-					<pre class="language-cpp"><code>
-						#include &lt;iostream&gt;
-						#include "console.h"
-					</code></pre>
-					<p>By convention, angle brackets are used for code from the <span class="monoText">C++</span> standard library. All other external code, use quotes.</p>
+		<!-- includes -->
+		<p><span class="topic"><span class="monoText">includes</span>.</span> We can utilize code written by other programmers by <span class="italicsText">including</span> a header file. There are two ways to do so:</p>
+		<pre class="language-cpp"><code>
+			#include &lt;iostream&gt;
+			#include "console.h"
+		</code></pre>
+		<p>By convention, angle brackets are used for code from the <span class="monoText">C++</span> standard library. All other external code, use quotes.</p>
 
-					<!-- Console output -->
-					<p><span class="topic">Console Output.</span> We will be using a console for many of the programs in the following discussions. The console provides a means of communicating information from a program to the user of the program. To output information to the console, we use the keyword <span class="monoText">cout</span>:</p>
+		<!-- Console output -->
+		<p><span class="topic">Console Output.</span> We will be using a console for many of the programs in the following discussions. The console provides a means of communicating information from a program to the user of the program. To output information to the console, we use the keyword <span class="monoText">cout</span>:</p>
 
-					<pre class="language-cpp"><code>
-						cout << "Hello, world" << endl;
-					</code></pre>
+		<pre class="language-cpp"><code>
+			cout << "Hello, world" << endl;
+		</code></pre>
 
-					<p>We can think of the <span class="monoText">&lt;&lt;</span> operator as saying, Send <span class="monoText">"Hello, world!"</span> to the console. The keyword <span class="monoText">endl</span> ensures that the cursor in the console is placed on a new line. This allows multiple console outputs to display on different lines.</p>
+		<p>We can think of the <span class="monoText">&lt;&lt;</span> operator as saying, Send <span class="monoText">"Hello, world!"</span> to the console. The keyword <span class="monoText">endl</span> ensures that the cursor in the console is placed on a new line. This allows multiple console outputs to display on different lines.</p>
 
-					<p>Notice further the use of semicolons after each statement. Like <span class="monoText">Java</span> and <span class="monoText">C</span>, <span class="monoText">C++</span> is a <span class="term">semicolon-delimited</span> language, meaning statements are indicated as complete with semicolons. Of course, not all all languages are semicolon-delimited, or delimited. <span class="monoText">Prolog</span> is a <span class="italicsText">full-stop delimited</span> language (periods mark the end of statements), and <span class="monoText">Python</span> depends only on tabbing.</p>
-				</section>
+		<p>Notice further the use of semicolons after each statement. Like <span class="monoText">Java</span> and <span class="monoText">C</span>, <span class="monoText">C++</span> is a <span class="term">semicolon-delimited</span> language, meaning statements are indicated as complete with semicolons. Of course, not all all languages are semicolon-delimited, or delimited. <span class="monoText">Prolog</span> is a <span class="italicsText">full-stop delimited</span> language (periods mark the end of statements), and <span class="monoText">Python</span> depends only on tabbing.</p>
+	</section>
 
-				<section id="variables_and_types" class="grid-item">
-					<p><span class="topic">Variables &amp; Types.</span> A <span class="term">variable</span> is a programming construct that allows us to associate a <span class="italicsText">value</span> with a <span class="italicsText">name</span>.</p>
-				</section>
+	<section id="variables_and_types" class="grid-item">
+		<p><span class="topic">Variables &amp; Types.</span> A <span class="term">variable</span> is a programming construct that allows us to associate a <span class="italicsText">value</span> with a <span class="italicsText">name</span>. Examples of variables in <span class="monoText">C++</span>:</p>
+
+		<pre class="language-cpp"><code>
+			int x; // value is undefined
+			char grade = 'A';
+			double pi = 3.14;
+		</code></pre>
+
+		<p>The value of <span class="monoText">x</span> above is <span class="monoText">undefined</span>, which is itself a value. It will display to the console some value, but it could be any value. All of the types above are <span class="term">primitive types</span> in <span class="monoText">C++</span>. There are several others:</p>
+
+		<figure class="table">
+			<table class="truth_table">
+				<thead>
+					<th>Data Type</th>
+					<th>Size</th>
+					<th>Range</th>
+					<th>Information</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>bool</td>
+						<td>1 byte</td>
+						<td>[true, false]</td>
+						<td>binary values</td>
+					</tr>
+					<tr>
+						<td>char</td>
+						<td>&geq;1 byte</td>
+						<td>[-128, 127]</td>
+						<td>characters</td>
+					</tr>
+					<tr>
+						<td>unsigned char</td>
+						<td>&geq;1 byte</td>
+						<td>[0, 255]</td>
+						<td>unsigned character</td>
+					</tr>
+					<tr>
+						<td>short</td>
+						<td>&geq;2 bytes</td>
+						<td>[-32768, 32767]</td>
+						<td>integers</td>
+					</tr>
+					<tr>
+						<td>unsigned short</td>
+						<td>&geq;2 bytes</td>
+						<td>[0, 65535]</td>
+						<td>positive integers</td>
+					</tr>
+					<tr>
+						<td>int</td>
+						<td>&geq;2 bytes</td>
+						<td>[-32768, 32767]</td>
+						<td>integers</td>
+					</tr>
+					<tr>
+						<td>unsigned int</td>
+						<td>&geq;2 bytes</td>
+						<td>[0, 65535]</td>
+						<td>positive integers</td>
+					</tr>
+					<tr>
+						<td>long</td>
+						<td>&geq;4 bytes</td>
+						<td>[-2147483648, 2147483647]</td>
+						<td>integers</td>
+					</tr>
+					<tr>
+						<td>unsigned long</td>
+						<td>&geq;4 bytes</td>
+						<td>[0, 4294967295]</td>
+						<td>positive integers</td>
+					</tr>
+					<tr>
+						<td>float</td>
+						<td>&geq;2 bytes</td>
+						<td>[3.4e-038, 3.4e+038]</td>
+						<td>floating point values/rationals</td>
+					</tr>
+					<tr>
+						<td>double</td>
+						<td>&geq;8 bytes</td>
+						<td>[1.7e-308, 1.7e+308]</td>
+						<td>floating point values/rationals</td>
+					</tr>
+					<tr>
+						<td>long double</td>
+						<td>&geq;10 bytes</td>
+						<td>[1.7e-4932, 1.7e+4932]</td>
+						<td>floating point values/rationals</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+
+		<p><span class="topic">Enapsulation.</span> The idea of <span class="term">eancapsulation</span> is that user defined types have two layers: (1) an <span class="italicsText">interface</span> and (2) an <span class="italicsText">implementation</span>. The interface is how the world accesses the type, and the implementation is how the type operates or works. These two layers are defined in separate files. For example, suppose we have a user-defined type called <span class="monoText">cube</span>. The interface is kept in a file called <span class="monoText">cube.h</span> (a <span class="italicsText">header file</span>), and the implementation in a file called <span class="monoText">cube.cpp</span> (a <span class="italicsText">code file</span>).</p>
+
+		<p>Inside <span class="monoText">cube.h</span>, we have the following:</p>
+
+		<pre class="language-cpp"><code>
+			#pragma once
+
+			class Cube {
+				public: 
+				// These are the functions we can use with this type
+					double getVolume();
+					double getSurfaceArea();
+					double getSize();
+
+				private:
+				// This is the data stored by this type
+					double side_;
+
+			};
+		</code></pre>
+
+		<p>The line <span class="monoText">#pragma once</span> tells the compiler that the following code should be used once during compilation. We include this line because our code might have a header file that relies on another header file that relies on another header file. This raises the danger of a possibly never-ending loop of searching for header files. <span class="monoText">#pragma once</span> ensures that loop terminates. We call statements like <span class="monoText">#pragma once</span> <span class="term">include guards</span>.</p>
+
+		<p>With the functions and data above, we now need to actually define them in our <span class="monoText">Cube.cpp</span> file:</p>
+
+		<pre class="language-cpp"><code>
+			#include "Cube.h"
+
+			double Cube::getVolume() {
+
+			}
+		</code></pre>
+
+		<p>The line <span class="monoText">#include "Cube.h"</span> tells the compiler, "Find the file called <span class="monoText">Cube.h</span>, and copy it to this file." This is because the compiler must know how the interface works to compile <span class="monoText">Cube.cpp</span>. It can only do so if we insert <span class="monoText">#include "Cube.h"</span> into the file.</p>
+	</section>
 
 
-			</article>
+</article>
+
 		</main>
 		<!-- Scripts -->
 			<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js" integrity="sha384-YNHdsYkH6gMx9y3mRkmcJ2mFUjTd0qNQQvY9VYZgQd7DcN7env35GzlmFaZ23JGp" crossorigin="anonymous"></script>
